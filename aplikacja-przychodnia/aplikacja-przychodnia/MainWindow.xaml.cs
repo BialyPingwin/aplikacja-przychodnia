@@ -26,6 +26,9 @@ namespace aplikacja_przychodnia
             Main.Content = new LoginPage();
         }
 
-       
+        private void Main_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
     }
 }

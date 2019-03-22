@@ -9,12 +9,17 @@ aplikacja_przychodnia
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\App.xaml
 3460291556
+=======
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\App.xaml
+3-1542677106
+>>>>>>> ce4c306658bbc89385e47342d6ef3bd80c7098f3
 
-71551601544
+7-1966002430
 131569487696
-LoginPage.xaml;MainWindow.xaml;MenuWindow.xaml;
+LoginPage.xaml;MainWindow.xaml;MenuPage.xaml;
 
 True
 
