@@ -33,25 +33,44 @@ namespace aplikacja_przychodnia
             }
         }
 
-        private void Login_input_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
         private void RestoreValue(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (sender as TextBox);
-            if (tb.Name == "login_input")
+            if (sender is TextBox)
             {
-                tb.Text = "Login";
+                TextBox tb = (sender as TextBox);
+                if (tb.Text == "")
+                {
+                    tb.Text = "Login";
+                }
             }
-            else tb.Text = "Hasło";
+            if (sender is PasswordBox)
+            {
+                PasswordBox tb = (sender as PasswordBox);
+                if (tb.Password == "")
+                {
+                    tb.Password = "Hasło";
+                }
+            }
         }
         private void SelectAddress(object sender, RoutedEventArgs e)
         {
-            TextBox tb = (sender as TextBox);
-            if (tb != null)
+
+            if (sender is TextBox)
             {
-                tb.Clear();
+                TextBox tb = (sender as TextBox);
+                if (tb.Text == "Login")
+                {
+                    tb.Clear();
+                }
+            }
+
+            if(sender is PasswordBox) 
+            {
+                PasswordBox tb = (sender as PasswordBox);
+                if (tb != null)
+                {
+                    tb.Clear();
+                }
             }
         }
 
@@ -69,9 +88,5 @@ namespace aplikacja_przychodnia
             }
         }
 
-        private void Login_input_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-
-        }
     }
 }

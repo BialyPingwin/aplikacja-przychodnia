@@ -39,3 +39,5 @@ C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\
 E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\MenuPage.g.cs
 E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\MenuPage.baml
 >>>>>>> ce4c306658bbc89385e47342d6ef3bd80c7098f3
+C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\MenuPage.g.cs
+C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\MenuPage.baml

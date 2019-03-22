@@ -9,19 +9,11 @@
       Title="LoginPage">
 
     <Grid>
-<<<<<<< HEAD
-        <TextBlock HorizontalAlignment="Left" Margin="208,119,0,0" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Height="38" Width="155" FontSize="24" Foreground="White"/>
-        <TextBox x:Name="login_input" HorizontalAlignment="Left" Height="40" Margin="368,117,0,0" TextWrapping="Wrap" Text="login" VerticalAlignment="Top" Width="184" FontSize="24" TextChanged="Login_input_TextChanged" MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue"/>
-        <TextBlock HorizontalAlignment="Left" Margin="208,190,0,0" TextWrapping="Wrap" Text="Hasło:" VerticalAlignment="Top" Height="38" Width="155" FontSize="24" Foreground="White"/>
-        <TextBox x:Name="password_input" HorizontalAlignment="Left" Height="40" Margin="368,188,0,0" TextWrapping="Wrap" Text="hasło" VerticalAlignment="Top" Width="184" FontSize="24" AutomationProperties.HelpText="hasło" MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue"/>
-        <Button x:Name="Login_button" Content="Zaloguj" HorizontalAlignment="Left" Margin="368,248,0,0" VerticalAlignment="Top" Width="184" Height="42" FontSize="24" Background="#FF404040" BorderBrush="White" Click="Login_button_Click"/>
-=======
         <TextBlock HorizontalAlignment="Left" Margin="285,132,0,0" TextWrapping="Wrap" Text="Login:" VerticalAlignment="Top" Height="38" Width="78" FontSize="24" Foreground="White"/>
-        <TextBox x:Name="login_input" HorizontalAlignment="Left" Height="40" Margin="368,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="24" BorderBrush="White" BorderThickness="3" Background="#FF767676" Foreground="White"/>
+        <TextBox x:Name="login_input" HorizontalAlignment="Left" Height="40" Margin="368,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="24" BorderBrush="White" BorderThickness="3" Background="#FF767676" Foreground="White"  MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue" Text="Login"/>
         <TextBlock HorizontalAlignment="Left" Margin="285,190,0,0" TextWrapping="Wrap" Text="Hasło:" VerticalAlignment="Top" Height="38" Width="78" FontSize="24" Foreground="White"/>
+        <PasswordBox x:Name="password_input" HorizontalAlignment="Left" Margin="368,190,0,0" VerticalAlignment="Top" Height="38" Width="184" FontSize="24" Background="#FF767676" BorderBrush="White" BorderThickness="3" Foreground="White"  MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue" Password="Hasło"/>
         <Button x:Name="Login_button" Content="Zaloguj" HorizontalAlignment="Left" Margin="368,248,0,0" VerticalAlignment="Top" Width="184" Height="42" FontSize="24" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Login_button_Click" Foreground="White"/>
-        <PasswordBox x:Name="password_input" HorizontalAlignment="Left" Margin="368,190,0,0" VerticalAlignment="Top" Height="38" Width="184" FontSize="24" Background="#FF767676" BorderBrush="White" BorderThickness="3" Foreground="White"/>
->>>>>>> ce4c306658bbc89385e47342d6ef3bd80c7098f3
-
+        
     </Grid>
 </Page>
