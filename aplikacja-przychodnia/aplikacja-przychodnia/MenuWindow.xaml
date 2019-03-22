@@ -1,0 +1,15 @@
+﻿<Page x:Class="aplikacja_przychodnia.MenuWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:aplikacja_przychodnia"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuWindow">
+
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="339,187,0,0" TextWrapping="Wrap" Text="Zalogowano" VerticalAlignment="Top" Foreground="White" Height="80" Width="144" FontSize="24"/>
+
+    </Grid>
+</Page>

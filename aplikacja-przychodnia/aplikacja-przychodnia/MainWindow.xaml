@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aplikacja_przychodnia"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Background="#FF404040">
     <Grid>
-        
+        <Frame x:Name="Main" Content="" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="792" ScrollViewer.VerticalScrollBarVisibility="Disabled" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
