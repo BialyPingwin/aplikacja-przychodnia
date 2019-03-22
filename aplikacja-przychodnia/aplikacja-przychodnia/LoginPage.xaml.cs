@@ -29,7 +29,7 @@ namespace aplikacja_przychodnia
         {
             if (login_input.Text == "test" && password_input.Text == "test")
             {
-                NavigationService.Navigate(new MenuWindow());
+                NavigationService.Navigate(new MenuPage());
             }
         }
     }
