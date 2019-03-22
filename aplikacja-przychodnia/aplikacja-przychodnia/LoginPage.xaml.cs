@@ -27,7 +27,7 @@ namespace aplikacja_przychodnia
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
-            if (login_input.Text == "test" && password_input.Text == "test")
+            if (login_input.Text == "test" && password_input.Password == "test")
             {
                 NavigationService.Navigate(new MenuPage());
             }
