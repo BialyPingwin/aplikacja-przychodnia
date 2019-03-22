@@ -32,5 +32,46 @@ namespace aplikacja_przychodnia
                 NavigationService.Navigate(new MenuWindow());
             }
         }
+
+        private void Login_input_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void RestoreValue(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+            if (tb.Name == "login_input")
+            {
+                tb.Text = "Login";
+            }
+            else tb.Text = "Hasło";
+        }
+        private void SelectAddress(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+            if (tb != null)
+            {
+                tb.Clear();
+            }
+        }
+
+        private void SelectivelyIgnoreMouseButton(object sender,
+            MouseButtonEventArgs e)
+        {
+            TextBox tb = (sender as TextBox);
+            if (tb != null)
+            {
+                if (!tb.IsKeyboardFocusWithin)
+                {
+                    e.Handled = true;
+                    tb.Focus();
+                }
+            }
+        }
+
+        private void Login_input_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+
+        }
     }
 }
