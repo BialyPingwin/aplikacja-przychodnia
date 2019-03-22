@@ -11,7 +11,7 @@ namespace aplikacja_przychodnia
     {
         string name;
         string surname;
-        int id;
+        
 
         private string _login;
         public string login {
@@ -30,11 +30,10 @@ namespace aplikacja_przychodnia
                 _password = value;
             }
         }
-        public DoctorClass(string name, string surname, int id, string login, string password)
+        public DoctorClass(string name, string surname, string login, string password)
         {
             this.name = name;
             this.surname = surname;
-            this.id = id;
             this.login = login;
             this.password = password;
         }

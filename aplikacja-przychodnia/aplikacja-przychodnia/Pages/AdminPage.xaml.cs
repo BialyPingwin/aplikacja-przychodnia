@@ -13,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace aplikacja_przychodnia
+namespace aplikacja_przychodnia.Pages
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy AdminPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdminPage : Page
     {
-        
-
-        public MainWindow()
+        public AdminPage()
         {
             InitializeComponent();
-            Main.Content = new LoginPage();
         }
-
-        
     }
 }
