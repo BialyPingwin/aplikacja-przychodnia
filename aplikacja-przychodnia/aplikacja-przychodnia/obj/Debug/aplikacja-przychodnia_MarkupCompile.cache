@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\App.xaml
-3-1542677106
+3-726037103
 
-7-1966002430
+10-2015146498
 131569487696
-LoginPage.xaml;MainWindow.xaml;MenuPage.xaml;
+Pages\LoginPage.xaml;MainWindow.xaml;Pages\MenuPage.xaml;
 
-False
+True
 

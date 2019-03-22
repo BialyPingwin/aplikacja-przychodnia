@@ -20,19 +20,25 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class LoginPage : Page
     {
+        // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, login, hasło
+        public LocalDataBase localDataBase = new LocalDataBase();
+
+        //Strona do logowania
         public LoginPage()
         {
+            
+            localDataBase = BinarySerializer<LocalDataBase>.Deserialize("Przyklad.dat"); // deserializacja bazy lekarzy
             InitializeComponent();
         }
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
-            if (login_input.Text == "test" && password_input.Password == "test")
+            if (localDataBase.login(login_input.Text, password_input.Password))
             {
                 NavigationService.Navigate(new MenuPage());
             }
         }
-
+        // kiedy textbox pusty ustawia wartosc domyslna
         private void RestoreValue(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox)
@@ -52,6 +58,7 @@ namespace aplikacja_przychodnia
                 }
             }
         }
+        //zaznacza tekst kiedy textbox klikniety
         private void SelectAddress(object sender, RoutedEventArgs e)
         {
 
@@ -62,6 +69,7 @@ namespace aplikacja_przychodnia
                 {
                     tb.Clear();
                 }
+                tb.SelectAll();
             }
 
             if(sender is PasswordBox) 
@@ -73,7 +81,7 @@ namespace aplikacja_przychodnia
                 }
             }
         }
-
+        //sprawia że SelectAddress nie dziala zawsze
         private void SelectivelyIgnoreMouseButton(object sender,
             MouseButtonEventArgs e)
         {
@@ -87,6 +95,7 @@ namespace aplikacja_przychodnia
                 }
             }
         }
+
 
     }
 }
