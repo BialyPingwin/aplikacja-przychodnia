@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace aplikacja_przychodnia
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy MenuPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MenuPage : Page
     {
-        
-
-        public MainWindow()
+        public MenuPage()
         {
             InitializeComponent();
-            Main.Content = new LoginPage();
         }
-
-        
     }
 }
