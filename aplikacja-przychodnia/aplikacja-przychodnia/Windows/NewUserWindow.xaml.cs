@@ -24,13 +24,14 @@ namespace aplikacja_przychodnia.Windows
         public NewUserWindow()
         {
             InitializeComponent();
+            localDataBase = LocalDataBase.Initialize();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (Input_Name.Text != null && Input_Surname.Text != null && Input_Login.Text != null && localDataBase.IsLoginFree(Input_Login.Text))
             {
-                localDataBase = LocalDataBase.Initialize();
+                
                 UserClass user = new UserClass(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
                 localDataBase.Add(user);
                 localDataBase.Save();
