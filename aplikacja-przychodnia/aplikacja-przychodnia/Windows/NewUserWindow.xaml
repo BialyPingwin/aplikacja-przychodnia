@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aplikacja_przychodnia.Windows"
         mc:Ignorable="d"
-        Title="Dodaj Użytkownika" Height="369.737" Width="455.263" Background="#FF404040">
+        Title="Dodaj Użytkownika" Height="369.737" Width="455.263" Background="#FF404040" ResizeMode="NoResize">
     <Grid>
         <Label Content="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,24,0,0" Height="69" Width="320" FontSize="36" Foreground="White"/>
         <Button Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="156" Margin="212,207,0,0" Height="38" Background="#FF404040" BorderBrush="White" Foreground="White" FontSize="16" Click="Button_Click"/>
@@ -15,6 +15,7 @@
         <Label Content="Imię" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,98,0,0" Height="30" Width="120" FontSize="16" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
         <Label Content="Nazwisko" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,135,0,0" Height="30" Width="120" FontSize="16" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
         <Label Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="87,170,0,0" Height="32" Width="120" FontSize="16" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="102,245,0,0" Width="266" Height="18" Foreground="Red" FontSize="16" FlowDirection="RightToLeft"/>
 
     </Grid>
 </Window>
