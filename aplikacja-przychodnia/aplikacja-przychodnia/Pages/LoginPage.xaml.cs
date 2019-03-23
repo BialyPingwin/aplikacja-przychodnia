@@ -21,7 +21,7 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class LoginPage : Page
     {
-        // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, login, hasło
+        // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, Login, hasło
         public LocalDataBase localDataBase;
         private bool firstStart = false;
         //Strona do logowania
@@ -44,16 +44,16 @@ namespace aplikacja_przychodnia
             {
                 NavigationService.Navigate(new NewPasswordPage());
             }
-            else if (login_input.Text == "admin" && localDataBase.login(login_input.Text, password_input.Password)){
+            else if (login_input.Text == "admin" && localDataBase.Login(login_input.Text, password_input.Password)){
                 NavigationService.Navigate(new AdminPage());
             }
-            else if (localDataBase.login(login_input.Text, password_input.Password) && login_input.Text != "admin")
+            else if (localDataBase.Login(login_input.Text, password_input.Password) && login_input.Text != "admin")
             {
                 NavigationService.Navigate(new SickLeaveSchemePage());
             }
             else
             {
-                Output_Error.Text = "Błędny login lub hasło";
+                Output_Error.Text = "Błędny Login lub hasło";
             }
         }
         // kiedy textbox pusty ustawia wartosc domyslna

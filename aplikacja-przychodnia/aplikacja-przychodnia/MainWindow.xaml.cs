@@ -24,10 +24,11 @@ namespace aplikacja_przychodnia
 
         public MainWindow()
         {
+            
             InitializeComponent();
             Main.Content = new LoginPage();
         }
 
-        
+       
     }
 }
