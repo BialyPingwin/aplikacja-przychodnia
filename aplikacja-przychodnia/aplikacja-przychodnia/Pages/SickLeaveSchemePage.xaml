@@ -14,10 +14,10 @@
             <ColumnDefinition Width="113*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="HeadText" HorizontalAlignment="Left" Margin="39,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Width="421" Foreground="White" FontSize="32" Grid.ColumnSpan="2"><Run Text="Wystawianie zwolnienia"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="SickLeaveTypeText" HorizontalAlignment="Left" Margin="39,80,0,0" TextWrapping="Wrap" Text="Typ zwolnienia" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
+        <TextBlock x:Name="PESELText" HorizontalAlignment="Left" Margin="39,80,0,0" TextWrapping="Wrap" Text="PESEL" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="PatientFirstNameText" HorizontalAlignment="Left" Margin="39,130,0,0" TextWrapping="Wrap" Text="Imię" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="PatientLastNameText" HorizontalAlignment="Left" Margin="39,180,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
-        <TextBlock x:Name="PESELText" HorizontalAlignment="Left" Margin="39,230,0,0" TextWrapping="Wrap" Text="PESEL" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
+        <TextBlock x:Name="SickLeaveTypeText" HorizontalAlignment="Left" Margin="39,230,0,0" TextWrapping="Wrap" Text="Typ zwolnienia" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="PatientGenderText" HorizontalAlignment="Left" Margin="39,280,0,0" TextWrapping="Wrap" Text="Płeć" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="DateText" HorizontalAlignment="Left" Margin="39,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"><Run Text="Termin"/><LineBreak/><Run/></TextBlock>
         <ComboBox x:Name="Input_SickLeaveTypeList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20">

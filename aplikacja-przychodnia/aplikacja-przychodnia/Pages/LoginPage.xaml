@@ -9,6 +9,7 @@
       Title="LoginPage">
 
     <Grid>
+
         <TextBlock Margin="272,175,0,0" TextWrapping="Wrap" Text="Login:" FontSize="24" Foreground="White" HorizontalAlignment="Left" Width="78" Height="38" VerticalAlignment="Top"/>
         <TextBox x:Name="login_input" Margin="355,175,0,0" TextWrapping="Wrap" FontSize="24" BorderBrush="White" BorderThickness="3" Background="#FF767676" Foreground="White"  MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue" Text="Login" HorizontalAlignment="Left" Width="184" Height="40" VerticalAlignment="Top"/>
         <TextBlock Margin="272,233,0,0" TextWrapping="Wrap" Text="Hasło:" FontSize="24" Foreground="White" HorizontalAlignment="Left" Width="78" Height="38" VerticalAlignment="Top"/>
@@ -18,4 +19,7 @@
         <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="355,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="184" Foreground="Red" FontSize="16" FlowDirection="RightToLeft" Text=" "/>
 
     </Grid>
+
+
+
 </Page>
