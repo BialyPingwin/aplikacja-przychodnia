@@ -37,6 +37,16 @@ namespace aplikacja_przychodnia.Pages
         {
             DoctorClass user = UsersView.SelectedItem as DoctorClass;
 
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz zresetować hasło użytkownika?", "Potwierdzenie resetu hasła użytkownika", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                
+            }
+            else
+            {
+                Output_Error.Text = "Anulowano operację";
+            }
+
 
         }
         private void ButtonGrid_Delete_Click(object sender, RoutedEventArgs e)
@@ -45,9 +55,17 @@ namespace aplikacja_przychodnia.Pages
 
             if (user.login != "admin")
             {
-                localDataBase.Remove(user);
-                localDataBase.Save();
-                RefreshUsersView();
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz usunąc użytkownika?", "Potwierdzenie usunięcia użytkownika", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    localDataBase.Remove(user);
+                    localDataBase.Save();
+                    RefreshUsersView();
+                }
+                else
+                {
+                    Output_Error.Text = "Anulowano operację";
+                }
             }
             else
             {
@@ -61,12 +79,9 @@ namespace aplikacja_przychodnia.Pages
             addUserWindow.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            RefreshUsersView();
-        }
+       
 
-        private void RefreshUsersView()
+        public void RefreshUsersView()
         {
             localDataBase = LocalDataBase.Initialize();
             UsersView.ItemsSource = localDataBase.ReturnList();
