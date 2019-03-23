@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using aplikacja_przychodnia.Pages;
 
 namespace aplikacja_przychodnia
 {
@@ -21,21 +22,38 @@ namespace aplikacja_przychodnia
     public partial class LoginPage : Page
     {
         // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, login, hasło
-        public LocalDataBase localDataBase = new LocalDataBase();
-
+        public LocalDataBase localDataBase;
+        private bool firstStart = false;
         //Strona do logowania
         public LoginPage()
         {
-            
-            localDataBase = BinarySerializer<LocalDataBase>.Deserialize("Przyklad.dat"); // deserializacja bazy lekarzy
+
+            localDataBase = LocalDataBase.Initialize();
             InitializeComponent();
+            if (localDataBase == null)
+            {
+                Output_Error.Text = "Pierwsze uruchomienie";
+                firstStart = true;
+            }
+            
         }
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
-            if (localDataBase.login(login_input.Text, password_input.Password))
+            if (firstStart && login_input.Text == "admin" && password_input.Password == "admin")
+            {
+                NavigationService.Navigate(new AdminNewPasswordPage());
+            }
+            else if (login_input.Text == "admin" && localDataBase.login(login_input.Text, password_input.Password)){
+                NavigationService.Navigate(new AdminPage());
+            }
+            else if (localDataBase.login(login_input.Text, password_input.Password) && login_input.Text != "admin")
             {
                 NavigationService.Navigate(new MenuPage());
+            }
+            else
+            {
+                Output_Error.Text = "Błędny login lub hasło";
             }
         }
         // kiedy textbox pusty ustawia wartosc domyslna

@@ -12,7 +12,7 @@ namespace aplikacja_przychodnia
     [Serializable]
     public class LocalDataBase
     {
-        public List<DoctorClass> listOfDoctors = new List<DoctorClass>();
+        private List<DoctorClass> listOfDoctors = new List<DoctorClass>();
 
         public void Add(DoctorClass doctor)
         {
@@ -36,6 +36,25 @@ namespace aplikacja_przychodnia
                 }
             }
             return false;
+        }
+
+        public static LocalDataBase Initialize()
+        {
+            LocalDataBase db = new LocalDataBase();
+            
+            db = BinarySerializer<LocalDataBase>.Deserialize("UsersLocal.dat"); // deserializacja bazy lekarzy
+
+            return db;
+        }
+
+        public void Save()
+        {
+            BinarySerializer<LocalDataBase>.Serialize("UsersLocal.dat", this);
+        }
+
+        public List<DoctorClass> ReturnList()
+        {
+            return listOfDoctors;
         }
     }
 }

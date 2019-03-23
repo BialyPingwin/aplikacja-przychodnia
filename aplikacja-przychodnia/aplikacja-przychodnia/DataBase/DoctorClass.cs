@@ -9,9 +9,31 @@ namespace aplikacja_przychodnia
     [Serializable]
     public class DoctorClass
     {
-        string name;
-        string surname;
-        int id;
+        private string _name;
+        public string name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+
+        private string _surname;
+        public string surname
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                _surname = value;
+            }
+        }
 
         private string _login;
         public string login {
@@ -30,11 +52,10 @@ namespace aplikacja_przychodnia
                 _password = value;
             }
         }
-        public DoctorClass(string name, string surname, int id, string login, string password)
+        public DoctorClass(string name, string surname, string login, string password)
         {
             this.name = name;
             this.surname = surname;
-            this.id = id;
             this.login = login;
             this.password = password;
         }

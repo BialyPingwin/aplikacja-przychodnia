@@ -45,3 +45,13 @@ C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\
 C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\MenuPage.g.cs
 C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\LoginPage.baml
 C:\Users\Kacper-PC\Documents\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\MenuPage.baml
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\LoginPage.g.cs
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\MenuPage.g.cs
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\LoginPage.baml
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\MenuPage.baml
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminPage.g.cs
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminPage.baml
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminNewPasswordPage.g.cs
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminNewPasswordPage.baml
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Windows\NewUserWindow.g.cs
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Windows\NewUserWindow.baml
