@@ -28,10 +28,10 @@ namespace aplikacja_przychodnia.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Input_Name.Text != null && Input_Surname.Text != null && Input_Login.Text != null)
+            if (Input_Name.Text != null && Input_Surname.Text != null && Input_Login.Text != null && localDataBase.IsLoginFree(Input_Login.Text))
             {
                 localDataBase = LocalDataBase.Initialize();
-                DoctorClass user = new DoctorClass(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
+                UserClass user = new UserClass(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
                 localDataBase.Add(user);
                 localDataBase.Save();
                 foreach(Window window in Application.Current.Windows)
@@ -47,6 +47,14 @@ namespace aplikacja_przychodnia.Windows
 
                 this.Close();
 
+            }
+            else if (!localDataBase.IsLoginFree(Input_Login.Text))
+            {
+                Output_Error.Text = "Login zajęty";
+            }
+            else
+            {
+                Output_Error.Text = "Błąd wprowadzania danych";
             }
         }
     }

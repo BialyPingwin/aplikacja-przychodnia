@@ -42,7 +42,7 @@ namespace aplikacja_przychodnia
         {
             if (firstStart && login_input.Text == "admin" && password_input.Password == "admin")
             {
-                NavigationService.Navigate(new AdminNewPasswordPage());
+                NavigationService.Navigate(new NewPasswordPage());
             }
             else if (login_input.Text == "admin" && localDataBase.login(login_input.Text, password_input.Password)){
                 NavigationService.Navigate(new AdminPage());

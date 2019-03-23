@@ -61,7 +61,7 @@
     <Compile Include="Windows\NewUserWindow.xaml.cs">
       <DependentUpon>NewUserWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Pages\AdminNewPasswordPage.xaml">
+    <Page Include="Pages\NewPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -81,15 +81,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Pages\AdminNewPasswordPage.xaml.cs">
-      <DependentUpon>AdminNewPasswordPage.xaml</DependentUpon>
+    <Compile Include="Pages\NewPasswordPage.xaml.cs">
+      <DependentUpon>NewPasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Serializacja\BinarySerializer.cs" />
     <Compile Include="Classes\LocalDataBase.cs" />
-    <Compile Include="Classes\DoctorClass.cs" />
+    <Compile Include="Classes\UserClass.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
