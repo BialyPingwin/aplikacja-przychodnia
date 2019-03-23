@@ -9,23 +9,20 @@
       Title="LoginPage">
 
     <Grid>
+
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="267" MinHeight="249">
 
             <TextBlock Margin="0,68,0,0" TextWrapping="Wrap" Text="Login:" FontSize="24" Foreground="White" HorizontalAlignment="Left" Width="78" Height="38" VerticalAlignment="Top"/>
             <TextBox x:Name="login_input" Margin="83,68,0,0" TextWrapping="Wrap" FontSize="24" BorderBrush="White" BorderThickness="3" Background="#FF767676" Foreground="White"  MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue" Text="Login" HorizontalAlignment="Left" Width="184" Height="40" VerticalAlignment="Top"/>
             <TextBlock Margin="0,126,0,0" TextWrapping="Wrap" Text="Hasło:" FontSize="24" Foreground="White" HorizontalAlignment="Left" Width="78" Height="38" VerticalAlignment="Top"/>
             <PasswordBox x:Name="password_input" Margin="83,126,0,0" FontSize="24" Background="#FF767676" BorderBrush="White" BorderThickness="3" Foreground="White"  MouseDoubleClick="SelectAddress" GotKeyboardFocus="SelectAddress" PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton" LostKeyboardFocus="RestoreValue" Password="Hasło" HorizontalAlignment="Left" Width="184" Height="38" VerticalAlignment="Top"/>
-            <Button x:Name="Login_button" Content="Zaloguj" Margin="83,184,0,0" FontSize="24" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Login_button_Click" Foreground="White" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184"/>
+            <Button x:Name="Login_button" Content="Zaloguj" Margin="83,184,0,0" FontSize="24" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Login_button_Click" Foreground="White" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184" IsDefault="True"/>
             <TextBlock TextWrapping="Wrap" Text="Logowanie" FontSize="36" Foreground="White" HorizontalAlignment="Left" Width="267" Height="63" VerticalAlignment="Top"/>
             <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="83,226,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="184" Foreground="Red" FontSize="16" FlowDirection="RightToLeft" Text=" "/>
-
-
-
-
+            
         </Grid>
-
-
-
-
     </Grid>
+
+
+
 </Page>
