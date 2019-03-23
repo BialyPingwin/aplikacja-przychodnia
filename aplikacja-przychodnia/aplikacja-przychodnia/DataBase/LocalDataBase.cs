@@ -12,7 +12,7 @@ namespace aplikacja_przychodnia
     [Serializable]
     public class LocalDataBase
     {
-        public List<DoctorClass> listOfDoctors = new List<DoctorClass>();
+        private List<DoctorClass> listOfDoctors = new List<DoctorClass>();
 
         public void Add(DoctorClass doctor)
         {
@@ -50,6 +50,11 @@ namespace aplikacja_przychodnia
         public void Save()
         {
             BinarySerializer<LocalDataBase>.Serialize("UsersLocal.dat", this);
+        }
+
+        public List<DoctorClass> ReturnList()
+        {
+            return listOfDoctors;
         }
     }
 }

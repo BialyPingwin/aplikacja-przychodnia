@@ -32,7 +32,7 @@ namespace aplikacja_przychodnia
             InitializeComponent();
             if (localDataBase == null)
             {
-                Output_LoginError.Text = "Pierwsze uruchomienie";
+                Output_Error.Text = "Pierwsze uruchomienie";
                 firstStart = true;
             }
             
@@ -53,7 +53,7 @@ namespace aplikacja_przychodnia
             }
             else
             {
-                Output_LoginError.Text = "Błędny login lub hasło";
+                Output_Error.Text = "Błędny login lub hasło";
             }
         }
         // kiedy textbox pusty ustawia wartosc domyslna

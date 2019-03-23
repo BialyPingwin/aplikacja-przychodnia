@@ -9,9 +9,31 @@ namespace aplikacja_przychodnia
     [Serializable]
     public class DoctorClass
     {
-        string name;
-        string surname;
-        
+        private string _name;
+        public string name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                _name = value;
+            }
+        }
+
+        private string _surname;
+        public string surname
+        {
+            get
+            {
+                return _surname;
+            }
+            set
+            {
+                _surname = value;
+            }
+        }
 
         private string _login;
         public string login {

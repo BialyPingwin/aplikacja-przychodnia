@@ -53,3 +53,5 @@ E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\
 E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminPage.baml
 E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminNewPasswordPage.g.cs
 E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Pages\AdminNewPasswordPage.baml
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Windows\NewUserWindow.g.cs
+E:\GitHub\aplikacja-przychodnia\aplikacja-przychodnia\aplikacja-przychodnia\obj\Debug\Windows\NewUserWindow.baml
