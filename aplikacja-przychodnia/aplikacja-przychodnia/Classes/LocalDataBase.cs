@@ -12,20 +12,20 @@ namespace aplikacja_przychodnia
     [Serializable]
     public class LocalDataBase
     {
-        private List<UserClass> listOfDoctors = new List<UserClass>();
+        private List<UserClass> listOfUsers = new List<UserClass>();
 
-        public void Add(UserClass doctor)
+        public void Add(UserClass user)
         {
-            listOfDoctors.Add(doctor);
+            listOfUsers.Add(user);
         }
-        public void Remove(UserClass doctor)
+        public void Remove(UserClass user)
         {
-            listOfDoctors.Remove(doctor);
+            listOfUsers.Remove(user);
         }
         // metoda do sprawdzenia czy można sie zalogowac
         public bool login(string login, string password)
         {
-            foreach (UserClass item in listOfDoctors)
+            foreach (UserClass item in listOfUsers)
             {
                 if (login == item.login)
                 {
@@ -40,7 +40,7 @@ namespace aplikacja_przychodnia
 
         public void ChangePassword(string login, string newPassword)
         {
-            foreach (UserClass item in listOfDoctors)
+            foreach (UserClass item in listOfUsers)
             {
                 if (login == item.login)
                 {
@@ -52,7 +52,7 @@ namespace aplikacja_przychodnia
 
         public bool IsLoginFree(string login)
         {
-            foreach (UserClass item in listOfDoctors)
+            foreach (UserClass item in listOfUsers)
             {
                 if (login == item.login)
                 {
@@ -78,7 +78,7 @@ namespace aplikacja_przychodnia
 
         public List<UserClass> ReturnList()
         {
-            return listOfDoctors;
+            return listOfUsers;
         }
     }
 }
