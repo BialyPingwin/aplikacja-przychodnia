@@ -20,13 +20,13 @@
         <TextBlock x:Name="SickLeaveTypeText" HorizontalAlignment="Left" Margin="39,230,0,0" TextWrapping="Wrap" Text="Typ zwolnienia" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="PatientGenderText" HorizontalAlignment="Left" Margin="39,280,0,0" TextWrapping="Wrap" Text="Płeć" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="DateText" HorizontalAlignment="Left" Margin="39,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"><Run Text="Termin"/><LineBreak/><Run/></TextBlock>
-        <ComboBox x:Name="Input_SickLeaveTypeList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20">
-            <ComboBoxItem x:Name="SickLeaveL4" Content="L4" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
-            <ComboBoxItem x:Name="SickLeaveL10" Content="L10" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
-        </ComboBox>
+        <TextBox x:Name="PESELBox" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="20"/>
         <TextBox x:Name="Input_PatientFirstNameBox" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="20"/>
         <TextBox x:Name="Input_PatientLastNameBox" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="20"/>
-        <ComboBox x:Name="Input_PatientGenderList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" >
+        <ComboBox x:Name="Input_SickLeaveTypeList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20">
+            <ComboBoxItem x:Name="SickLeaveL4" Content="L4" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
+            <ComboBoxItem x:Name="SickLeaveL10" Content="L10" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
+        </ComboBox><ComboBox x:Name="Input_PatientGenderList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" >
             <ComboBoxItem x:Name="PatientGenderFemale" Content="Kobieta" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
             <ComboBoxItem x:Name="PatientGenderMale" Content="Mężczyzna" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
         </ComboBox>
@@ -34,7 +34,7 @@
         <TextBlock x:Name="DateFromText" HorizontalAlignment="Left" Margin="173,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Od"/>
         <DatePicker x:Name="Input_DateToPicker" Grid.Column="1" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20"/>
         <TextBlock x:Name="DateToText" HorizontalAlignment="Left" Margin="173,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Do"/>
-        <TextBox x:Name="PESELBox" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="20"/>
+        
 
     </Grid>
 </Page>
