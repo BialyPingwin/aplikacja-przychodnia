@@ -49,7 +49,7 @@ namespace aplikacja_przychodnia
             }
             else if (localDataBase.login(login_input.Text, password_input.Password) && login_input.Text != "admin")
             {
-                NavigationService.Navigate(new MenuPage());
+                NavigationService.Navigate(new SickLeaveSchemePage());
             }
             else
             {
