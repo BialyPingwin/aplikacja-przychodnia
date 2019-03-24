@@ -23,14 +23,11 @@ namespace aplikacja_przychodnia
         UserClass currentUser = null;
 
         public MainWindow()
-        {
-            
+        {    
             InitializeComponent();
             Main.Content = new LoginPage();
             this.Closed += CloseApp;
-        }
-
-       
+        }            
 
         static public void Logout()
         {

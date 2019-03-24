@@ -72,7 +72,7 @@ namespace aplikacja_przychodnia
         
         public void Save()
         {
-            BinarySerializer<LocalDataBase>.Serialize("UsersLocal.dat", this);
+            BinarySerializerWithCipher.Serialize("UsersLocal.dat", this);
         }
 
         public List<UserClass> ReturnList()
