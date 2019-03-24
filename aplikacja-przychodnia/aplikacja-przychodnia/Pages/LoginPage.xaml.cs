@@ -21,7 +21,7 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class LoginPage : Page
     {
-        // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, login, hasło
+        // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, Login, hasło
         public LocalDataBase localDataBase;
         private bool firstStart = false;
         //Strona do logowania
@@ -62,7 +62,7 @@ namespace aplikacja_przychodnia
             }
             else
             {
-                Output_Error.Text = "Błędny login lub hasło";
+                Output_Error.Text = "Błędny Login lub hasło";
             }
         }
         // kiedy textbox pusty ustawia wartosc domyslna

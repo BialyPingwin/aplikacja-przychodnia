@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Cryptography;
 
 namespace aplikacja_przychodnia
 {
@@ -8,26 +9,20 @@ namespace aplikacja_przychodnia
         //serializacja binarna
         public static void Serialize(string path, T obj)
         {
-
             if (obj != null)
             {
-
                 using (var fs = new FileStream(path, FileMode.Create))
                 {
-
                     var bf = new BinaryFormatter();
 
                     bf.Serialize(fs, obj);
-
                 }
-
             }
 
         }
         //desreializacja binarna
         public static T Deserialize(string path)
         {
-
             T temp = default(T);
 
             if (File.Exists(path))
