@@ -21,20 +21,26 @@ namespace aplikacja_przychodnia.Pages
     public partial class NewPasswordPage : Page
     {
         UserClass user = null;
-        public LocalDataBase localDataBase;
+        LocalDataBase localDataBase;
+        Page nextPage;
+        bool isAdmin = false;
 
         public NewPasswordPage()
         {
             localDataBase = new LocalDataBase();
             InitializeComponent();
+            
         }
-        public NewPasswordPage(UserClass user)
+       
+        public NewPasswordPage(UserClass user, bool isAdmin)
         {
             localDataBase = LocalDataBase.Initialize();
             this.user = user;
             InitializeComponent();
-        }
+            this.isAdmin = isAdmin;
+            
 
+        }
 
         private void Button_Confirm_Click(object sender, RoutedEventArgs e)
         {
@@ -46,14 +52,24 @@ namespace aplikacja_przychodnia.Pages
                     UserClass admin = new UserClass("admin", "admin", "admin", Input_Password1.Password);
                     localDataBase.Add(admin);
                     localDataBase.Save();
+                    nextPage = new AdminPage();
                 }
                 else
                 {
                     localDataBase.ChangePassword(user.login, Input_Password1.Password);
                     localDataBase.Save();
+                    user.pendingPasswordChage = false;
+                    if (isAdmin)
+                    {
+                        nextPage = new AdminPage();
+                    }
+                    else
+                    {
+                        nextPage = new DoctorMenu();
+                    }
                 }
 
-                NavigationService.Navigate(new AdminPage());
+                NavigationService.Navigate(nextPage);
             }
             else if (Input_Password1.Password.Length < 4)
             {

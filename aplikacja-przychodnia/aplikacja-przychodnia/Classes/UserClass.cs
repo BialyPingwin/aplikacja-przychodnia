@@ -52,12 +52,41 @@ namespace aplikacja_przychodnia
                 _password = value;
             }
         }
+        private bool _pendingPasswordChage;
+        public bool pendingPasswordChage
+        {
+            get
+            {
+                return _pendingPasswordChage;
+            }
+            set
+            {
+                _pendingPasswordChage = value;
+            }
+        }
+
         public UserClass(string name, string surname, string login, string password)
         {
             this.name = name;
             this.surname = surname;
             this.login = login;
             this.password = password;
+            this.pendingPasswordChage = false;
+        }
+
+        public void ResetPassword()
+        {
+            this.pendingPasswordChage = true;
+        }
+
+        public bool IsPendingPasswordChange()
+        {
+            return this.pendingPasswordChage;
+        }
+
+        public string ReturnName()
+        {
+            return this.name + " " + this.surname;
         }
     }
 }
