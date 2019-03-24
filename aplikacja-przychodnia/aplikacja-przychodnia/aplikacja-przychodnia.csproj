@@ -55,13 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
+    <Compile Include="Serializacja\BinarySerializerWithCipher.cs" />
     <Compile Include="Pages\DoctorMenu.xaml.cs">
       <DependentUpon>DoctorMenu.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="Classes\SickLeaveClass.cs" />
-
     <Compile Include="Pages\SickLeaveSchemePage.xaml.cs">
       <DependentUpon>SickLeaveSchemePage.xaml</DependentUpon>
     </Compile>
