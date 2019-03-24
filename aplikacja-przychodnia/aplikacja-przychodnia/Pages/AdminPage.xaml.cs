@@ -25,7 +25,7 @@ namespace aplikacja_przychodnia.Pages
 
         public AdminPage()
         {
-            localDataBase = LocalDataBase.Initialize();
+            //localDataBase = LocalDataBase.Initialize();
             InitializeComponent();
             UsersView.AutoGenerateColumns = false;
             UsersView.ItemsSource = localDataBase.ReturnList();
