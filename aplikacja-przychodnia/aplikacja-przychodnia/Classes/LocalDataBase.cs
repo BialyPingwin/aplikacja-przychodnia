@@ -46,6 +46,7 @@ namespace aplikacja_przychodnia
                 if (login == item.login)
                 {
                     item.password = newPassword;
+                    item.pendingPasswordChage = false;
                 }
             }
            
