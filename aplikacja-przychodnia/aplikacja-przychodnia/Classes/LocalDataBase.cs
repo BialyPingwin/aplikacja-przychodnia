@@ -23,6 +23,7 @@ namespace aplikacja_przychodnia
             listOfUsers.Remove(user);
         }
         // metoda do sprawdzenia czy można sie zalogowac
+
         public UserClass login(string login, string password)
         {
             foreach (UserClass item in listOfUsers)
@@ -66,13 +67,9 @@ namespace aplikacja_przychodnia
 
         public static LocalDataBase Initialize()
         {
-            LocalDataBase db = new LocalDataBase();
-            
-            db = BinarySerializer<LocalDataBase>.Deserialize("UsersLocal.dat"); // deserializacja bazy lekarzy
-
-            return db;
+            return (LocalDataBase)BinarySerializerWithCipher.Deserialize<LocalDataBase>("UsersLocal.dat");        
         }
-
+        
         public void Save()
         {
             BinarySerializer<LocalDataBase>.Serialize("UsersLocal.dat", this);
