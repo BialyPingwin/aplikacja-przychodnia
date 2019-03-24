@@ -28,8 +28,6 @@ namespace aplikacja_przychodnia.Pages
             localDataBase = LocalDataBase.Initialize();
             InitializeComponent();
             UsersView.AutoGenerateColumns = false;
-            
-           
             UsersView.ItemsSource = localDataBase.ReturnList();
         }
 
@@ -40,7 +38,15 @@ namespace aplikacja_przychodnia.Pages
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz zresetować hasło użytkownika?", "Potwierdzenie resetu hasła użytkownika", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                
+                if (user.login != "admin")
+                {
+                    localDataBase.ResetUserPassword(user.login);
+                    localDataBase.Save();
+                }
+                else
+                {
+                    NavigationService.Navigate(new NewPasswordPage(user, true));
+                }
             }
             else
             {
@@ -85,6 +91,11 @@ namespace aplikacja_przychodnia.Pages
         {
             localDataBase = LocalDataBase.Initialize();
             UsersView.ItemsSource = localDataBase.ReturnList();
+        }
+
+        private void Button_Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Logout();
         }
     }
 }

@@ -25,6 +25,8 @@
             </DataGrid.RowDetailsTemplate>
         </DataGrid>
         <Button x:Name="Button_AddUser" Content="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="49,59,0,0" FontSize="16" Click="Button_AddUser_Click" />
+        <Button x:Name="Button_Logout" Content="Wyloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="49,102,0,0" FontSize="16" Click="Button_Logout_Click" />
         <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="222,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="498" Foreground="Red" FontSize="16" FlowDirection="RightToLeft"/>
+       
     </Grid>
 </Page>

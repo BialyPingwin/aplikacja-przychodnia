@@ -34,6 +34,7 @@ namespace aplikacja_przychodnia.Windows
                 
                 UserClass user = new UserClass(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
                 localDataBase.Add(user);
+                localDataBase.ResetUserPassword(user.login);
                 localDataBase.Save();
                 foreach(Window window in Application.Current.Windows)
                 {

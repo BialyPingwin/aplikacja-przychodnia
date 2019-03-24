@@ -56,12 +56,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Serializacja\BinarySerializerWithCipher.cs" />
+    <Compile Include="Pages\DoctorMenu.xaml.cs">
+      <DependentUpon>DoctorMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\SickLeaveClass.cs" />
     <Compile Include="Pages\SickLeaveSchemePage.xaml.cs">
       <DependentUpon>SickLeaveSchemePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NewUserWindow.xaml.cs">
       <DependentUpon>NewUserWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\DoctorMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\NewPasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

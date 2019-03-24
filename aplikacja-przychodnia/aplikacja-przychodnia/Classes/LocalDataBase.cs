@@ -23,7 +23,8 @@ namespace aplikacja_przychodnia
             listOfUsers.Remove(user);
         }
         // metoda do sprawdzenia czy można sie zalogowac
-        public bool Login(string login, string password)
+
+        public UserClass login(string login, string password)
         {
             foreach (UserClass item in listOfUsers)
             {
@@ -31,12 +32,13 @@ namespace aplikacja_przychodnia
                 {
                     if (password == item.password)
                     {
-                        return true;
+                        return item;
                     }
                 }
             }
-            return false;
+            return null;
         }
+        
 
         public void ChangePassword(string login, string newPassword)
         {
@@ -45,6 +47,7 @@ namespace aplikacja_przychodnia
                 if (login == item.login)
                 {
                     item.password = newPassword;
+                    item.pendingPasswordChage = false;
                 }
             }
            
@@ -75,6 +78,18 @@ namespace aplikacja_przychodnia
         public List<UserClass> ReturnList()
         {
             return listOfUsers;
+        }
+
+        public void ResetUserPassword(string login)
+        {
+            foreach (UserClass item in listOfUsers)
+            {
+                if (login == item.login)
+                {
+                    item.password = "hasło";
+                    item.ResetPassword(); 
+                }
+            }
         }
     }
 }

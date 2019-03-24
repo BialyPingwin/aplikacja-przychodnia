@@ -20,15 +20,44 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        UserClass currentUser = null;
 
         public MainWindow()
         {
             
             InitializeComponent();
             Main.Content = new LoginPage();
+            this.Closed += CloseApp;
         }
 
        
+
+        static public void Logout()
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+
+            mainWindow.currentUser = null;
+            mainWindow.Main.Content = new LoginPage();
+        }
+        
+        private void CloseApp(Object Sender, EventArgs E)
+        {
+            
+            Application.Current.Shutdown();
+            this.Close();
+        }
+
+        public static void LogAsUser(UserClass user)
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            mainWindow.currentUser = user;
+        }
+
+        public static UserClass ReturnCurrentUser()
+        {
+            MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
+            return mainWindow.currentUser;
+        }
+
     }
 }
