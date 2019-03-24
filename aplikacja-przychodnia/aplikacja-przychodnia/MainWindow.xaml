@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:aplikacja_przychodnia"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="#FF404040">
+        Title="Obsługa przychodni" Height="450" Width="800" Background="#FF404040" MinWidth="800" MinHeight="450">
     <Grid>
         <Frame x:Name="Main" Content="" ScrollViewer.VerticalScrollBarVisibility="Disabled" NavigationUIVisibility="Hidden" />
     </Grid>

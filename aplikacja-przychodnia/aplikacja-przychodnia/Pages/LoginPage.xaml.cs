@@ -32,7 +32,7 @@ namespace aplikacja_przychodnia
             InitializeComponent();
             if (localDataBase == null)
             {
-                Output_LoginError.Text = "Pierwsze uruchomienie";
+                Output_Error.Text = "Pierwsze uruchomienie";
                 firstStart = true;
             }
             
@@ -40,20 +40,29 @@ namespace aplikacja_przychodnia
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
+            UserClass user = null;
+            if (!firstStart)
+            {
+                 user = localDataBase.login(login_input.Text, password_input.Password);
+            }
+            
             if (firstStart && login_input.Text == "admin" && password_input.Password == "admin")
             {
-                NavigationService.Navigate(new AdminNewPasswordPage());
+                NavigationService.Navigate(new NewPasswordPage());
             }
-            else if (login_input.Text == "admin" && localDataBase.login(login_input.Text, password_input.Password)){
+            else if (login_input.Text == "admin" && (user != null))
+            {
                 NavigationService.Navigate(new AdminPage());
             }
-            else if (localDataBase.login(login_input.Text, password_input.Password) && login_input.Text != "admin")
+            else if ((user != null) && login_input.Text != "admin")
             {
-                NavigationService.Navigate(new MenuPage());
+                
+                MainWindow.LogAsUser(user);
+                NavigationService.Navigate(new DoctorMenu());
             }
             else
             {
-                Output_LoginError.Text = "Błędny login lub hasło";
+                Output_Error.Text = "Błędny login lub hasło";
             }
         }
         // kiedy textbox pusty ustawia wartosc domyslna
@@ -113,7 +122,6 @@ namespace aplikacja_przychodnia
                 }
             }
         }
-
 
     }
 }

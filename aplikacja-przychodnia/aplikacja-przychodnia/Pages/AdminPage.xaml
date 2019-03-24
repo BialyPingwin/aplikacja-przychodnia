@@ -8,5 +8,25 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-    <Grid/>
+    <Grid>
+        <DataGrid x:Name="UsersView" HorizontalAlignment="Left" Height="300" Margin="220,59,0,0" VerticalAlignment="Top" Width="500" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30" ColumnWidth="150" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Login" Binding="{Binding login}" Foreground="Black" FontSize="16" />
+                <DataGridTextColumn Header="Imię" Binding="{Binding name}" Foreground="Black" FontSize="16" />
+                <DataGridTextColumn Header="Nazwisko" Binding="{Binding surname}" Foreground="Black" FontSize="16"/>
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <Button x:Name="ButtonGrid_PasswordReset" Content="Zresetuj Hasło" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonGrid_PasswordReset_Click"/>
+                        <Button x:Name="ButtonGrid_Delete" Content="Usuń użytkownika " HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonGrid_Delete_Click"/>
+                    </DockPanel>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+        <Button x:Name="Button_AddUser" Content="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="49,59,0,0" FontSize="16" Click="Button_AddUser_Click" />
+        <Button x:Name="Button_Logout" Content="Wyloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="49,102,0,0" FontSize="16" Click="Button_Logout_Click" />
+        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="222,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="498" Foreground="Red" FontSize="16" FlowDirection="RightToLeft"/>
+       
+    </Grid>
 </Page>

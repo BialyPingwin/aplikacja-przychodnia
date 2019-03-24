@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using aplikacja_przychodnia.Windows;
 
 namespace aplikacja_przychodnia.Pages
 {
@@ -20,9 +21,81 @@ namespace aplikacja_przychodnia.Pages
     /// </summary>
     public partial class AdminPage : Page
     {
+        public LocalDataBase localDataBase;
+
         public AdminPage()
         {
+            localDataBase = LocalDataBase.Initialize();
             InitializeComponent();
+            UsersView.AutoGenerateColumns = false;
+            UsersView.ItemsSource = localDataBase.ReturnList();
+        }
+
+        private void ButtonGrid_PasswordReset_Click(object sender, RoutedEventArgs e)
+        {
+            UserClass user = UsersView.SelectedItem as UserClass;
+
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz zresetować hasło użytkownika?", "Potwierdzenie resetu hasła użytkownika", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                if (user.login != "admin")
+                {
+                    localDataBase.ResetUserPassword(user.login);
+                    localDataBase.Save();
+                }
+                else
+                {
+                    NavigationService.Navigate(new NewPasswordPage(user, true));
+                }
+            }
+            else
+            {
+                Output_Error.Text = "Anulowano operację";
+            }
+
+
+        }
+        private void ButtonGrid_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            UserClass user = UsersView.SelectedItem as UserClass;
+
+            if (user.login != "admin")
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz usunąc użytkownika?", "Potwierdzenie usunięcia użytkownika", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    localDataBase.Remove(user);
+                    localDataBase.Save();
+                    RefreshUsersView();
+                }
+                else
+                {
+                    Output_Error.Text = "Anulowano operację";
+                }
+            }
+            else
+            {
+                Output_Error.Text = "Nie można usunąć administratora";
+            }
+        }
+
+        private void Button_AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            NewUserWindow addUserWindow = new NewUserWindow();
+            addUserWindow.Show();
+        }
+
+       
+
+        public void RefreshUsersView()
+        {
+            localDataBase = LocalDataBase.Initialize();
+            UsersView.ItemsSource = localDataBase.ReturnList();
+        }
+
+        private void Button_Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Logout();
         }
     }
 }
