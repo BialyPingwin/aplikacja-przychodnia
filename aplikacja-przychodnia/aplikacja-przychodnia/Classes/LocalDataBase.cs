@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -66,16 +65,12 @@ namespace aplikacja_przychodnia
 
         public static LocalDataBase Initialize()
         {
-            LocalDataBase db = new LocalDataBase();
-            
-            db = BinarySerializer<LocalDataBase>.Deserialize("UsersLocal.dat"); // deserializacja bazy lekarzy
-
-            return db;
+            return BinarySerializerWithCipher.Deserialize<LocalDataBase>("localDataBase.dat");
         }
 
         public void Save()
         {
-            BinarySerializer<LocalDataBase>.Serialize("UsersLocal.dat", this);
+            BinarySerializerWithCipher.Serialize("LocalDataBase.dat", this);
         }
 
         public List<UserClass> ReturnList()
