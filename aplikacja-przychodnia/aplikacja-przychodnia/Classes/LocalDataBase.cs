@@ -65,7 +65,7 @@ namespace aplikacja_przychodnia
 
         public static LocalDataBase Initialize()
         {
-            return BinarySerializerWithCipher.Deserialize<LocalDataBase>("localDataBase.dat");
+            return BinarySerializerWithCipher.Deserialize<LocalDataBase>("LocalDataBase.dat");
         }
 
         public void Save()
