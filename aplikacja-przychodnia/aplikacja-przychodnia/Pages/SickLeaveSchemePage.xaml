@@ -26,7 +26,8 @@
         <ComboBox x:Name="Input_SickLeaveTypeList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20">
             <ComboBoxItem x:Name="SickLeaveL4" Content="L4" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
             <ComboBoxItem x:Name="SickLeaveL10" Content="L10" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
-        </ComboBox><ComboBox x:Name="Input_PatientGenderList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" >
+        </ComboBox>
+        <ComboBox x:Name="Input_PatientGenderList" Grid.Column="1" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" >
             <ComboBoxItem x:Name="PatientGenderFemale" Content="Kobieta" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
             <ComboBoxItem x:Name="PatientGenderMale" Content="Mężczyzna" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
         </ComboBox>
@@ -34,7 +35,8 @@
         <TextBlock x:Name="DateFromText" HorizontalAlignment="Left" Margin="173,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Od"/>
         <DatePicker x:Name="Input_DateToPicker" Grid.Column="1" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20"/>
         <TextBlock x:Name="DateToText" HorizontalAlignment="Left" Margin="173,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Do"/>
-        
+        <Button x:Name="PDFbutton" Content="PDF" Margin="381,75,0,0" FontSize="24" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="PDFbutton_Click" Foreground="White" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="184" Grid.Column="1"/>
+
 
     </Grid>
 </Page>
