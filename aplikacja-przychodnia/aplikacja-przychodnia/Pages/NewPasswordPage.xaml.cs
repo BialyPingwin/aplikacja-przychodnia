@@ -80,5 +80,10 @@ namespace aplikacja_przychodnia.Pages
                 Output_Error.Text = "Podane hasła nie zgadzają się";
             }
         }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            this.Input_Password1.Focus();
+        }
     }
 }
