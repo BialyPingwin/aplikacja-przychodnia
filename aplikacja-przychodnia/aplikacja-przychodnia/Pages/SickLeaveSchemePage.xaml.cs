@@ -19,10 +19,6 @@ using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 
-
-
-
-
 namespace aplikacja_przychodnia.Pages
 {
     /// <summary>
@@ -37,6 +33,12 @@ namespace aplikacja_przychodnia.Pages
 
         private void PDFbutton_Click(object sender, RoutedEventArgs e)
         {
+            if (Input_PatientFirstNameBox.Text == "" || Input_PatientLastNameBox.Text == "" ||
+                    Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "")
+            {
+                Output_Error.Text = "Pola nie mogą być puste";
+                return;
+            }
             Classes.SickLeaveClass sickLeaveClass = new Classes.SickLeaveClass(this.Input_PatientFirstNameBox.Text, this.Input_PatientLastNameBox.Text,
                     this.Input_SickLeaveTypeList.Text, this.Input_PatientGenderList.Text, this.PESELBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 
