@@ -6,21 +6,20 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia.Classes
 {
-    enum SLType { L4, L10};
-    enum Gender { male, female};
 
     [Serializable]
     class SickLeaveClass
     {
         private string _firstName;
         private string _lastName;
-        private SLType _sickLeaveType;
-        private Gender _gender;
-        private int _pESEL;
+        private string _sickLeaveType;
+        private string _gender;
+        private string _pESEL;
         private DateTime _dateFrom;
         private DateTime _dateTo;
+        
 
-        public SickLeaveClass(string firstName, string lastName, SLType sickLeaveType, Gender gender, int pESEL, DateTime dateFrom, DateTime dateTo)
+        public SickLeaveClass(string firstName, string lastName, string sickLeaveType, string gender, string pESEL, DateTime dateFrom, DateTime dateTo)
         {
             this.firstName = firstName;
             this.lastName = lastName;
@@ -43,19 +42,19 @@ namespace aplikacja_przychodnia.Classes
             set { _lastName = value; }
         }
 
-        public SLType sickLeaveType
+        public string sickLeaveType
         {
             get { return _sickLeaveType; }
             set { _sickLeaveType = value; }
         }
 
-        public Gender gender
+        public string gender
         {
             get { return _gender; }
             set { _gender = value; }
         }
 
-        public int pESEL
+        public string pESEL
         {
             get { return _pESEL; }
             set { _pESEL = value; }
