@@ -8,7 +8,7 @@ namespace aplikacja_przychodnia.Classes
 {
 
     [Serializable]
-    class SickLeaveClass
+    public class SickLeaveClass
     {
         private string _firstName;
         private string _lastName;

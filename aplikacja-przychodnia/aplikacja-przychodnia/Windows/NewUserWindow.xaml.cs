@@ -36,10 +36,10 @@ namespace aplikacja_przychodnia.Windows
             {
                 return;
             }
+
             char login1 = Input_Name.Text.ToLower()[0];
             string login2 = Input_Surname.Text.ToLower();
             int login3 = 2;
-
 
             if (localDataBase.IsLoginFree(login1 + login2))
             {
@@ -86,16 +86,5 @@ namespace aplikacja_przychodnia.Windows
                 Output_Error.Text = "Błąd wprowadzania danych";
             }
         }
-        //private void KeyDownUpdate(object sender, RoutedEventArgs e)
-        //{
-        //    if (Input_Login.Text == "")
-        //    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        Input_Login.Text = Input_Name.Text[0] + Input_Surname.Text;
-        //    }
-        //}
     }
 }

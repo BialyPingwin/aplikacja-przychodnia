@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.50.4740.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Migradoc\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.50.4740.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Library\Migradoc\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
     <Reference Include="PdfSharp">
       <HintPath>Properties\PDFsharp-master\src\PdfSharp\bin\Debug\PdfSharp.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -60,7 +68,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Serializacja\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\MigraDocF\MigraDocClass.cs" />
+    <Compile Include="Classes\Serializacja\BinarySerializerWithCipher.cs" />
     <Compile Include="Pages\DoctorMenu.xaml.cs">
       <DependentUpon>DoctorMenu.xaml</DependentUpon>
     </Compile>
@@ -101,7 +110,7 @@
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Serializacja\BinarySerializer.cs" />
+    <Compile Include="Classes\Serializacja\BinarySerializer.cs" />
     <Compile Include="Classes\LocalDataBase.cs" />
     <Compile Include="Classes\UserClass.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
@@ -154,7 +163,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\PdfSharp.dll" />
+    <Content Include="Library\Migradoc\MigraDoc.DocumentObjectModel.dll" />
+    <Content Include="Library\Migradoc\MigraDoc.Rendering.dll" />
+    <Content Include="Library\Migradoc\PdfSharp.Charting.dll" />
+    <Content Include="Library\Migradoc\PdfSharp.dll" />
+    <Content Include="Library\PdfSharp\PdfSharp.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

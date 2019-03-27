@@ -18,6 +18,8 @@ using PdfSharp;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.Rendering;
 
 namespace aplikacja_przychodnia.Pages
 {
@@ -26,9 +28,14 @@ namespace aplikacja_przychodnia.Pages
     /// </summary>
     public partial class SickLeaveSchemePage : Page
     {
+
         public SickLeaveSchemePage()
         {
             InitializeComponent();
+        }
+        private void Button_Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.Logout();
         }
 
         private void PDFbutton_Click(object sender, RoutedEventArgs e)
@@ -36,36 +43,39 @@ namespace aplikacja_przychodnia.Pages
             if (Input_PatientFirstNameBox.Text == "" || Input_PatientLastNameBox.Text == "" ||
                     Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "")
             {
+                Input_PatientFirstNameBox.Text = "Janusz";
+                Input_PatientLastNameBox.Text = "Nosacz";
+                Input_SickLeaveTypeList.Text = "L4";
+                Input_PatientGenderList.Text = "Mężczyzna";
+                PESELBox.Text = "12";
+                Input_DateFromPicker.Text = "01.01.1970";
+                Input_DateToPicker.Text = "12.12.2070";
                 Output_Error.Text = "Pola nie mogą być puste";
                 return;
             }
             Classes.SickLeaveClass sickLeaveClass = new Classes.SickLeaveClass(this.Input_PatientFirstNameBox.Text, this.Input_PatientLastNameBox.Text,
                     this.Input_SickLeaveTypeList.Text, this.Input_PatientGenderList.Text, this.PESELBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 
-            // Create a new PDF document
-            PdfDocument document = new PdfDocument();
-            document.Info.Title = "Created with PDFsharp";
-            
+            //Tworzenie dokumenty PDF
 
-            // Create an empty page
-            PdfPage page = document.AddPage();
+            // Create a MigraDoc document
+            Document document = Classes.MigraDocF.MigraDocClass.CreateDocument(sickLeaveClass);
 
-            // Get an XGraphics object for drawing
-            XGraphics gfx = XGraphics.FromPdfPage(page);
+            //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
+            MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
 
-            // Create a font
-            XFont font = new XFont("Verdana", 20, XFontStyle.BoldItalic);
+            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+            renderer.Document = document;
 
-            // Draw the text
-            gfx.DrawString("Hello, World!", font, XBrushes.Black,
-              new XRect(0, 0, page.Width, page.Height),
-              XStringFormats.Center);
+            renderer.RenderDocument();
 
             // Save the document...
-            const string filename = "HelloWorld.pdf";
-            document.Save(filename);
+            string filename = "HelloMigraDoc.pdf";
+            renderer.PdfDocument.Save(filename);
             // ...and start a viewer.
             Process.Start(filename);
+
+
         }
 
     }
