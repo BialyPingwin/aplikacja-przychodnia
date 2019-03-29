@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia.Classes
 {
-
+    
     [Serializable]
     public class SickLeaveClass
     {
