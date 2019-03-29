@@ -53,6 +53,14 @@ namespace aplikacja_przychodnia.Pages
                 Output_Error.Text = "Pola nie mogą być puste";
                 return;
             }
+
+            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text))>=0
+                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text))>0)
+            {
+                Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
+                return;
+            }
+
             Classes.SickLeaveClass sickLeaveClass = new Classes.SickLeaveClass(this.Input_PatientFirstNameBox.Text, this.Input_PatientLastNameBox.Text,
                     this.Input_SickLeaveTypeList.Text, this.Input_PatientGenderList.Text, this.PESELBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 

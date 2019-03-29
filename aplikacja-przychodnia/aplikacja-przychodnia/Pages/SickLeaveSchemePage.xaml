@@ -36,7 +36,7 @@
         <DatePicker x:Name="Input_DateToPicker" Grid.Column="1" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20"/>
         <TextBlock x:Name="DateToText" HorizontalAlignment="Left" Margin="173,370,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Do"/>
         <Button x:Name="PDFbutton" Content="PDF" Margin="0,75,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="PDFbutton_Click" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="42" VerticalAlignment="Top"/>
-        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="371,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="184" Foreground="Red" FontSize="16" FlowDirection="RightToLeft" Text=" " Grid.Column="1"/>
+        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="371,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="73" Width="184" Foreground="Red" FontSize="16" FlowDirection="LeftToRight" Text=" " Grid.Column="1"/>
         <Button x:Name="Button_Logout" Content="Wyloguj" Margin="0,19,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Button_Logout_Click" Foreground="White"  Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="38" VerticalAlignment="Top" />
 
 
