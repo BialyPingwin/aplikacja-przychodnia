@@ -147,13 +147,13 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
             cell = row.Cells[0];
             cell.AddParagraph("Zwolniony od");
             cell = row.Cells[1];
-            cell.AddParagraph(Convert.ToString(sickLeaveClass.dateFrom));
+            cell.AddParagraph(sickLeaveClass.dateFrom.ToShortDateString());
 
             row = table.AddRow();
             cell = row.Cells[0];
             cell.AddParagraph("Zwolniony do");
             cell = row.Cells[1];
-            cell.AddParagraph(Convert.ToString(sickLeaveClass.dateTo));
+            cell.AddParagraph(sickLeaveClass.dateTo.ToShortDateString());
 
             document.LastSection.Add(table);
         }
