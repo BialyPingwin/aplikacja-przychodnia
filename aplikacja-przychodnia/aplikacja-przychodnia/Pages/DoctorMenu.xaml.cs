@@ -20,7 +20,7 @@ namespace aplikacja_przychodnia.Pages
     /// </summary>
     public partial class DoctorMenu : Page
     {
-        UserClass user = null;
+        User user = null;
         public DoctorMenu()
         {
             

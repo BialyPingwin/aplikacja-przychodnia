@@ -9,14 +9,14 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace aplikacja_przychodnia.Classes.MigraDocF
 {
-    public class MigraDocClass
+    public class MigraDoc
     {   
         /// <summary>
         /// Tworzy dokument 
         /// </summary>
         /// <param name="sickLeaveClass">Klasa SickLeave przechowująca aktualnie wystawiane zwolnienie</param>
         /// <returns>Zwraca dokument</returns>
-        public static Document CreateDocument(SickLeaveClass sickLeaveClass)
+        public static Document CreateDocument(SickLeave sickLeaveClass)
         {
             // Create a new MigraDoc document
             Document document = new Document();
@@ -93,7 +93,7 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
         /// <summary>
         /// Defines the table
         /// </summary>
-        public static void DefineTables(Document document, SickLeaveClass sickLeaveClass)
+        public static void DefineTables(Document document, SickLeave sickLeaveClass)
         {
             //document.LastSection.AddParagraph("Zwolnienie lekarskie", "Heading2");
             Paragraph paragraph = document.LastSection.AddParagraph();
@@ -108,7 +108,7 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
         /// </summary>
         /// <param name="document"></param>
         /// <param name="sickLeaveClass"></param>
-        public static void CreateTable(Document document, SickLeaveClass sickLeaveClass)
+        public static void CreateTable(Document document, SickLeave sickLeaveClass)
         {
             Table table = new Table();
             table.Borders.Width = 0.75;

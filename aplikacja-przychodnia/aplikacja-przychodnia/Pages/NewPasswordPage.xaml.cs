@@ -20,7 +20,7 @@ namespace aplikacja_przychodnia.Pages
     /// </summary>
     public partial class NewPasswordPage : Page
     {
-        UserClass user = null;
+        User user = null;
         LocalDataBase localDataBase;
         Page nextPage;
         bool isAdmin = false;
@@ -32,7 +32,7 @@ namespace aplikacja_przychodnia.Pages
             
         }
        
-        public NewPasswordPage(UserClass user, bool isAdmin)
+        public NewPasswordPage(User user, bool isAdmin)
         {
             localDataBase = LocalDataBase.Initialize();
             this.user = user;
@@ -49,7 +49,7 @@ namespace aplikacja_przychodnia.Pages
 
                 if (user == null)
                 {
-                    UserClass admin = new UserClass("admin", "admin", "admin", Input_Password1.Password);
+                    User admin = new User("admin", "admin", "admin", Input_Password1.Password);
                     localDataBase.Add(admin);
                     localDataBase.Save();
                     nextPage = new AdminPage();

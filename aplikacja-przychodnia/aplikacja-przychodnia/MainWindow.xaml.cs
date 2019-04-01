@@ -20,7 +20,7 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserClass currentUser = null;
+        User currentUser = null;
 
         public MainWindow()
         {    
@@ -44,13 +44,13 @@ namespace aplikacja_przychodnia
             this.Close();
         }
 
-        public static void LogAsUser(UserClass user)
+        public static void LogAsUser(User user)
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.currentUser = user;
         }
 
-        public static UserClass ReturnCurrentUser()
+        public static User ReturnCurrentUser()
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             return mainWindow.currentUser;
