@@ -70,6 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\MigraDoc.cs" />
     <Compile Include="Classes\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\Patient.cs" />
     <Compile Include="Pages\DoctorMenu.xaml.cs">
       <DependentUpon>DoctorMenu.xaml</DependentUpon>
     </Compile>

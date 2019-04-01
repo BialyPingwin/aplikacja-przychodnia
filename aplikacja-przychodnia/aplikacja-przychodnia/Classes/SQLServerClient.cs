@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,11 @@ namespace aplikacja_przychodnia
 {
     class SQLServerClient
     {
+        //string connString = @"Server=tcp:io-2019.database.windows.net,1433;Initial Catalog=IO_patientsList;
+        //Persist Security Info=False;User ID=przychodnia;Password=zwolnienie_123;MultipleActiveResultSets=False;
+        //Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+
         SqlConnectionStringBuilder connectionString = new SqlConnectionStringBuilder();
 
         public SQLServerClient(string IPAdressCommaPort, string DatabaseName, string UserID, string Password)
@@ -24,22 +30,14 @@ namespace aplikacja_przychodnia
             connectionString = new SqlConnectionStringBuilder(connString);
         }
 
-        public void ExecuteQuery(string SQLQuery)
+        public DataRow GetPersonalData(long PESEL)
         {
-            SqlConnection connection;
-            SqlCommand command;
-            SqlDataReader dataReader;
-            connection = new SqlConnection(connectionString.ConnectionString);
+            DataTable table = new DataTable();
+            using (var con = new SqlConnection(connectionString.ConnectionString))
+            using (var da = new SqlDataAdapter($"select * from myTable where PESEL = {PESEL}", con))
+                da.Fill(table);
 
-            try
-            {
-                connection.Open();
-                command = new SqlCommand(SQLQuery, connection);
-                command.ExecuteNonQuery();              
-                command.Dispose();
-            }
-            catch (Exception ex) { throw; }
-            finally { connection?.Close(); }
+            return table.Rows[0];
         }
     }
 }
