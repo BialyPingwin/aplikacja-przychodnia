@@ -25,11 +25,42 @@ namespace aplikacja_przychodnia.Windows
         {
             InitializeComponent();
             localDataBase = LocalDataBase.Initialize();
+            KeyDown += TextUpdate;
+            KeyUp += TextUpdate;
+
+        }
+        private void TextUpdate(object sender, RoutedEventArgs e)
+        {
+
+            if (Input_Name.Text == "")
+            {
+                return;
+            }
+
+            char login1 = Input_Name.Text.ToLower()[0];
+            string login2 = Input_Surname.Text.ToLower();
+            int login3 = 2;
+
+            if (localDataBase.IsLoginFree(login1 + login2))
+            {
+                Input_Login.Text = login1 + login2;
+                return;
+            }
+            while (!localDataBase.IsLoginFree(login1+login2+login3))
+            {
+                login3++;
+            }
+            Input_Login.Text = login1 + login2 + login3;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Input_Name.Text != null && Input_Surname.Text != null && Input_Login.Text != null && localDataBase.IsLoginFree(Input_Login.Text))
+            if (!localDataBase.IsLoginFree(Input_Login.Text))
+            {
+                Output_Error.Text = "Login zajęty";
+                return;
+            }
+            if (Input_Name.Text != "" && Input_Surname.Text != "" && Input_Login.Text != "" && localDataBase.IsLoginFree(Input_Login.Text))
             {
                 
                 UserClass user = new UserClass(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
@@ -49,10 +80,6 @@ namespace aplikacja_przychodnia.Windows
 
                 this.Close();
 
-            }
-            else if (!localDataBase.IsLoginFree(Input_Login.Text))
-            {
-                Output_Error.Text = "Login zajęty";
             }
             else
             {
