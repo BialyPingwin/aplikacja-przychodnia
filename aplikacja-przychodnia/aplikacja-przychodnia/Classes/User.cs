@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace aplikacja_przychodnia
 {
     [Serializable]
-    public class UserClass
+    public class User
     {
         private string _name;
         public string name
@@ -65,7 +65,7 @@ namespace aplikacja_przychodnia
             }
         }
 
-        public UserClass(string name, string surname, string login, string password)
+        public User(string name, string surname, string login, string password)
         {
             this.name = name;
             this.surname = surname;

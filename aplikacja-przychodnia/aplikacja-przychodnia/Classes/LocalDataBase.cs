@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -12,21 +11,21 @@ namespace aplikacja_przychodnia
     [Serializable]
     public class LocalDataBase
     {
-        private List<UserClass> listOfUsers = new List<UserClass>();
+        private List<User> listOfUsers = new List<User>();
 
-        public void Add(UserClass user)
+        public void Add(User user)
         {
             listOfUsers.Add(user);
         }
-        public void Remove(UserClass user)
+        public void Remove(User user)
         {
             listOfUsers.Remove(user);
         }
         // metoda do sprawdzenia czy można sie zalogowac
 
-        public UserClass login(string login, string password)
+        public User login(string login, string password)
         {
-            foreach (UserClass item in listOfUsers)
+            foreach (User item in listOfUsers)
             {
                 if (login == item.login)
                 {
@@ -42,7 +41,7 @@ namespace aplikacja_przychodnia
 
         public void ChangePassword(string login, string newPassword)
         {
-            foreach (UserClass item in listOfUsers)
+            foreach (User item in listOfUsers)
             {
                 if (login == item.login)
                 {
@@ -55,7 +54,7 @@ namespace aplikacja_przychodnia
 
         public bool IsLoginFree(string login)
         {
-            foreach (UserClass item in listOfUsers)
+            foreach (User item in listOfUsers)
             {
                 if (login == item.login)
                 {
@@ -75,14 +74,14 @@ namespace aplikacja_przychodnia
             BinarySerializerWithCipher.Serialize("UsersLocal.dat", this);
         }
 
-        public List<UserClass> ReturnList()
+        public List<User> ReturnList()
         {
             return listOfUsers;
         }
 
         public void ResetUserPassword(string login)
         {
-            foreach (UserClass item in listOfUsers)
+            foreach (User item in listOfUsers)
             {
                 if (login == item.login)
                 {

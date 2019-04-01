@@ -40,7 +40,7 @@ namespace aplikacja_przychodnia
 
         private void Login_button_Click(object sender, RoutedEventArgs e)
         {
-            UserClass user = null;
+            User user = null;
             if (!firstStart)
             {
                  user = localDataBase.login(login_input.Text, password_input.Password);

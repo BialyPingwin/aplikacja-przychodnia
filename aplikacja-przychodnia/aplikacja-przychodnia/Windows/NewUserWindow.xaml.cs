@@ -63,7 +63,7 @@ namespace aplikacja_przychodnia.Windows
             if (Input_Name.Text != "" && Input_Surname.Text != "" && Input_Login.Text != "" && localDataBase.IsLoginFree(Input_Login.Text))
             {
                 
-                UserClass user = new UserClass(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
+                User user = new User(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
                 localDataBase.Add(user);
                 localDataBase.ResetUserPassword(user.login);
                 localDataBase.Save();

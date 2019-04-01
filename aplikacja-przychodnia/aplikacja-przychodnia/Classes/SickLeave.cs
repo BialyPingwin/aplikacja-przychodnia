@@ -8,7 +8,7 @@ namespace aplikacja_przychodnia.Classes
 {
     
     [Serializable]
-    public class SickLeaveClass
+    public class SickLeave
     {
         private string _firstName;
         private string _lastName;
@@ -19,7 +19,7 @@ namespace aplikacja_przychodnia.Classes
         private DateTime _dateTo;
         
 
-        public SickLeaveClass(string firstName, string lastName, string sickLeaveType, string gender, string pESEL, DateTime dateFrom, DateTime dateTo)
+        public SickLeave(string firstName, string lastName, string sickLeaveType, string gender, string pESEL, DateTime dateFrom, DateTime dateTo)
         {
             this.firstName = firstName;
             this.lastName = lastName;

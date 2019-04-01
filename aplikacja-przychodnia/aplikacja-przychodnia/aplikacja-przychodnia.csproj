@@ -68,15 +68,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Classes\MigraDocF\MigraDocClass.cs" />
-    <Compile Include="Classes\Serializacja\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\MigraDoc.cs" />
+    <Compile Include="Classes\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\Patient.cs" />
     <Compile Include="Pages\DoctorMenu.xaml.cs">
       <DependentUpon>DoctorMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\SickLeaveClass.cs" />
+    <Compile Include="Classes\SickLeave.cs" />
     <Compile Include="Pages\SickLeaveSchemePage.xaml.cs">
       <DependentUpon>SickLeaveSchemePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\SQLServerClient.cs" />
     <Compile Include="Windows\NewUserWindow.xaml.cs">
       <DependentUpon>NewUserWindow.xaml</DependentUpon>
     </Compile>
@@ -110,9 +112,8 @@
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\Serializacja\BinarySerializer.cs" />
     <Compile Include="Classes\LocalDataBase.cs" />
-    <Compile Include="Classes\UserClass.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>

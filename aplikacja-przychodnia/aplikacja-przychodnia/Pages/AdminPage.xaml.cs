@@ -33,7 +33,7 @@ namespace aplikacja_przychodnia.Pages
 
         private void ButtonGrid_PasswordReset_Click(object sender, RoutedEventArgs e)
         {
-            UserClass user = UsersView.SelectedItem as UserClass;
+            User user = UsersView.SelectedItem as User;
 
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz zresetować hasło użytkownika?", "Potwierdzenie resetu hasła użytkownika", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
@@ -57,7 +57,7 @@ namespace aplikacja_przychodnia.Pages
         }
         private void ButtonGrid_Delete_Click(object sender, RoutedEventArgs e)
         {
-            UserClass user = UsersView.SelectedItem as UserClass;
+            User user = UsersView.SelectedItem as User;
 
             if (user.login != "admin")
             {
