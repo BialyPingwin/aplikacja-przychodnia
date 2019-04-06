@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
-namespace aplikacja_przychodnia.Classes
+
+namespace aplikacja_przychodnia
 {
-    class Patient: INotifyPropertyChanged
+    public class Patient: BaseNotifyPropertyChanged
     {
         private string name;
         private string surname;
@@ -21,40 +16,34 @@ namespace aplikacja_przychodnia.Classes
         private string street;
         private int houseNumber;
 
-        public long _PESEL;
-        public string DateOfBirth;
-        public string Gender;
-        public long _NIP;
-        public string PostCode;
-        public string City;
-        public string Street;
-        public int HouseNumber;
+        public string Name          { get => name; set => SetField(ref name, value); }
+        public string Surname       { get => surname; set => SetField(ref surname, value); }
+        public long _PESEL          { get => PESEL; set => SetField(ref PESEL, value); }
+        public string DateOfBirth   { get => dateOfBirth; set => SetField(ref dateOfBirth, value); }
+        public string Gender        { get => gender; set => SetField(ref gender, value); }
+        public long _NIP            { get => NIP; set => SetField(ref NIP, value); }
+        public string PostCode      { get => postCode; set => SetField(ref postCode, value); }
+        public string City          { get => city; set => SetField(ref city, value); }
+        public string Street        { get => street; set => SetField(ref street, value); }
+        public int HouseNumber      { get => houseNumber; set => SetField(ref houseNumber, value); }
 
 
-
-        public Patient(DataRow dr)
+        /// <summary>
+        /// Konstruktor klasy SickLeave zawierający parametr datarow
+        /// </summary>
+        /// <param name="datarow">Parametr przechowujący wiersz danych z bazy danych którego dane odpowiadają danym pacjenta.</param>
+        /// 
+        public Patient(DataRow datarow)
         {
-            name = dr["NAME"].ToString();
-            surname = dr["SURNAME"].ToString();
-            PESEL = (long)dr["PESEL"];
-            dateOfBirth = dr["DATE_OF_BIRTH"].ToString();
-            gender = dr["GENDER"].ToString();
-            NIP = (long)dr["NIP"];
-            city = dr["CITY"].ToString();
-            street = dr["STREET"].ToString();
-            houseNumber = (int)dr["HOUSE_NUMBER"];
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void SetValue<T>(T field, T value, T property)
-        {
-            field = value;
-            OnPropertyChanged(nameof(property));
-        }
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            name = datarow["NAME"].ToString();
+            surname = datarow["SURNAME"].ToString();
+            PESEL = (long)datarow["PESEL"];
+            dateOfBirth = datarow["DATE_OF_BIRTH"].ToString();
+            gender = datarow["GENDER"].ToString();
+            NIP = (long)datarow["NIP"];
+            city = datarow["CITY"].ToString();
+            street = datarow["STREET"].ToString();
+            houseNumber = (int)datarow["HOUSE_NUMBER"];
         }
     }
 }

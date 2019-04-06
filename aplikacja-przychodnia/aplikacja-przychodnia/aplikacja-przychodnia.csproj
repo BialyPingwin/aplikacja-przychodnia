@@ -68,6 +68,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\BaseNotifyPropertyChanged.cs" />
     <Compile Include="Classes\MigraDoc.cs" />
     <Compile Include="Classes\BinarySerializerWithCipher.cs" />
     <Compile Include="Classes\Patient.cs" />
@@ -75,10 +76,10 @@
       <DependentUpon>DoctorMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\SickLeave.cs" />
-    <Compile Include="Pages\SickLeaveSchemePage.xaml.cs">
-      <DependentUpon>SickLeaveSchemePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classes\SQLServerClient.cs" />
+    <Compile Include="Pages\SickLeaveScheme.xaml.cs">
+      <DependentUpon>SickLeaveScheme.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NewUserWindow.xaml.cs">
       <DependentUpon>NewUserWindow.xaml</DependentUpon>
     </Compile>
@@ -125,9 +126,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SickLeaveSchemePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Pages\SickLeaveScheme.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\NewUserWindow.xaml">
       <SubType>Designer</SubType>
@@ -169,6 +170,9 @@
     <Content Include="Library\Migradoc\PdfSharp.Charting.dll" />
     <Content Include="Library\Migradoc\PdfSharp.dll" />
     <Content Include="Library\PdfSharp\PdfSharp.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Pictures\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
