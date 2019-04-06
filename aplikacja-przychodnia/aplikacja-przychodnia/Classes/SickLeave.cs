@@ -4,11 +4,14 @@ namespace aplikacja_przychodnia.Classes
 {
 
     /// <summary>
-    /// Klasa SickLeave zawiera informacje o wystawianym zwolnieniu
+
+    /// Klasa SickLeave zawiera informacje o wystawianym zwolnieniu.
+
     /// </summary>
     [Serializable]
     public class SickLeave
     {
+
         // <summary>
         /// Właściwość Patient zawiera informacje o pacjencie
         /// </summary>
@@ -41,6 +44,7 @@ namespace aplikacja_przychodnia.Classes
             StartDate = startDate;
             EndDate = endDate;
             Symptoms = symptoms;
+
         }
     }
 }
