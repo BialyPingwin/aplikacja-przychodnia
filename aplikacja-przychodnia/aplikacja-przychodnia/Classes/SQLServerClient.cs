@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace aplikacja_przychodnia
 {
     class SQLServerClient
     {
-        //string connString = @"Server=tcp:io-2019.database.windows.net,1433;Initial Catalog=IO_patientsList;
-        //Persist Security Info=False;User ID=przychodnia;Password=zwolnienie_123;MultipleActiveResultSets=False;
-        //Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
-
         SqlConnectionStringBuilder connectionString = new SqlConnectionStringBuilder();
 
         public SQLServerClient(string IPAdressCommaPort, string DatabaseName, string UserID, string Password)
@@ -38,6 +29,14 @@ namespace aplikacja_przychodnia
                 da.Fill(table);
 
             return table.Rows[0];
+        }
+
+        public static Patient GetPatient(long PESEL)
+        {
+            SQLServerClient client = new SQLServerClient(@"Server=tcp:io-2019.database.windows.net,1433;Initial Catalog=IO_patientsList;
+                                                        Persist Security Info=False;User ID=przychodnia; Password=zwolnienie_123;
+                                                        MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            return new Patient(client.GetPersonalData(PESEL));
         }
     }
 }
