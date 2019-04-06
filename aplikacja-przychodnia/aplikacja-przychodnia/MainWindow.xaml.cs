@@ -25,7 +25,10 @@ namespace aplikacja_przychodnia
         public MainWindow()
         {
             InitializeComponent();
+            NavigationCommands.BrowseBack.InputGestures.Clear();
+            NavigationCommands.BrowseForward.InputGestures.Clear();
             Main.Content = new LoginPage();
+            
             this.Closed += CloseApp;
         }
 
