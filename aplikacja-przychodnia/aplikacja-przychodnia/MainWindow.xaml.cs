@@ -23,14 +23,11 @@ namespace aplikacja_przychodnia
         User currentUser = null;
 
         public MainWindow()
-        {
+        {    
             InitializeComponent();
-            NavigationCommands.BrowseBack.InputGestures.Clear();
-            NavigationCommands.BrowseForward.InputGestures.Clear();
             Main.Content = new LoginPage();
-            
             this.Closed += CloseApp;
-        }
+        }            
 
         static public void Logout()
         {
@@ -39,10 +36,10 @@ namespace aplikacja_przychodnia
             mainWindow.currentUser = null;
             mainWindow.Main.Content = new LoginPage();
         }
-
+        
         private void CloseApp(Object Sender, EventArgs E)
         {
-
+            
             Application.Current.Shutdown();
             this.Close();
         }

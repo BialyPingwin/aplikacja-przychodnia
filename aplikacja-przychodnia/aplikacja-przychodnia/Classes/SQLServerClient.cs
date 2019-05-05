@@ -31,11 +31,9 @@ namespace aplikacja_przychodnia
             return table.Rows[0];
         }
 
-        public static Patient GetPatient(long PESEL)
+        public static Patient GetPatient(long PESEL, string connectionString)
         {
-            SQLServerClient client = new SQLServerClient(@"Server=tcp:io-2019.database.windows.net,1433;Initial Catalog=IO_patientsList;
-                                                        Persist Security Info=False;User ID=przychodnia; Password=zwolnienie_123;
-                                                        MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+            SQLServerClient client = new SQLServerClient(connectionString);
             return new Patient(client.GetPersonalData(PESEL));
         }
     }

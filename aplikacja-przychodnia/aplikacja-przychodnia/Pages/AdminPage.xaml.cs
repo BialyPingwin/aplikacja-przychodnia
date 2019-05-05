@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using aplikacja_przychodnia.Windows;
+using aplikacja_przychodnia.Classes;
 
 namespace aplikacja_przychodnia.Pages
 {
@@ -21,14 +22,17 @@ namespace aplikacja_przychodnia.Pages
     /// </summary>
     public partial class AdminPage : Page
     {
-        public LocalDataBase localDataBase;
+        private UserLocalDataBase UserLocalDataBase;
+        private FirmLocalDataBase FirmLocalDataBase;
 
         public AdminPage()
         {
-            localDataBase = LocalDataBase.Initialize();
+            UserLocalDataBase = UserLocalDataBase.Initialize();
+            FirmLocalDataBase = FirmLocalDataBase.Initialize();
             InitializeComponent();
             UsersView.AutoGenerateColumns = false;
-            UsersView.ItemsSource = localDataBase.ReturnList();
+            UsersView.ItemsSource = UserLocalDataBase.ReturnList();
+            FirmView.ItemsSource = FirmLocalDataBase.ReturnList();
         }
 
         private void ButtonGrid_PasswordReset_Click(object sender, RoutedEventArgs e)
@@ -40,8 +44,8 @@ namespace aplikacja_przychodnia.Pages
             {
                 if (user.login != "admin")
                 {
-                    localDataBase.ResetUserPassword(user.login);
-                    localDataBase.Save();
+                    UserLocalDataBase.ResetUserPassword(user.login);
+                    UserLocalDataBase.Save();
                 }
                 else
                 {
@@ -64,8 +68,8 @@ namespace aplikacja_przychodnia.Pages
                 MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Jesteś pewien, że chcesz usunąc użytkownika?", "Potwierdzenie usunięcia użytkownika", System.Windows.MessageBoxButton.YesNo);
                 if (messageBoxResult == MessageBoxResult.Yes)
                 {
-                    localDataBase.Remove(user);
-                    localDataBase.Save();
+                    UserLocalDataBase.Remove(user);
+                    UserLocalDataBase.Save();
                     RefreshUsersView();
                 }
                 else
@@ -89,13 +93,32 @@ namespace aplikacja_przychodnia.Pages
 
         public void RefreshUsersView()
         {
-            localDataBase = LocalDataBase.Initialize();
-            UsersView.ItemsSource = localDataBase.ReturnList();
+            UserLocalDataBase = UserLocalDataBase.Initialize();
+            UsersView.ItemsSource = UserLocalDataBase.ReturnList();
+        }
+        public void RefreshFirmsView()
+        {
+            FirmLocalDataBase = FirmLocalDataBase.Initialize();
+            FirmView.ItemsSource = FirmLocalDataBase.ReturnList();
         }
 
         private void Button_Logout_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.Logout();
+        }
+
+        private void Button_AddFirm_Click(object sender, RoutedEventArgs e)
+        {
+            NewFirmWindow addUserWindow = new NewFirmWindow();
+            addUserWindow.Show();
+        }
+
+        private void ButtonFirm_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            Firm firm = FirmView.SelectedItem as Firm;
+            FirmLocalDataBase.Remove(firm);
+            FirmLocalDataBase.Save();
+            RefreshFirmsView();
         }
     }
 }

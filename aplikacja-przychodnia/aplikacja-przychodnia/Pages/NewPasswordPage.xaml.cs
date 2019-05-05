@@ -21,20 +21,20 @@ namespace aplikacja_przychodnia.Pages
     public partial class NewPasswordPage : Page
     {
         User user = null;
-        LocalDataBase localDataBase;
+        UserLocalDataBase UserLocalDataBase;
         Page nextPage;
         bool isAdmin = false;
 
         public NewPasswordPage()
         {
-            localDataBase = new LocalDataBase();
+            UserLocalDataBase = new UserLocalDataBase();
             InitializeComponent();
             
         }
        
         public NewPasswordPage(User user, bool isAdmin)
         {
-            localDataBase = LocalDataBase.Initialize();
+            UserLocalDataBase = UserLocalDataBase.Initialize();
             this.user = user;
             InitializeComponent();
             this.isAdmin = isAdmin;
@@ -50,14 +50,14 @@ namespace aplikacja_przychodnia.Pages
                 if (user == null)
                 {
                     User admin = new User("admin", "admin", "admin", Input_Password1.Password);
-                    localDataBase.Add(admin);
-                    localDataBase.Save();
+                    UserLocalDataBase.Add(admin);
+                    UserLocalDataBase.Save();
                     nextPage = new AdminPage();
                 }
                 else
                 {
-                    localDataBase.ChangePassword(user.login, Input_Password1.Password);
-                    localDataBase.Save();
+                    UserLocalDataBase.ChangePassword(user.login, Input_Password1.Password);
+                    UserLocalDataBase.Save();
                     user.pendingPasswordChage = false;
                     if (isAdmin)
                     {

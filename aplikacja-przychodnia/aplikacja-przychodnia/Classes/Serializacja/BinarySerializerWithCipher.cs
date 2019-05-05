@@ -48,8 +48,14 @@ namespace aplikacja_przychodnia
                 using (var cryptoStream = new CryptoStream(fs, des.CreateDecryptor(key, iv), CryptoStreamMode.Read))
                 {
                     BinaryFormatter formatter = new BinaryFormatter();
-
-                    return (T)formatter.Deserialize(cryptoStream);
+                    try
+                    {
+                        return (T)formatter.Deserialize(cryptoStream);
+                    }
+                    catch
+                    {
+                        return default(T);
+                    }
                 }
             }
             return temp;

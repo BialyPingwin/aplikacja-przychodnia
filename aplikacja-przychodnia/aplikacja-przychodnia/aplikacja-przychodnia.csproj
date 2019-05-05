@@ -69,16 +69,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\BaseNotifyPropertyChanged.cs" />
-    <Compile Include="Classes\MigraDoc.cs" />
-    <Compile Include="Classes\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\Firm.cs" />
+    <Compile Include="Classes\FirmLocalDataBase.cs" />
+    <Compile Include="Classes\MigraDocF\MigraDocClass.cs" />
     <Compile Include="Classes\Patient.cs" />
+    <Compile Include="Classes\Serializacja\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\SQLServerClient.cs" />
     <Compile Include="Pages\DoctorMenu.xaml.cs">
       <DependentUpon>DoctorMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\SickLeave.cs" />
-    <Compile Include="Classes\SQLServerClient.cs" />
-    <Compile Include="Pages\SickLeaveScheme.xaml.cs">
-      <DependentUpon>SickLeaveScheme.xaml</DependentUpon>
+    <Compile Include="Pages\PatientChoosePage.xaml.cs">
+      <DependentUpon>PatientChoosePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SickLeaveSchemePage.xaml.cs">
+      <DependentUpon>SickLeaveSchemePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\NewFirmWindow.xaml.cs">
+      <DependentUpon>NewFirmWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NewUserWindow.xaml.cs">
       <DependentUpon>NewUserWindow.xaml</DependentUpon>
@@ -113,7 +121,7 @@
     <Compile Include="Pages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Classes\LocalDataBase.cs" />
+    <Compile Include="Classes\UserLocalDataBase.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -126,7 +134,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\SickLeaveScheme.xaml">
+    <Page Include="Pages\PatientChoosePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SickLeaveSchemePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Windows\NewFirmWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,9 +186,6 @@
     <Content Include="Library\Migradoc\PdfSharp.Charting.dll" />
     <Content Include="Library\Migradoc\PdfSharp.dll" />
     <Content Include="Library\PdfSharp\PdfSharp.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Pictures\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

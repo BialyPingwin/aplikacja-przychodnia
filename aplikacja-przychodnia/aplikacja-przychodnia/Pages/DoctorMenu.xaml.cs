@@ -42,8 +42,7 @@ namespace aplikacja_przychodnia.Pages
 
         private void Button_SickLeave_Click(object sender, RoutedEventArgs e)
         {
-            SickLeaveScheme sickLeaveScheme = new SickLeaveScheme();
-            sickLeaveScheme.ShowDialog();
+            NavigationService.Navigate(new PatientChoosePage());
         }
 
         private void Button_Logout_Click(object sender, RoutedEventArgs e)

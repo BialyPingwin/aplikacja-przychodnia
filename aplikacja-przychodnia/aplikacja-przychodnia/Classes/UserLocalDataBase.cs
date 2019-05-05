@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 namespace aplikacja_przychodnia
 {
     [Serializable]
-    public class LocalDataBase
+    public class UserLocalDataBase
     {
         private List<User> listOfUsers = new List<User>();
 
@@ -64,9 +65,9 @@ namespace aplikacja_przychodnia
             return true;
         }
 
-        public static LocalDataBase Initialize()
+        public static UserLocalDataBase Initialize()
         {
-            return (LocalDataBase)BinarySerializerWithCipher.Deserialize<LocalDataBase>("UsersLocal.dat");        
+            return (UserLocalDataBase)BinarySerializerWithCipher.Deserialize<UserLocalDataBase>("UsersLocal.dat");        
         }
         
         public void Save()

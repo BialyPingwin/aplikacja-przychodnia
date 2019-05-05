@@ -20,11 +20,11 @@ namespace aplikacja_przychodnia.Windows
     /// </summary>
     public partial class NewUserWindow : Window
     {
-        public LocalDataBase localDataBase;
+        public UserLocalDataBase UserLocalDataBase;
         public NewUserWindow()
         {
             InitializeComponent();
-            localDataBase = LocalDataBase.Initialize();
+            UserLocalDataBase = UserLocalDataBase.Initialize();
             KeyDown += TextUpdate;
             KeyUp += TextUpdate;
 
@@ -41,12 +41,12 @@ namespace aplikacja_przychodnia.Windows
             string login2 = Input_Surname.Text.ToLower();
             int login3 = 2;
 
-            if (localDataBase.IsLoginFree(login1 + login2))
+            if (UserLocalDataBase.IsLoginFree(login1 + login2))
             {
                 Input_Login.Text = login1 + login2;
                 return;
             }
-            while (!localDataBase.IsLoginFree(login1+login2+login3))
+            while (!UserLocalDataBase.IsLoginFree(login1+login2+login3))
             {
                 login3++;
             }
@@ -55,18 +55,18 @@ namespace aplikacja_przychodnia.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!localDataBase.IsLoginFree(Input_Login.Text))
+            if (!UserLocalDataBase.IsLoginFree(Input_Login.Text))
             {
                 Output_Error.Text = "Login zajęty";
                 return;
             }
-            if (Input_Name.Text != "" && Input_Surname.Text != "" && Input_Login.Text != "" && localDataBase.IsLoginFree(Input_Login.Text))
+            if (Input_Name.Text != "" && Input_Surname.Text != "" && Input_Login.Text != "" && UserLocalDataBase.IsLoginFree(Input_Login.Text))
             {
                 
                 User user = new User(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
-                localDataBase.Add(user);
-                localDataBase.ResetUserPassword(user.login);
-                localDataBase.Save();
+                UserLocalDataBase.Add(user);
+                UserLocalDataBase.ResetUserPassword(user.login);
+                UserLocalDataBase.Save();
                 foreach(Window window in Application.Current.Windows)
                 {
                     if (window.GetType() == typeof(MainWindow))

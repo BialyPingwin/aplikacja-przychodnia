@@ -9,24 +9,47 @@
       Title="AdminPage">
 
     <Grid>
-        <DataGrid x:Name="UsersView" HorizontalAlignment="Left" Height="300" Margin="220,59,0,0" VerticalAlignment="Top" Width="500" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30" ColumnWidth="150" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Login" Binding="{Binding login}" Foreground="Black" FontSize="16" />
-                <DataGridTextColumn Header="Imię" Binding="{Binding name}" Foreground="Black" FontSize="16" />
-                <DataGridTextColumn Header="Nazwisko" Binding="{Binding surname}" Foreground="Black" FontSize="16"/>
-            </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <Button x:Name="ButtonGrid_PasswordReset" Content="Zresetuj Hasło" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonGrid_PasswordReset_Click"/>
-                        <Button x:Name="ButtonGrid_Delete" Content="Usuń użytkownika " HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonGrid_Delete_Click"/>
-                    </DockPanel>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
-        <Button x:Name="Button_AddUser" Content="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="49,59,0,0" FontSize="16" Click="Button_AddUser_Click" />
-        <Button x:Name="Button_Logout" Content="Wyloguj" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="49,102,0,0" FontSize="16" Click="Button_Logout_Click" />
-        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="222,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="498" Foreground="Red" FontSize="16" FlowDirection="RightToLeft"/>
-       
+        <TabControl Margin="10,16,10,59" Background="#00000000" BorderBrush="White">
+            <TabItem Header="Użytkownicy" Margin="-2,0,-35,0" FontSize="20" Background="#FF5D5D5D">
+                <Grid Background="#00A6A6A6" Margin="0,0,0,-1">
+                    <DataGrid x:Name="UsersView" HorizontalAlignment="Left" Margin="182,10,0,27" Width="500" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30" ColumnWidth="*" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Login" Binding="{Binding login}" Foreground="Black" FontSize="16" />
+                            <DataGridTextColumn Header="Imię" Binding="{Binding name}" Foreground="Black" FontSize="16" />
+                            <DataGridTextColumn Header="Nazwisko" Binding="{Binding surname}" Foreground="Black" FontSize="16"/>
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button x:Name="ButtonGrid_PasswordReset" Content="Zresetuj Hasło" HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonGrid_PasswordReset_Click"/>
+                                    <Button x:Name="ButtonGrid_Delete" Content="Usuń użytkownika " HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonGrid_Delete_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                    <Button x:Name="Button_AddUser" Content="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="11,10,0,0" FontSize="16" Click="Button_AddUser_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Firmy" Margin="36,0,-40,0" Background="#FF5D5D5D" FontSize="20">
+                <Grid Background="#00E5E5E5">
+                    <DataGrid x:Name="FirmView" HorizontalAlignment="Left" Margin="182,10,0,26" Width="500" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
+                        <DataGrid.Columns>
+                        </DataGrid.Columns>
+                        <DataGrid.RowDetailsTemplate>
+                            <DataTemplate>
+                                <DockPanel>
+                                    <Button x:Name="ButtonFirmView_Delete" Content="Usuń użytkownika " HorizontalAlignment="Left" VerticalAlignment="Top" Width="Auto" FontSize="16" Click="ButtonFirm_Delete_Click"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </DataGrid.RowDetailsTemplate>
+                    </DataGrid>
+                    <Button x:Name="Button_AddFirm" Content="Dodaj firmę" HorizontalAlignment="Left" VerticalAlignment="Top" Width="166" Height="38" Margin="11,10,0,0" FontSize="16" Click="Button_AddFirm_Click" />
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="Button_Logout" Content="Wyloguj" HorizontalAlignment="Left" Width="166" Margin="10,0,0,10" FontSize="16" Click="Button_Logout_Click" Height="38" VerticalAlignment="Bottom" />
+        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="194,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="498" Foreground="Red" FontSize="16" FlowDirection="RightToLeft"/>
+
     </Grid>
 </Page>

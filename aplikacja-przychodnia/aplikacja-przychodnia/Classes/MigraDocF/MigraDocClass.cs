@@ -9,14 +9,14 @@ using MigraDoc.DocumentObjectModel.Tables;
 
 namespace aplikacja_przychodnia.Classes.MigraDocF
 {
-    public class MigraDoc
-    {
+    public class MigraDocClass
+    {   
         /// <summary>
         /// Tworzy dokument 
         /// </summary>
-        /// <param name="sickLeave">Klasa SickLeave przechowująca aktualnie wystawiane zwolnienie</param>
+        /// <param name="sickLeaveClass">Klasa SickLeave przechowująca aktualnie wystawiane zwolnienie</param>
         /// <returns>Zwraca dokument</returns>
-        public static Document CreateDocument(SickLeave sickLeave)
+        public static Document CreateDocument(SickLeave sickLeaveClass)
         {
             // Create a new MigraDoc document
             Document document = new Document();
@@ -27,7 +27,7 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
 
             DefineContentSection(document);
 
-            DefineTables(document, sickLeave);
+            DefineTables(document, sickLeaveClass);
 
             return document;
         }
@@ -101,7 +101,7 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
             paragraph.AddFormattedText("Zwolnienie lekarskie", "Heading2");
             CreateTable(document, sickLeaveClass);
         }
-
+        
 
         /// <summary>
         /// Tworzy tabelki
@@ -119,59 +119,38 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
             table.AddColumn(Unit.FromCentimeter(10));
 
             Row row = table.AddRow();
-
             Cell cell = row.Cells[0];
+            cell.AddParagraph("Pesel");
+            cell = row.Cells[1];
+            cell.AddParagraph(sickLeaveClass.pESEL);
+
+            row = table.AddRow();
             cell = row.Cells[0];
             cell.AddParagraph("Imię");
             cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient.Name);
+            cell.AddParagraph(sickLeaveClass.firstName);
 
             row = table.AddRow();
             cell = row.Cells[0];
             cell.AddParagraph("Nazwisko");
             cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient.Surname);
-
-            row = table.AddRow();
-            cell = row.Cells[0];
-            cell.AddParagraph("Data urodzenia");
-            cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient.DateOfBirth);
-
-
-            row = table.AddRow();
-            cell = row.Cells[0];
-            cell.AddParagraph("Pesel");
-            cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient._PESEL.ToString());
+            cell.AddParagraph(sickLeaveClass.lastName);
 
             row = table.AddRow();
             cell = row.Cells[0];
             cell.AddParagraph("Płeć");
             cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient.Gender);
-
-            row = table.AddRow();
-            cell = row.Cells[0];
-            cell.AddParagraph("NIP");
-            cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient._NIP.ToString());
-
-            row = table.AddRow();
-            cell = row.Cells[0];
-            cell.AddParagraph("Miejsce zameldowania");
-            cell = row.Cells[1];
-            cell.AddParagraph($"{sickLeaveClass.Patient.Street} {sickLeaveClass.Patient.HouseNumber} \n{sickLeaveClass.Patient.PostCode} {sickLeaveClass.Patient.City}");
+            cell.AddParagraph(sickLeaveClass.gender);
 
             row = table.AddRow();
             cell = row.Cells[0];
             cell.AddParagraph("Typ zwolnienia");
             cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.SickLeaveType);
+            cell.AddParagraph(sickLeaveClass.sickLeaveType);
 
             row = table.AddRow();
             cell = row.Cells[0];
-            cell.AddParagraph("Powód zwolnienia (Objawy)");
+            cell.AddParagraph("Powód zwolnienia");
             cell = row.Cells[1];
             cell.AddParagraph(sickLeaveClass.Symptoms);
 
@@ -179,13 +158,13 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
             cell = row.Cells[0];
             cell.AddParagraph("Zwolniony od");
             cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.StartDate.ToShortDateString());
+            cell.AddParagraph(sickLeaveClass.dateFrom.ToShortDateString());
 
             row = table.AddRow();
             cell = row.Cells[0];
             cell.AddParagraph("Zwolniony do");
             cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.EndDate.ToShortDateString());
+            cell.AddParagraph(sickLeaveClass.dateTo.ToShortDateString());
 
             document.LastSection.Add(table);
         }

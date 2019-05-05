@@ -22,15 +22,15 @@ namespace aplikacja_przychodnia
     public partial class LoginPage : Page
     {
         // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, Login, hasło
-        public LocalDataBase localDataBase;
+        public UserLocalDataBase UserLocalDataBase;
         private bool firstStart = false;
         //Strona do logowania
         public LoginPage()
         {
 
-            localDataBase = LocalDataBase.Initialize();
+            UserLocalDataBase = UserLocalDataBase.Initialize();
             InitializeComponent();
-            if (localDataBase == null)
+            if (UserLocalDataBase == null)
             {
                 Output_Error.Text = "Pierwsze uruchomienie";
                 firstStart = true;
@@ -43,7 +43,7 @@ namespace aplikacja_przychodnia
             User user = null;
             if (!firstStart)
             {
-                 user = localDataBase.login(login_input.Text, password_input.Password);
+                 user = UserLocalDataBase.login(login_input.Text, password_input.Password);
             }
             
             if (firstStart && login_input.Text == "admin" && password_input.Password == "admin")
@@ -123,5 +123,6 @@ namespace aplikacja_przychodnia
             }
         }
 
+       
     }
 }
