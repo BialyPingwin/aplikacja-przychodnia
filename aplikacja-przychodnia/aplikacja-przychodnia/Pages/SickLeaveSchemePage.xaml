@@ -12,71 +12,74 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="521*"/>
-            <ColumnDefinition Width="279*"/>
+            <ColumnDefinition Width="147*"/>
+            <ColumnDefinition Width="53*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="HeadText" HorizontalAlignment="Left" Margin="39,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="65" Width="421" Foreground="White" FontSize="32"><Run Text="Wystawianie zwolnienia"/><LineBreak/><Run/></TextBlock>
-        <ScrollViewer Margin="39,70,9,70">
-            <Grid HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="463">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="197*"/>
-                    <ColumnDefinition Width="225*"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock x:Name="PESELText" HorizontalAlignment="Left" Margin="8,7,0,0" TextWrapping="Wrap" Text="PESEL" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="NipText" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="NIP" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="PatientFirstNameText" HorizontalAlignment="Left" Margin="8,97,0,0" TextWrapping="Wrap" Text="Imię" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="PatientLastNameText" HorizontalAlignment="Left" Margin="8,142,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="PatientGenderText" HorizontalAlignment="Left" Margin="10,187,0,0" TextWrapping="Wrap" Text="Płeć" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="AddressText" HorizontalAlignment="Left" Margin="8,227,0,0" TextWrapping="Wrap" Text="Adres zameldowania" VerticalAlignment="Top" Height="93" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="SickLeaveTypeText" HorizontalAlignment="Left" Margin="8,325,0,0" TextWrapping="Wrap" Text="Typ zwolnienia" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-                <TextBlock x:Name="SymptomsText" HorizontalAlignment="Left" Margin="10,375,0,0" TextWrapping="Wrap" Text="Powód zwolnienia" VerticalAlignment="Top" Height="88" Width="148" Foreground="White" FontSize="20"/>
+        <ScrollViewer x:Name="ScrollView" Margin="39,70,46,48">
+            <Viewbox Grid.Column="1" HorizontalAlignment="Left" Height="Auto" Margin="0,0,0,0" VerticalAlignment="Top" Width="Auto">
+                <Grid x:Name="SickLeaveGrid" HorizontalAlignment="Left" Height="550" VerticalAlignment="Top" Width="Auto" MinWidth="494">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="97*"/>
+                        <ColumnDefinition Width="150*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="PESELText" HorizontalAlignment="Left" Margin="8,7,0,0" TextWrapping="Wrap" Text="PESEL" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="NipText" HorizontalAlignment="Left" Margin="10,52,0,0" TextWrapping="Wrap" Text="NIP" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="PatientFirstNameText" HorizontalAlignment="Left" Margin="8,97,0,0" TextWrapping="Wrap" Text="Imię" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="PatientLastNameText" HorizontalAlignment="Left" Margin="8,142,0,0" TextWrapping="Wrap" Text="Nazwisko" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="PatientGenderText" HorizontalAlignment="Left" Margin="10,187,0,0" TextWrapping="Wrap" Text="Płeć" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="AddressText" HorizontalAlignment="Left" Margin="8,227,0,0" TextWrapping="Wrap" Text="Adres zameldowania" VerticalAlignment="Top" Height="93" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="SickLeaveTypeText" HorizontalAlignment="Left" Margin="8,325,0,0" TextWrapping="Wrap" Text="Typ zwolnienia" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
+                    <TextBlock x:Name="SymptomsText" HorizontalAlignment="Left" Margin="10,375,0,0" TextWrapping="Wrap" Text="Powód zwolnienia" VerticalAlignment="Top" Height="88" Width="148" Foreground="White" FontSize="20"/>
 
-                <TextBlock x:Name="DateText" HorizontalAlignment="Left" Margin="8,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"><Run Text="Termin"/><LineBreak/><Run/></TextBlock>
-                <TextBox x:Name="Input_PESELBox" Text="{Binding _PESEL}" Height="40" Margin="18,7,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
-                <TextBox x:Name="Input_NIPBox" Text="{Binding _NIP}" Height="40" Margin="18,52,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
-                <TextBox x:Name="Input_PatientFirstNameBox" Text="{Binding Name}" Height="40" Margin="18,97,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
-                <TextBox x:Name="Input_PatientLastNameBox" Text="{Binding Surname}" Height="40" Margin="18,142,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
+                    <TextBlock x:Name="DateText" HorizontalAlignment="Left" Margin="8,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="148" Foreground="White" FontSize="20"><Run Text="Termin"/><LineBreak/><Run/></TextBlock>
+                    <TextBox x:Name="Input_PESELBox" Text="{Binding _PESEL}" Height="40" Margin="18,7,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
+                    <TextBox x:Name="Input_NIPBox" Text="{Binding _NIP}" Height="40" Margin="18,52,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
+                    <TextBox x:Name="Input_PatientFirstNameBox" Text="{Binding Name}" Height="40" Margin="18,97,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
+                    <TextBox x:Name="Input_PatientLastNameBox" Text="{Binding Surname}" Height="40" Margin="18,142,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
 
 
 
-                <ComboBox x:Name="Input_PatientGenderList" Margin="18,187,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Foreground="#FF575757" BorderBrush="White" Grid.Column="1" >
-                    <ComboBox.Background>
-                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="#FF767676" Offset="0"/>
-                            <GradientStop Color="#FF767676" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ComboBox.Background>
-                    <ComboBoxItem x:Name="PatientGenderFemale" Content="Kobieta" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
-                    <ComboBoxItem x:Name="PatientGenderMale" Content="Mężczyzna" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
-                </ComboBox>
+                    <ComboBox x:Name="Input_PatientGenderList" Margin="18,187,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Foreground="#FF575757" BorderBrush="White" Grid.Column="1" >
+                        <ComboBox.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF767676" Offset="0"/>
+                                <GradientStop Color="#FF767676" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ComboBox.Background>
+                        <ComboBoxItem x:Name="PatientGenderFemale" Content="Kobieta" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
+                        <ComboBoxItem x:Name="PatientGenderMale" Content="Mężczyzna" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0" />
+                    </ComboBox>
 
-                <TextBox x:Name="Input_AddressBox" Height="88" Margin="18,232,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1">
-                    <TextBox.Text>
-                        <MultiBinding StringFormat="{}{0} {1} {2} {3}">
-                            <Binding Path="PostCode" />
-                            <Binding Path="City" />
-                            <Binding Path="Street"/>
-                            <Binding Path="HouseNumber"/>
-                        </MultiBinding>
-                    </TextBox.Text>
-                </TextBox>
+                    <TextBox x:Name="Input_AddressBox" Height="88" Margin="18,232,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1">
+                        <TextBox.Text>
+                            <MultiBinding StringFormat="{}{0} {1} {2} {3}">
+                                <Binding Path="PostCode" />
+                                <Binding Path="City" />
+                                <Binding Path="Street"/>
+                                <Binding Path="HouseNumber"/>
+                            </MultiBinding>
+                        </TextBox.Text>
+                    </TextBox>
 
-                <ComboBox x:Name="Input_SickLeaveTypeList" Margin="18,325,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Foreground="#FF383838" Grid.Column="1">
-                    <ComboBoxItem x:Name="SickLeaveL4" Content="L4" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
-                    <ComboBoxItem x:Name="SickLeaveL10" Content="L10" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
-                </ComboBox>
-                <TextBox x:Name="Input_SymptomsBox" Height="88" Margin="18,370,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
+                    <ComboBox x:Name="Input_SickLeaveTypeList" Margin="18,325,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Foreground="#FF383838" Grid.Column="1">
+                        <ComboBoxItem x:Name="SickLeaveL4" Content="L4" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
+                        <ComboBoxItem x:Name="SickLeaveL10" Content="L10" HorizontalAlignment="Left" Width="200" FontSize="20" Margin="0,0,-2,0"/>
+                    </ComboBox>
+                    <TextBox x:Name="Input_SymptomsBox" Height="88" Margin="18,370,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1"/>
 
-                <DatePicker x:Name="Input_DateFromPicker" Margin="18,463,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Grid.Column="1"/>
-                <TextBlock x:Name="DateFromText" HorizontalAlignment="Left" Margin="142,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Od"/>
-                <DatePicker x:Name="Input_DateToPicker" HorizontalAlignment="Left" Margin="17.5,503,0,0" VerticalAlignment="Top" Width="200" Height="40" FontSize="20" Grid.Column="1"/>
-                <TextBlock x:Name="DateToText" HorizontalAlignment="Left" Margin="142,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Do"/>
-            </Grid>
+                    <DatePicker x:Name="Input_DateFromPicker" Margin="18,463,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Grid.Column="1"/>
+                    <TextBlock x:Name="DateFromText" HorizontalAlignment="Left" Margin="142,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Od"/>
+                    <DatePicker x:Name="Input_DateToPicker" Margin="17,503,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Grid.Column="1"/>
+                    <TextBlock x:Name="DateToText" HorizontalAlignment="Left" Margin="142,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="52" Foreground="White" FontSize="20" Text="Do"/>
+                </Grid>
+            </Viewbox>
         </ScrollViewer>
 
         <Button x:Name="PDFbutton" Content="Export do PDF" Margin="0,75,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="PDFbutton_Click" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="42" VerticalAlignment="Top" Style="{DynamicResource AP-ButtonStyle}"/>
-        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="371,147,-276,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="73" Width="184" Foreground="Red" FontSize="16" FlowDirection="LeftToRight" Text=" " Grid.Column="1"/>
+        <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="371,147,-343,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="73" Width="184" Foreground="Red" FontSize="16" FlowDirection="LeftToRight" Text=" " Grid.Column="1"/>
         <Button x:Name="Button_Back" Content="Cofnij" Margin="0,19,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Button_Back_Click" Foreground="White"  Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="38" VerticalAlignment="Top" />
+
 
 
 

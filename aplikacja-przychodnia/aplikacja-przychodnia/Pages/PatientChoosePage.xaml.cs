@@ -33,8 +33,10 @@ namespace aplikacja_przychodnia.Pages
 
         private void Button_PatientSearch_Click(object sender, RoutedEventArgs e)
         {
+            
             if (Input_PESELBox.Text.Length == 11)
             {
+                patients = new List<Patient>();
                 string connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(Input_NIPBox.Text);
                 if (connectionString != null)
                 {
@@ -47,7 +49,7 @@ namespace aplikacja_przychodnia.Pages
                 }
                 else
                 {
-                    
+                    ///błąd źle wpisanego peselu
                 }
             }
         }
@@ -72,7 +74,14 @@ namespace aplikacja_przychodnia.Pages
         private void Patients_Data_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currnetlySelectedPatient = Patients_Data.SelectedItem as Patient;
-            Button_Continue.IsEnabled = true;
+            if (currnetlySelectedPatient != null)
+            {
+                Button_Continue.IsEnabled = true;
+            }
+            else
+            {
+                Button_Continue.IsEnabled = false;
+            }
         }
     }
 }

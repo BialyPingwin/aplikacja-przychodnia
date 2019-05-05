@@ -68,6 +68,8 @@ namespace aplikacja_przychodnia.Pages
             {
                 Input_AddressBox.IsEnabled = false;
             }
+
+            
         }
         
         private void PDFbutton_Click(object sender, RoutedEventArgs e)
@@ -123,5 +125,7 @@ namespace aplikacja_przychodnia.Pages
             NavigationService.Navigate(new DoctorMenu());
 
         }
+
+  
     }
 }

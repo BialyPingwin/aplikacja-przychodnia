@@ -9,20 +9,24 @@
       Title="PatientChoosePage">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="233*"/>
+            <ColumnDefinition Width="167*"/>
+        </Grid.ColumnDefinitions>
         <TextBlock x:Name="PESELText" HorizontalAlignment="Left" Margin="96,76,0,0" TextWrapping="Wrap" Text="PESEL" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
         <TextBlock x:Name="NipText" HorizontalAlignment="Left" Margin="98,121,0,0" TextWrapping="Wrap" Text="NIP" VerticalAlignment="Top" Height="40" Width="146" Foreground="White" FontSize="20"/>
-        <TextBox x:Name="Input_PESELBox" HorizontalAlignment="Left" Height="40" Margin="302,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
-        <TextBox x:Name="Input_NIPBox" HorizontalAlignment="Left" Height="40" Margin="302,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
-        <DataGrid x:Name="Patients_Data" Margin="96,184,85,112" Background="#FF767676" FontSize="20" RowHeight="30" ColumnWidth="*" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="Patients_Data_SelectionChanged">
+        <TextBox x:Name="Input_PESELBox" Height="40" Margin="199,76,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
+        <TextBox x:Name="Input_NIPBox" Height="40" Margin="199,121,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
+        <DataGrid x:Name="Patients_Data" Margin="96,184,85,112" Background="#FF767676" FontSize="20" RowHeight="30" ColumnWidth="*" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="Patients_Data_SelectionChanged" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pesel" Binding="{Binding _PESEL}" Foreground="Black" FontSize="16" />
                 <DataGridTextColumn Header="Imię" Binding="{Binding Name}" Foreground="Black" FontSize="16" />
                 <DataGridTextColumn Header="Nazwisko" Binding="{Binding Surname}" Foreground="Black" FontSize="16"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="Button_PatientSearch" Content="Szukaj pacjenta" Margin="528,76,85,0" VerticalAlignment="Top" Height="85" Click="Button_PatientSearch_Click" Style="{DynamicResource AP-ButtonStyle}" FontSize="24"/>
+        <Button x:Name="Button_PatientSearch" Content="Szukaj pacjenta" Margin="15,76,85,0" VerticalAlignment="Top" Height="85" Click="Button_PatientSearch_Click" Style="{DynamicResource AP-ButtonStyle}" FontSize="24" Grid.Column="1"/>
         <Button x:Name="Button_Back" Content="Cofnij" HorizontalAlignment="Left" Margin="10,0,0,10" Width="130" Style="{DynamicResource AP-ButtonStyle}" FontSize="20" Click="Button_Back_Click" Height="36" VerticalAlignment="Bottom"/>
-        <Button x:Name="Button_Continue" Content="Kontynuuj" Margin="0,0,10,10" Style="{DynamicResource AP-ButtonStyle}" FontSize="24" Click="Button_Continue_Click" HorizontalAlignment="Right" Width="180" Height="58" VerticalAlignment="Bottom" IsEnabled="False"/>
+        <Button x:Name="Button_Continue" Content="Kontynuuj" Margin="0,0,10,10" Style="{DynamicResource AP-ButtonStyle}" FontSize="24" Click="Button_Continue_Click" HorizontalAlignment="Right" Width="180" Height="58" VerticalAlignment="Bottom" IsEnabled="False" Grid.Column="1"/>
 
     </Grid>
 </Page>

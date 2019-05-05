@@ -12,7 +12,7 @@
         <TabControl Margin="10,16,10,59" Background="#00000000" BorderBrush="White">
             <TabItem Header="Użytkownicy" Margin="-2,0,-35,0" FontSize="20" Background="#FF5D5D5D">
                 <Grid Background="#00A6A6A6" Margin="0,0,0,-1">
-                    <DataGrid x:Name="UsersView" HorizontalAlignment="Left" Margin="182,10,0,27" Width="500" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30" ColumnWidth="*" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
+                    <DataGrid x:Name="UsersView" Margin="182,10,92,27" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30" ColumnWidth="*" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Login" Binding="{Binding login}" Foreground="Black" FontSize="16" />
                             <DataGridTextColumn Header="Imię" Binding="{Binding name}" Foreground="Black" FontSize="16" />
@@ -32,7 +32,7 @@
             </TabItem>
             <TabItem Header="Firmy" Margin="36,0,-40,0" Background="#FF5D5D5D" FontSize="20">
                 <Grid Background="#00E5E5E5">
-                    <DataGrid x:Name="FirmView" HorizontalAlignment="Left" Margin="182,10,0,26" Width="500" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
+                    <DataGrid x:Name="FirmView" Margin="182,10,92,26" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single"  >
                         <DataGrid.Columns>
                         </DataGrid.Columns>
                         <DataGrid.RowDetailsTemplate>
