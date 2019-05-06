@@ -1,83 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia.Classes
 {
-    
+
+    /// <summary>
+
+    /// Klasa SickLeave zawiera informacje o wystawianym zwolnieniu.
+
+    /// </summary>
     [Serializable]
     public class SickLeave
     {
-        private string _firstName;
-        private string _lastName;
-        private string _sickLeaveType;
-        private string _gender;
-        private string _pESEL;
-        private string _Syptoms;
-        private DateTime _dateFrom;
-        private DateTime _dateTo;
-        
 
-        public SickLeave(string firstName, string lastName, string sickLeaveType, string gender, string pESEL,string Symptoms, DateTime dateFrom, DateTime dateTo)
-        {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.sickLeaveType = sickLeaveType;
-            this.gender = gender;
-            this.pESEL = pESEL;
-            this.Symptoms = Symptoms;
-            this.dateFrom = dateFrom;
-            this.dateTo = dateTo;
-        }
+        // <summary>
+        /// Właściwość Patient zawiera informacje o pacjencie
+        /// </summary>
+        public Patient Patient { get; set; }
 
-        public string firstName
-        {
-            get { return _firstName; }
-            set { _firstName = value; }
-        }
+        // <summary>
+        /// Właściwość SickLeaveType zawiera informację o typie zwolnienia lekarskiego
+        /// </summary>
+        public string SickLeaveType { get; set; }
 
-        public string lastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
+        /// <summary>
+        /// Właściwość StartDate zawiera informację o dacie rozpoczęcia zwolnienia
+        /// </summary>
+        public DateTime StartDate { get; set; }
 
-        public string sickLeaveType
-        {
-            get { return _sickLeaveType; }
-            set { _sickLeaveType = value; }
-        }
+        /// <summary>
+        /// Właściwość EndDate zawiera informację o dacie zakończenia zwolnienia
+        /// </summary>
+        public DateTime EndDate { get; set; }
 
-        public string gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
+        /// <summary>
+        /// Właściwość Symptoms zawiera informację o dacie objawach choroby
+        /// </summary>
+        public string Symptoms { get; set; }
 
-        public string pESEL
+        public SickLeave(Patient patient, string sickLeaveType, string symptoms, DateTime startDate, DateTime endDate)
         {
-            get { return _pESEL; }
-            set { _pESEL = value; }
-        }
+            Patient = patient;
+            SickLeaveType = sickLeaveType;
+            StartDate = startDate;
+            EndDate = endDate;
+            Symptoms = symptoms;
 
-        public string Symptoms
-        {
-            get { return _Syptoms; }
-            set { _Syptoms = value; }
-        }
-
-        public DateTime dateFrom
-        {
-            get { return _dateFrom; }
-            set { _dateFrom = value; }
-        }
-
-        public DateTime dateTo
-        {
-            get { return _dateTo; }
-            set { _dateTo = value; }
         }
     }
 }

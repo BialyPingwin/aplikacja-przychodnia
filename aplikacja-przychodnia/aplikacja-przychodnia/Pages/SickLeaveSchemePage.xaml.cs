@@ -95,13 +95,12 @@ namespace aplikacja_przychodnia.Pages
                 return;
             }
 
-            Classes.SickLeave sickLeaveClass = new Classes.SickLeave(this.Input_PatientFirstNameBox.Text, this.Input_PatientLastNameBox.Text,
-                    this.Input_SickLeaveTypeList.Text, this.Input_PatientGenderList.Text, this.Input_PESELBox.Text,this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+            Classes.SickLeave sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 
             //Tworzenie dokumenty PDF
 
             // Create a MigraDoc document
-            Document document = Classes.MigraDocF.MigraDocClass.CreateDocument(sickLeaveClass);
+            Document document = Classes.MigraDocF.MigraDoc.CreateDocument(sickLeaveClass);
 
             //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
             MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");

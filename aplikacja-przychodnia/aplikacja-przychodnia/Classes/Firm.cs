@@ -88,7 +88,7 @@ namespace aplikacja_przychodnia.Classes
         }
 
         private string _PasswordInfo;
-        public string PasswordInfo
+        private string PasswordInfo
         {
             get
             {
@@ -98,6 +98,11 @@ namespace aplikacja_przychodnia.Classes
             {
                 _PasswordInfo = value;
             }
+        }
+
+        public void SetFirmPassword(string password)
+        {
+            PasswordInfo = password;
         }
 
         public string ReturnConnectionInfo()

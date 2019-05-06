@@ -35,7 +35,7 @@ namespace aplikacja_przychodnia.Windows
                 Input_IP.Text == ""||
                 Input_Port.Text == "" ||
                 Input_UserInfo.Text == "" ||
-                Input_PasswordInfo.Text =="" ||
+                Input_PasswordInfo.Password =="" ||
                 Input_InitialCatalog.Text == "")
             {
                 Output_Error.Text = "Wypełnij wszystkie pola!";
@@ -49,7 +49,7 @@ namespace aplikacja_przychodnia.Windows
                 firm.Port = Input_Port.Text;
                 firm.InitialCatalog = Input_InitialCatalog.Text;
                 firm.UserInfo = Input_UserInfo.Text;
-                firm.PasswordInfo = Input_PasswordInfo.Text;
+                firm.SetFirmPassword(Input_PasswordInfo.Password);
 
                 FirmLocalDataBase.Add(firm);
                 FirmLocalDataBase.Save();

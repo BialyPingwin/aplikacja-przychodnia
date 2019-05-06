@@ -27,7 +27,7 @@
         <Label Content="Katalog początkowy" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,263,0,0" Height="32" Width="159" FontSize="16" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
         <TextBox x:Name="Input_UserInfo" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="9,302,35,0" FontSize="16" MaxLength="32" Grid.Column="1"/>
         <Label Content="Użytkownik" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,300,0,0" Height="32" Width="159" FontSize="16" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
-        <TextBox x:Name="Input_PasswordInfo" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Margin="9,339,35,0" FontSize="16" MaxLength="32" Grid.Column="1"/>
+        <PasswordBox x:Name="Input_PasswordInfo" Height="30" VerticalAlignment="Top" Margin="9,339,35,0" FontSize="16" MaxLength="32" Grid.Column="1"/>
         <Label Content="Hasło" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="60,337,0,0" Height="32" Width="159" FontSize="16" Foreground="White" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
     </Grid>
 </Window>

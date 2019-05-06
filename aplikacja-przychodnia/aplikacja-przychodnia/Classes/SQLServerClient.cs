@@ -1,6 +1,6 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-
+using System.Windows;
 
 namespace aplikacja_przychodnia
 {
@@ -33,8 +33,16 @@ namespace aplikacja_przychodnia
 
         public static Patient GetPatient(long PESEL, string connectionString)
         {
-            SQLServerClient client = new SQLServerClient(connectionString);
-            return new Patient(client.GetPersonalData(PESEL));
+            try
+            {
+                SQLServerClient client = new SQLServerClient(connectionString);
+                return new Patient(client.GetPersonalData(PESEL));
+            }
+            catch
+            {
+                MessageBox.Show("Nie można połączyć się z bazą");
+                return null;
+            }
         }
     }
 }

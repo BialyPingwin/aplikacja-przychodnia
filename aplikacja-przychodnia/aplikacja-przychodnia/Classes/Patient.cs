@@ -1,8 +1,10 @@
 ﻿using System.Data;
+using System;
 
 
 namespace aplikacja_przychodnia
 {
+    [Serializable]
     public class Patient: BaseNotifyPropertyChanged
     {
         private string name;
