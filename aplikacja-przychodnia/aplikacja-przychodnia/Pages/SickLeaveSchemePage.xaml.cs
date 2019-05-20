@@ -35,11 +35,11 @@ namespace aplikacja_przychodnia.Pages
             InitializeComponent();
             this.patient = patient;
             DataContext = patient;
-            if (patient.Gender == "Male")
+            if (patient.Gender == "Mężczyzna")
             {
                 this.Input_PatientGenderList.Text = "Mężczyzna";
             }
-            else if ( patient.Gender == "Female")
+            else if ( patient.Gender == "Kobieta")
             {
                 this.Input_PatientGenderList.Text = "Kobieta";
             }
