@@ -19,7 +19,7 @@ namespace aplikacja_przychodnia
     /// Logika interakcji dla klasy MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    { 
         User currentUser = null;
 
         public MainWindow()
