@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Script.Serialization;
 
 namespace aplikacja_przychodnia.Classes
 {
@@ -44,7 +45,21 @@ namespace aplikacja_przychodnia.Classes
             StartDate = startDate;
             EndDate = endDate;
             Symptoms = symptoms;
+        }
 
+        public SickLeave(string JSONString)
+        {
+            SickLeave sickLeave = new JavaScriptSerializer().Deserialize(JSONString, typeof(SickLeave)) as SickLeave;
+            Patient = sickLeave.Patient;
+            SickLeaveType = sickLeave.SickLeaveType;
+            StartDate = sickLeave.StartDate;
+            EndDate = sickLeave.EndDate;
+            Symptoms = sickLeave.Symptoms;
+        }
+
+        public string ConvertToJSONString()
+        {
+            return new JavaScriptSerializer().Serialize(this);
         }
     }
 }

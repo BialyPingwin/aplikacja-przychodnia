@@ -25,7 +25,7 @@ namespace aplikacja_przychodnia
         {
             DataTable table = new DataTable();
             using (var con = new SqlConnection(connectionString.ConnectionString))
-            using (var da = new SqlDataAdapter($"select * from myTable where PESEL = {PESEL}", con))
+            using (var da = new SqlDataAdapter($"select * from Pracownicy where Numer_PESEL = {PESEL}", con))
                 da.Fill(table);
 
             return table.Rows[0];
@@ -40,7 +40,7 @@ namespace aplikacja_przychodnia
             }
             catch
             {
-                MessageBox.Show("Nie można połączyć się z bazą");
+                MessageBox.Show("Wystąpił błąd");
                 return null;
             }
         }
