@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using aplikacja_przychodnia.Pages;
+using aplikacja_przychodnia.Classes;
 
 namespace aplikacja_przychodnia.Windows
 {
@@ -55,35 +56,42 @@ namespace aplikacja_przychodnia.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!UserLocalDataBase.IsLoginFree(Input_Login.Text))
+            if (RegClass.CheckFirstName(Input_Name.Text) && RegClass.CheckLastName(Input_Surname.Text))
             {
-                Output_Error.Text = "Login zajęty";
-                return;
-            }
-            if (Input_Name.Text != "" && Input_Surname.Text != "" && Input_Login.Text != "" && UserLocalDataBase.IsLoginFree(Input_Login.Text))
-            {
-                
-                User user = new User(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
-                UserLocalDataBase.Add(user);
-                UserLocalDataBase.ResetUserPassword(user.login);
-                UserLocalDataBase.Save();
-                foreach(Window window in Application.Current.Windows)
+                if (!UserLocalDataBase.IsLoginFree(Input_Login.Text))
                 {
-                    if (window.GetType() == typeof(MainWindow))
-                    {
-                        if ((window as MainWindow).Main.Content is AdminPage)
-                        {
-                            ((window as MainWindow).Main.Content as AdminPage).RefreshUsersView();
-                        }
-                    }  
+                    Output_Error.Text = "Login zajęty";
+                    return;
                 }
+                if (Input_Name.Text != "" && Input_Surname.Text != "" && Input_Login.Text != "" && UserLocalDataBase.IsLoginFree(Input_Login.Text))
+                {
 
-                this.Close();
+                    User user = new User(Input_Name.Text, Input_Surname.Text, Input_Login.Text, "hasło");
+                    UserLocalDataBase.Add(user);
+                    UserLocalDataBase.ResetUserPassword(user.login);
+                    UserLocalDataBase.Save();
+                    foreach (Window window in Application.Current.Windows)
+                    {
+                        if (window.GetType() == typeof(MainWindow))
+                        {
+                            if ((window as MainWindow).Main.Content is AdminPage)
+                            {
+                                ((window as MainWindow).Main.Content as AdminPage).RefreshUsersView();
+                            }
+                        }
+                    }
 
+                    this.Close();
+
+                }
+                else
+                {
+                    Output_Error.Text = "Błąd wprowadzania danych";
+                }
             }
             else
             {
-                Output_Error.Text = "Błąd wprowadzania danych";
+                MessageBox.Show("Podano złe imię lub nazwisko");
             }
         }
     }
