@@ -34,7 +34,7 @@ namespace aplikacja_przychodnia.Pages
 
         private void Button_PatientSearch_Click(object sender, RoutedEventArgs e)
         {
-            
+            Patients_Data.ItemsSource = null;
             if (Input_PESELBox.Text.Length == 11)
             {
                 patients = new List<Patient>();
@@ -42,7 +42,12 @@ namespace aplikacja_przychodnia.Pages
                 string connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(Input_NIPBox.Text);
                 if (connectionString != null)
                 {
-                    Patient patientToAdd = SQLServerClient.GetPatient(Convert.ToInt64(Input_PESELBox.Text), connectionString);
+                    long pesel = Convert.ToInt64(Input_PESELBox.Text);
+                    Patient patientToAdd = Task.Factory.StartNew(() =>
+                    {
+                        return SQLServerClient.GetPatient(pesel, connectionString);
+                    }).Result;
+                                          
                     if (patientToAdd != null)
                     {
                         patients.Add(patientToAdd);
@@ -55,6 +60,9 @@ namespace aplikacja_przychodnia.Pages
                 }
             }
         }
+
+        
+
 
         private void Button_Continue_Click(object sender, RoutedEventArgs e)
         {
