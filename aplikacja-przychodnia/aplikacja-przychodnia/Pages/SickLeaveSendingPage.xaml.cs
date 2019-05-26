@@ -16,6 +16,7 @@ using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
 using aplikacja_przychodnia.Classes;
 using System.Diagnostics;
+using System.Threading;
 
 namespace aplikacja_przychodnia.Pages
 {
@@ -31,7 +32,8 @@ namespace aplikacja_przychodnia.Pages
             InitializeComponent();
             this.sickLeave = sickLeave;
 
-            Loaded += Send;
+            User user = MainWindow.ReturnCurrentUser();
+            new Thread(() => Send(user)).Start();
 
         }
 
@@ -68,11 +70,13 @@ namespace aplikacja_przychodnia.Pages
             MainWindow.Logout();
         }
 
-        private void Send(object sender, EventArgs e)
+        private void Send(User user)
         {
+                    
+
             string connectionString = FirmLocalDataBase.Initialize().FindFirmConnectionByNIP(sickLeave.Patient._NIP.ToString());
             bool outcome = SickLeaveSender.SendToSQLServer(sickLeave, connectionString);
-            Reporter.RaportSickLeaveSendingPage(outcome);
+            Reporter.RaportSickLeaveSendingPage(user, outcome);
             if (!outcome)
             {
                 SickLeaveResender.AddToResend(sickLeave);

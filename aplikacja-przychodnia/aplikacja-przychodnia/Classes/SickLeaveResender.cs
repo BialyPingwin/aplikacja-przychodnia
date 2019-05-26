@@ -9,7 +9,7 @@ namespace aplikacja_przychodnia.Classes
     [Serializable]
     public class SickLeaveResender
     {
-        Queue<SickLeave> toResend = new Queue<SickLeave>();
+        private Queue<SickLeave> toResend = new Queue<SickLeave>();
 
         public void TrySending()
         {
@@ -19,6 +19,7 @@ namespace aplikacja_przychodnia.Classes
             for (int i = 0; i < numberToTry; i++)
             {
 
+                
                 SickLeave toSend = toResend.Dequeue();
                 string connectionString = FirmLocalDataBase.Initialize().FindFirmConnectionByNIP(toSend.Patient._NIP.ToString());
 
@@ -56,6 +57,7 @@ namespace aplikacja_przychodnia.Classes
         public static void AddToResend(SickLeave sickLeave)
         {
             SickLeaveResender tmp = SickLeaveResender.Load();
+
             tmp.toResend.Enqueue(sickLeave);
             tmp.Save();
         }

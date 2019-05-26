@@ -49,7 +49,8 @@ namespace aplikacja_przychodnia.Classes
 
         public SickLeave(string JSONString)
         {
-            SickLeave sickLeave = new JavaScriptSerializer().Deserialize(JSONString, typeof(SickLeave)) as SickLeave;
+            var serializer = new JavaScriptSerializer();
+            SickLeave sickLeave = serializer.Deserialize<SickLeave>(JSONString);
             Patient = sickLeave.Patient;
             SickLeaveType = sickLeave.SickLeaveType;
             StartDate = sickLeave.StartDate;
@@ -57,6 +58,7 @@ namespace aplikacja_przychodnia.Classes
             Symptoms = sickLeave.Symptoms;
         }
 
+        
         public string ConvertToJSONString()
         {
             return new JavaScriptSerializer().Serialize(this);

@@ -13,20 +13,20 @@ namespace aplikacja_przychodnia.Classes
         
         private List<Report> lisOfReports = new List<Report>();
 
-        public static void RaportSickLeaveSendingPage(bool isSent)
+        public static void RaportSickLeaveSendingPage(User user, bool isSent)
         {
-            AddRaport("Wysyłanie Zwolnienia", isSent);
+            AddRaport(user.ReturnName(),"Wysyłanie Zwolnienia", isSent);
         }
 
         public static void RaportSickLeaveResending(bool isSent)
         {
-            AddRaport("Ponowne wysyłanie Zwolnienia", isSent);
+            AddRaport("Aplikacja","Ponowne wysyłanie Zwolnienia", isSent);
         }
 
-        private static void AddRaport(string action, bool isSent)
+        private static void AddRaport(string doctor, string action, bool isSent)
         {
             Reporter tmpRepo = Reporter.Load();
-            tmpRepo.lisOfReports.Add(Report.NewReport(MainWindow.ReturnCurrentUser().ReturnName(), action, isSent));
+            tmpRepo.lisOfReports.Add(Report.NewReport(doctor, action, isSent));
             tmpRepo.Save();
         }
 
