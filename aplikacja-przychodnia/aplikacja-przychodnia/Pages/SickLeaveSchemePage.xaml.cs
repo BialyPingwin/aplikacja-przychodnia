@@ -20,6 +20,8 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.Rendering;
+using aplikacja_przychodnia;
+using aplikacja_przychodnia.Classes;
 
 namespace aplikacja_przychodnia.Pages
 {
@@ -29,17 +31,18 @@ namespace aplikacja_przychodnia.Pages
     public partial class SickLeaveSchemePage : Page
     {
         Patient patient;
+        SickLeave sickLeaveClass = null;
+        bool sickLeaveWasSent = false;
 
         public SickLeaveSchemePage(Patient patient)
         {
             InitializeComponent();
             this.patient = patient;
             DataContext = patient;
-            if (patient.Gender == "Male")
+            if (patient.Gender == "Mężczyzna")
             {
                 this.Input_PatientGenderList.Text = "Mężczyzna";
-            }
-            else if ( patient.Gender == "Female")
+            } else if (patient.Gender == "Kobieta")
             {
                 this.Input_PatientGenderList.Text = "Kobieta";
             }
@@ -68,55 +71,34 @@ namespace aplikacja_przychodnia.Pages
             {
                 Input_AddressBox.IsEnabled = false;
             }
-
-            
         }
-        
+
         private void PDFbutton_Click(object sender, RoutedEventArgs e)
         {
-            if (Input_PatientFirstNameBox.Text == "" || Input_PatientLastNameBox.Text == "" ||
-                    Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || Input_PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "")
+            if (CheckDataCorrectness())
             {
-                
-                Output_Error.Text = "Pola nie mogą być puste";
-                return;
+                if (sickLeaveClass == null)
+                    sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 
-               
+                //Tworzenie dokumentu PDF
+
+                // Create a MigraDoc document
+                Document document = Classes.MigraDocF.MigraDoc.CreateDocument(sickLeaveClass);
+
+                //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
+                MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
+
+                PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+                renderer.Document = document;
+
+                renderer.RenderDocument();
+
+                // Save the document...
+                string filename = "HelloMigraDoc.pdf";
+                renderer.PdfDocument.Save(filename);
+                // ...and start a viewer.
+                Process.Start(filename);
             }
-            else
-            {
-                Output_Error.Text = "";
-            }
-
-            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text))>=0
-                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text))>0)
-            {
-                Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
-                return;
-            }
-
-            Classes.SickLeave sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
-
-            //Tworzenie dokumenty PDF
-
-            // Create a MigraDoc document
-            Document document = Classes.MigraDocF.MigraDoc.CreateDocument(sickLeaveClass);
-
-            //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
-            MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
-
-            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
-            renderer.Document = document;
-
-            renderer.RenderDocument();
-
-            // Save the document...
-            string filename = "HelloMigraDoc.pdf";
-            renderer.PdfDocument.Save(filename);
-            // ...and start a viewer.
-            Process.Start(filename);
-
-
         }
 
         private void Button_Back_Click(object sender, RoutedEventArgs e)
@@ -125,6 +107,53 @@ namespace aplikacja_przychodnia.Pages
 
         }
 
-  
+        private void SendToDataBase(object sender, RoutedEventArgs e)
+        {
+            if (CheckDataCorrectness())
+            {
+                if (!sickLeaveWasSent)
+                {
+                    if (sickLeaveClass == null)
+                        sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+
+                    string connectionString = FirmLocalDataBase.Initialize().FindFirmConnectionByNIP(patient._NIP.ToString());
+                    if (SickLeaveSender.SendToSQLServer(sickLeaveClass, connectionString))
+                        MessageBox.Show("Zwolnienie zostało poprawnie wysłane");
+                    sickLeaveWasSent = true;
+                } else
+                {
+                    Output_Error.Text = "Zwolnienie już zostało wysłane";
+                }
+            }
+        }
+
+        /// <summary>
+        /// Metoda sprawdząjaca poprawność wprowadzonych przez użytkownika danych
+        /// </summary>
+        /// <returns>
+        /// Metoda zwraca 'true' jeśli dane zostały wprowadzone poprawnie lub 'false' jeśli wystapiły błędy.
+        /// Dodatkowo w przypadku błędnych danych, metoda oknie interfejsu graficznego wyświetla stosowne komunikaty.
+        /// </returns>
+
+        private bool CheckDataCorrectness()
+        {
+            if (Input_PatientFirstNameBox.Text == "" || Input_PatientLastNameBox.Text == "" ||
+            Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || Input_PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "")
+            {
+                Output_Error.Text = "Pola nie mogą być puste";
+                return false;
+            } else
+            {
+                Output_Error.Text = "";
+            }
+
+            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text)) >= 0
+                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text)) > 0)
+            {
+                Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -37,15 +37,16 @@ namespace aplikacja_przychodnia
         /// 
         public Patient(DataRow datarow)
         {
-            name = datarow["NAME"].ToString();
-            surname = datarow["SURNAME"].ToString();
-            PESEL = (long)datarow["PESEL"];
-            dateOfBirth = datarow["DATE_OF_BIRTH"].ToString();
-            gender = datarow["GENDER"].ToString();
+            name = datarow["Imie"].ToString();
+            surname = datarow["Nazwisko"].ToString();
+            PESEL = (long)datarow["Numer_PESEL"];
+            string PESELAsString = PESEL.ToString();
+            dateOfBirth = $"{PESELAsString[4]}{PESELAsString[5]}-{PESELAsString[2]}{PESELAsString[3]}-19{PESELAsString[0]}{PESELAsString[1]}";
+            gender = datarow["Plec"].ToString();
             NIP = (long)datarow["NIP"];
-            city = datarow["CITY"].ToString();
-            street = datarow["STREET"].ToString();
-            houseNumber = (int)datarow["HOUSE_NUMBER"];
+            city = datarow["Miejsce_Zamieszkania"].ToString();
+            street = datarow["Ulica"].ToString();
+            houseNumber = (int)datarow["Numer_Domu"];
         }
     }
 }
