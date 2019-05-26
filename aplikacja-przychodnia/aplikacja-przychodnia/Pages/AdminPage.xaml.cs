@@ -24,15 +24,18 @@ namespace aplikacja_przychodnia.Pages
     {
         private UserLocalDataBase UserLocalDataBase;
         private FirmLocalDataBase FirmLocalDataBase;
+        private Reporter ReporterList;
 
         public AdminPage()
         {
             UserLocalDataBase = UserLocalDataBase.Initialize();
             FirmLocalDataBase = FirmLocalDataBase.Initialize();
+            ReporterList = Reporter.Load();
             InitializeComponent();
             UsersView.AutoGenerateColumns = false;
             UsersView.ItemsSource = UserLocalDataBase.ReturnList();
             FirmView.ItemsSource = FirmLocalDataBase.ReturnList();
+            ReportView.ItemsSource = ReporterList.ReturnList();
         }
 
         private void ButtonGrid_PasswordReset_Click(object sender, RoutedEventArgs e)

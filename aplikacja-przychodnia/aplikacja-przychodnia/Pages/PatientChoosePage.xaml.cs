@@ -24,6 +24,7 @@ namespace aplikacja_przychodnia.Pages
         FirmLocalDataBase FirmLocalDataBase;
         List<Patient> patients = new List<Patient>();
         Patient currnetlySelectedPatient;
+        string nip;
 
         public PatientChoosePage()
         {
@@ -33,14 +34,20 @@ namespace aplikacja_przychodnia.Pages
 
         private void Button_PatientSearch_Click(object sender, RoutedEventArgs e)
         {
-            
+            Patients_Data.ItemsSource = null;
             if (Input_PESELBox.Text.Length == 11)
             {
                 patients = new List<Patient>();
+                nip = Input_NIPBox.Text;
                 string connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(Input_NIPBox.Text);
                 if (connectionString != null)
                 {
-                    Patient patientToAdd = SQLServerClient.GetPatient(Convert.ToInt64(Input_PESELBox.Text), connectionString);
+                    long pesel = Convert.ToInt64(Input_PESELBox.Text);
+                    Patient patientToAdd = Task.Factory.StartNew(() =>
+                    {
+                        return SQLServerClient.GetPatient(pesel, connectionString);
+                    }).Result;
+                                          
                     if (patientToAdd != null)
                     {
                         patients.Add(patientToAdd);
@@ -54,10 +61,14 @@ namespace aplikacja_przychodnia.Pages
             }
         }
 
+        
+
+
         private void Button_Continue_Click(object sender, RoutedEventArgs e)
         {
             if (currnetlySelectedPatient != null)
             {
+                currnetlySelectedPatient._NIP = Convert.ToInt64(nip);
                 NavigationService.Navigate(new SickLeaveSchemePage(currnetlySelectedPatient));
             }
             else

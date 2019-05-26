@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia
 {
+    
     public class BaseNotifyPropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

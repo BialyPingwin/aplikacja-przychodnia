@@ -5,7 +5,7 @@ using System;
 namespace aplikacja_przychodnia
 {
     [Serializable]
-    public class Patient: BaseNotifyPropertyChanged
+    public class Patient
     {
         private string name;
         private string surname;
@@ -18,16 +18,16 @@ namespace aplikacja_przychodnia
         private string street;
         private int houseNumber;
 
-        public string Name          { get => name; set => SetField(ref name, value); }
-        public string Surname       { get => surname; set => SetField(ref surname, value); }
-        public long _PESEL          { get => PESEL; set => SetField(ref PESEL, value); }
-        public string DateOfBirth   { get => dateOfBirth; set => SetField(ref dateOfBirth, value); }
-        public string Gender        { get => gender; set => SetField(ref gender, value); }
-        public long _NIP            { get => NIP; set => SetField(ref NIP, value); }
-        public string PostCode      { get => postCode; set => SetField(ref postCode, value); }
-        public string City          { get => city; set => SetField(ref city, value); }
-        public string Street        { get => street; set => SetField(ref street, value); }
-        public int HouseNumber      { get => houseNumber; set => SetField(ref houseNumber, value); }
+        public string Name          { get => name; set => name = value; }
+        public string Surname       { get => surname; set => surname = value; }
+        public long _PESEL          { get => PESEL; set => PESEL = value; }
+        public string DateOfBirth   { get => dateOfBirth; set => dateOfBirth = value; }
+        public string Gender        { get => gender; set => gender = value; }
+        public long _NIP            { get => NIP; set => NIP = value; }
+        public string PostCode      { get => postCode; set => postCode = value; }
+        public string City          { get => city; set => city = value; }
+        public string Street        { get => street; set =>street = value; }
+        public int HouseNumber      { get => houseNumber; set => houseNumber = value; }
 
 
         /// <summary>
@@ -48,5 +48,7 @@ namespace aplikacja_przychodnia
             street = datarow["Ulica"].ToString();
             houseNumber = (int)datarow["Numer_Domu"];
         }
+
+        
     }
 }
