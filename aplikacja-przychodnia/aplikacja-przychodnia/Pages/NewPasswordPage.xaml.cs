@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using aplikacja_przychodnia.Classes;
 
 namespace aplikacja_przychodnia.Pages
 {
@@ -44,40 +45,47 @@ namespace aplikacja_przychodnia.Pages
 
         private void Button_Confirm_Click(object sender, RoutedEventArgs e)
         {
-            if (Input_Password1.Password != null && Input_Password1.Password == Input_Password2.Password && Input_Password1.Password.Length >= 4)
+            if (RegClass.CheckPassword(Input_Password1.Password))
             {
+                if (Input_Password1.Password != null && Input_Password1.Password == Input_Password2.Password && Input_Password1.Password.Length >= 4)
+                {
 
-                if (user == null)
-                {
-                    User admin = new User("admin", "admin", "admin", Input_Password1.Password);
-                    UserLocalDataBase.Add(admin);
-                    UserLocalDataBase.Save();
-                    nextPage = new AdminPage();
-                }
-                else
-                {
-                    UserLocalDataBase.ChangePassword(user.login, Input_Password1.Password);
-                    UserLocalDataBase.Save();
-                    user.pendingPasswordChage = false;
-                    if (isAdmin)
+                    if (user == null)
                     {
+                        User admin = new User("admin", "admin", "admin", Input_Password1.Password);
+                        UserLocalDataBase.Add(admin);
+                        UserLocalDataBase.Save();
                         nextPage = new AdminPage();
                     }
                     else
                     {
-                        nextPage = new DoctorMenu();
+                        UserLocalDataBase.ChangePassword(user.login, Input_Password1.Password);
+                        UserLocalDataBase.Save();
+                        user.pendingPasswordChage = false;
+                        if (isAdmin)
+                        {
+                            nextPage = new AdminPage();
+                        }
+                        else
+                        {
+                            nextPage = new DoctorMenu();
+                        }
                     }
-                }
 
-                NavigationService.Navigate(nextPage);
-            }
-            else if (Input_Password1.Password.Length < 4)
-            {
-                Output_Error.Text = "Hasło musi mieć minimalną długość 4 znaków";
+                    NavigationService.Navigate(nextPage);
+                }
+                else if (Input_Password1.Password.Length < 4)
+                {
+                    Output_Error.Text = "Hasło musi mieć minimalną długość 4 znaków";
+                }
+                else
+                {
+                    Output_Error.Text = "Podane hasła nie zgadzają się";
+                }
             }
             else
             {
-                Output_Error.Text = "Podane hasła nie zgadzają się";
+                MessageBox.Show("Hasło musi zawierać :\nCo najmniej jedną małą literę \nCo najmniej jedną dużą literę \nCo najmniej jedną cyfrę\nDługość od 6 do 20 znaków");
             }
         }
 

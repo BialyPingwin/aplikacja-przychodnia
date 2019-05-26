@@ -74,6 +74,7 @@
     <Compile Include="Classes\FirmLocalDataBase.cs" />
     <Compile Include="Classes\MigraDocF\MigraDocClass.cs" />
     <Compile Include="Classes\Patient.cs" />
+    <Compile Include="Classes\RegClass.cs" />
     <Compile Include="Classes\Serializacja\BinarySerializerWithCipher.cs" />
     <Compile Include="Classes\SickLeaveSender.cs" />
     <Compile Include="Classes\SQLServerClient.cs" />
