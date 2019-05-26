@@ -32,7 +32,7 @@ namespace aplikacja_przychodnia.Pages
     {
         Patient patient;
         SickLeave sickLeaveClass = null;
-        bool sickLeaveWasSent = false;
+        //bool sickLeaveWasSent = false;
 
         public SickLeaveSchemePage(Patient patient)
         {
@@ -42,7 +42,8 @@ namespace aplikacja_przychodnia.Pages
             if (patient.Gender == "Mężczyzna")
             {
                 this.Input_PatientGenderList.Text = "Mężczyzna";
-            } else if (patient.Gender == "Kobieta")
+            }
+            else if (patient.Gender == "Kobieta")
             {
                 this.Input_PatientGenderList.Text = "Kobieta";
             }
@@ -73,59 +74,59 @@ namespace aplikacja_przychodnia.Pages
             }
         }
 
-        private void PDFbutton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CheckDataCorrectness())
-            {
-                if (sickLeaveClass == null)
-                    sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+        //private void PDFbutton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (CheckDataCorrectness())
+        //    {
+        //        if (sickLeaveClass == null)
+        //            sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 
-                //Tworzenie dokumentu PDF
+        //        //Tworzenie dokumentu PDF
 
-                // Create a MigraDoc document
-                Document document = Classes.MigraDocF.MigraDoc.CreateDocument(sickLeaveClass);
+        //        // Create a MigraDoc document
+        //        Document document = Classes.MigraDocF.MigraDoc.CreateDocument(sickLeaveClass);
 
-                //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
-                MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
+        //        //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
+        //        MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
 
-                PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
-                renderer.Document = document;
+        //        PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
+        //        renderer.Document = document;
 
-                renderer.RenderDocument();
+        //        renderer.RenderDocument();
 
-                // Save the document...
-                string filename = "HelloMigraDoc.pdf";
-                renderer.PdfDocument.Save(filename);
-                // ...and start a viewer.
-                Process.Start(filename);
-            }
-        }
+        //        // Save the document...
+        //        string filename = "HelloMigraDoc.pdf";
+        //        renderer.PdfDocument.Save(filename);
+        //        // ...and start a viewer.
+        //        Process.Start(filename);
+        //    }
+        //}
 
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DoctorMenu());
-
         }
 
-        private void SendToDataBase(object sender, RoutedEventArgs e)
-        {
-            if (CheckDataCorrectness())
-            {
-                if (!sickLeaveWasSent)
-                {
-                    if (sickLeaveClass == null)
-                        sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+        //private void SendToDataBase(object sender, RoutedEventArgs e)
+        //{
+        //    if (CheckDataCorrectness())
+        //    {
+        //        if (!sickLeaveWasSent)
+        //        {
+        //            if (sickLeaveClass == null)
+        //                sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
 
-                    string connectionString = FirmLocalDataBase.Initialize().FindFirmConnectionByNIP(patient._NIP.ToString());
-                    if (SickLeaveSender.SendToSQLServer(sickLeaveClass, connectionString))
-                        MessageBox.Show("Zwolnienie zostało poprawnie wysłane");
-                    sickLeaveWasSent = true;
-                } else
-                {
-                    Output_Error.Text = "Zwolnienie już zostało wysłane";
-                }
-            }
-        }
+        //            string connectionString = FirmLocalDataBase.Initialize().FindFirmConnectionByNIP(patient._NIP.ToString());
+        //            if (SickLeaveSender.SendToSQLServer(sickLeaveClass, connectionString))
+        //                MessageBox.Show("Zwolnienie zostało poprawnie wysłane");
+        //            sickLeaveWasSent = true;
+        //        }
+        //        else
+        //        {
+        //            Output_Error.Text = "Zwolnienie już zostało wysłane";
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// Metoda sprawdząjaca poprawność wprowadzonych przez użytkownika danych
@@ -142,7 +143,8 @@ namespace aplikacja_przychodnia.Pages
             {
                 Output_Error.Text = "Pola nie mogą być puste";
                 return false;
-            } else
+            }
+            else
             {
                 Output_Error.Text = "";
             }
@@ -154,6 +156,20 @@ namespace aplikacja_przychodnia.Pages
                 return false;
             }
             return true;
+        }
+
+        private void Button_Save_Click(object sender, RoutedEventArgs e)
+        {
+            if (CheckDataCorrectness())
+            {
+                if (sickLeaveClass == null)
+                {
+                    sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+                }
+
+                NavigationService.Navigate(new SickLeaveSendingPage(sickLeaveClass));
+
+            }
         }
     }
 }

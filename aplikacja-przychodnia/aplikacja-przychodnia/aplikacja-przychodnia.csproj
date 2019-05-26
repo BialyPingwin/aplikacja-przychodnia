@@ -74,8 +74,11 @@
     <Compile Include="Classes\FirmLocalDataBase.cs" />
     <Compile Include="Classes\MigraDocF\MigraDocClass.cs" />
     <Compile Include="Classes\Patient.cs" />
+    <Compile Include="Classes\Report.cs" />
     <Compile Include="Classes\RegClass.cs" />
+    <Compile Include="Classes\Reporter.cs" />
     <Compile Include="Classes\Serializacja\BinarySerializerWithCipher.cs" />
+    <Compile Include="Classes\SickLeaveResender.cs" />
     <Compile Include="Classes\SickLeaveSender.cs" />
     <Compile Include="Classes\SQLServerClient.cs" />
     <Compile Include="Pages\DoctorMenu.xaml.cs">
@@ -87,6 +90,9 @@
     </Compile>
     <Compile Include="Pages\SickLeaveSchemePage.xaml.cs">
       <DependentUpon>SickLeaveSchemePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SickLeaveSendingPage.xaml.cs">
+      <DependentUpon>SickLeaveSendingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\NewFirmWindow.xaml.cs">
       <DependentUpon>NewFirmWindow.xaml</DependentUpon>
@@ -144,6 +150,10 @@
     <Page Include="Pages\SickLeaveSchemePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SickLeaveSendingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\NewFirmWindow.xaml">
       <SubType>Designer</SubType>
