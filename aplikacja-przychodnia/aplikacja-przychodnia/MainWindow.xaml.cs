@@ -30,6 +30,7 @@ namespace aplikacja_przychodnia
             InitializeComponent();
             Main.Content = new LoginPage();
 
+            Reporter.RaportAppStart();
            
             var timer = new System.Threading.Timer((e) => StartResnding(), null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
 
@@ -50,20 +51,23 @@ namespace aplikacja_przychodnia
         static public void Logout()
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-
+            Reporter.RaportLogout(mainWindow.currentUser);
             mainWindow.currentUser = null;
             mainWindow.Main.Content = new LoginPage();
         }
         
         private void CloseApp(Object Sender, EventArgs E)
         {
-            
+            Reporter.RaportLogout(currentUser);
+            Reporter.RaportAppClose();
             Application.Current.Shutdown();
             this.Close();
         }
 
         public static void LogAsUser(User user)
         {
+
+            Reporter.RaportLogin(user);
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.currentUser = user;
         }

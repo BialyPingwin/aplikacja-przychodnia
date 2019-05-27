@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia.Classes
 {
+    /// <summary>
+    /// Klasa SickLeaveResender służy do kolejkowania i ponownego wysyłania zwolnień przy najbliższej możliwej okazji
+    /// </summary>
     [Serializable]
     public class SickLeaveResender
     {
+        /// <summary>
+        /// Kolejka przechowująca zwolnienia
+        /// </summary>
         private Queue<SickLeave> toResend = new Queue<SickLeave>();
 
+        /// <summary>
+        /// Funkcja wykonująca próbę wysłania dla każdego zwolnienia w kolejce 
+        /// </summary>
         public void TrySending()
         {
 
@@ -36,6 +45,10 @@ namespace aplikacja_przychodnia.Classes
             Save();
         }
 
+        /// <summary>
+        /// Statyczna funkcja ładująca kolejkę z pliku
+        /// </summary>
+        /// <returns>Zwraca nowy SickLeave Resender wczytany z pliku</returns>
         public static SickLeaveResender Load()
         {
             SickLeaveResender tmp = (SickLeaveResender)BinarySerializerWithCipher.Deserialize<SickLeaveResender>("AppData2.dat");
@@ -49,11 +62,19 @@ namespace aplikacja_przychodnia.Classes
             }
         }
 
+        /// <summary>
+        /// Funkcja zapisująca tą klasę do pliku
+        /// </summary>
         private void Save()
         {
             BinarySerializerWithCipher.Serialize<SickLeaveResender>("AppData2.dat", this);
         }
 
+
+        /// <summary>
+        /// Funkcja dodająca do kolejki nowe zwolnienie 
+        /// </summary>
+        /// <param name="sickLeave">Zwolnieniem, które nie zostało poprawnie wysłane i ma być dodane do kolejki</param>
         public static void AddToResend(SickLeave sickLeave)
         {
             SickLeaveResender tmp = SickLeaveResender.Load();

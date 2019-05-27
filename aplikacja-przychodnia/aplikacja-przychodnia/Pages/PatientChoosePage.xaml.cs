@@ -39,7 +39,11 @@ namespace aplikacja_przychodnia.Pages
             {
                 patients = new List<Patient>();
                 nip = Input_NIPBox.Text;
-                string connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(Input_NIPBox.Text);
+                string connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(nip);
+                if (connectionString == null)
+                {
+                    connectionString = FirmLocalDataBase.FindFirmConnectionByName(nip);
+                }
                 if (connectionString != null)
                 {
                     long pesel = Convert.ToInt64(Input_PESELBox.Text);
@@ -68,7 +72,16 @@ namespace aplikacja_przychodnia.Pages
         {
             if (currnetlySelectedPatient != null)
             {
-                currnetlySelectedPatient._NIP = Convert.ToInt64(nip);
+
+                try
+                {
+                    long nipToAssign = Convert.ToInt64(nip);
+                    currnetlySelectedPatient._NIP = nipToAssign;
+                }
+                catch
+                {
+                    ///zbiera z bazy;
+                }
                 NavigationService.Navigate(new SickLeaveSchemePage(currnetlySelectedPatient));
             }
             else
