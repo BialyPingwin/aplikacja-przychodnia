@@ -4,6 +4,10 @@ using System;
 
 namespace aplikacja_przychodnia
 {
+
+    /// <summary>
+    /// Klasa przechowująca pacjenta
+    /// </summary>
     [Serializable]
     public class Patient
     {

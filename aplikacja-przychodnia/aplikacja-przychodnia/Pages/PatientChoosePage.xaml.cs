@@ -39,23 +39,36 @@ namespace aplikacja_przychodnia.Pages
             {
                 patients = new List<Patient>();
                 nip = Input_NIPBox.Text;
-                string connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(nip);
-                if (connectionString == null)
+                string connectionString;
+
+                if (RegClass.CheckNIP(nip))
                 {
+                    connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(nip);
+                }
+                else
+                { 
                     connectionString = FirmLocalDataBase.FindFirmConnectionByName(nip);
                 }
                 if (connectionString != null)
                 {
-                    long pesel = Convert.ToInt64(Input_PESELBox.Text);
-                    Patient patientToAdd = Task.Factory.StartNew(() =>
+                    long pesel = 0;
+                    if (RegClass.CheckPESEL(Input_PESELBox.Text))
                     {
-                        return SQLServerClient.GetPatient(pesel, connectionString);
-                    }).Result;
-                                          
-                    if (patientToAdd != null)
+                        pesel = Convert.ToInt64(Input_PESELBox.Text);
+                    }
+                    if (pesel != 0)
                     {
-                        patients.Add(patientToAdd);
-                        Patients_Data.ItemsSource = patients;
+                        Patient patientToAdd = Task.Factory.StartNew(() =>
+                        {
+                            return SQLServerClient.GetPatient(pesel, connectionString);
+                        }).Result;
+
+
+                        if (patientToAdd != null)
+                        {
+                            patients.Add(patientToAdd);
+                            Patients_Data.ItemsSource = patients;
+                        }
                     }
                 }
                 else

@@ -38,7 +38,7 @@ namespace aplikacja_przychodnia.Classes
         /// <summary>
         /// Prosty konstruktor klasy
         /// </summary>
-        /// <param name="doctor">Instancja, która pownna byc zapisana w raporcie jako wystawiająca zwolnienie(Doktor albo Aplikacja)</param>
+        /// <param name="doctor">Instancja, która powinna byc zapisana w raporcie jako wystawiająca raport(Doktor albo Aplikacja)</param>
         /// <param name="action">Akcja która była powodem raportu</param>
         /// <param name="isSent">Status wysłania, czy się udało czy nie</param>
         private Report(string doctor, string action, bool? isSent)

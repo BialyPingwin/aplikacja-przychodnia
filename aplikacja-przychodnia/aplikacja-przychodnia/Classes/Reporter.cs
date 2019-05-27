@@ -6,18 +6,30 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia.Classes
 {
-    
+    /// <summary>
+    /// Klasa przechowująca raporty
+    /// </summary>
     [Serializable]
     class Reporter
     {
-        
+        /// <summary>
+        /// Lista raportów
+        /// </summary>
         private List<Report> lisOfReports = new List<Report>();
 
+        /// <summary>
+        /// Metoda dodająca raport z logowania użytkownika
+        /// </summary>
+        /// <param name="user">Użytkownik, który się zalogował</param>
         public static void RaportLogin(User user)
         {
             AddRaport(user.ReturnName(), "Logowanie", null);
         }
 
+        /// <summary>
+        /// Metoda dodająca raport z wylogowania użytkownika
+        /// </summary>
+        /// <param name="user">Użytkownik, który się wylogowuje</param>
         public static void RaportLogout(User user)
         {
             if (user != null)
@@ -26,18 +38,28 @@ namespace aplikacja_przychodnia.Classes
             }
         }
 
+        /// <summary>
+        /// Metdoa dodająca raport informujący o włączeniu aplikacji
+        /// </summary>
         public static void RaportAppStart()
         {
             AddRaport("Aplikacja", "Start", null);
 
         }
 
+        /// <summary>
+        /// Metoda dodająca raport z zamknięcia aplikacji
+        /// </summary>
         public static void RaportAppClose()
         {
             AddRaport("Aplikacja", "Zamknięcie", null);
         }
 
-
+        /// <summary>
+        /// Metoda 
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="isSent"></param>
         public static void RaportSickLeaveSendingPage(User user, bool? isSent)
         {
             AddRaport(user.ReturnName(),"Wysyłanie Zwolnienia", isSent);
