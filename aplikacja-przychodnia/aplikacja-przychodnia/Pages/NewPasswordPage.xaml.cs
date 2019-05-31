@@ -22,17 +22,29 @@ namespace aplikacja_przychodnia.Pages
     public partial class NewPasswordPage : Page
     {
         User user = null;
+
+        /// <summary>
+        /// Lokalna baza danych lekarzy, zawiera imie, nazwisko, id, login, hasło.
+        /// </summary>
         UserLocalDataBase UserLocalDataBase;
         Page nextPage;
         bool isAdmin = false;
 
+        /// <summary>
+        /// Konstruktor strony nowego hasła.
+        /// </summary>
         public NewPasswordPage()
         {
             UserLocalDataBase = new UserLocalDataBase();
             InitializeComponent();
             
         }
-       
+
+        /// <summary>
+        /// Konstruktor strony nowego hasła.
+        /// </summary>
+        /// <param name="user">Argument określający użytkownika.</param>
+        /// <param name="isAdmin">Argument określający czy użytkownik ma uprawnienia administratora.</param>
         public NewPasswordPage(User user, bool isAdmin)
         {
             UserLocalDataBase = UserLocalDataBase.Initialize();

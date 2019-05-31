@@ -26,6 +26,9 @@ namespace aplikacja_przychodnia.Pages
         private FirmLocalDataBase FirmLocalDataBase;
         private Reporter ReporterList;
 
+        /// <summary>
+        /// Konstruktor strony administratora.
+        /// </summary>
         public AdminPage()
         {
             UserLocalDataBase = UserLocalDataBase.Initialize();

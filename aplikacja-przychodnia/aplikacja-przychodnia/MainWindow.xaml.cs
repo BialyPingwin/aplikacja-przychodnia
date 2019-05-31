@@ -25,6 +25,9 @@ namespace aplikacja_przychodnia
         User currentUser = null;
         SickLeaveResender sickLeaveResender;
 
+        /// <summary>
+        /// Konstruktor strony głównej aplikacji.
+        /// </summary>
         public MainWindow()
         {    
             InitializeComponent();

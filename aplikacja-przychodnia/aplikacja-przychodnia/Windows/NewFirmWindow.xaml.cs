@@ -21,7 +21,14 @@ namespace aplikacja_przychodnia.Windows
     /// </summary>
     public partial class NewFirmWindow : Window
     {
+        /// <summary>
+        /// Lokalna baza danych firm.
+        /// </summary>
         FirmLocalDataBase FirmLocalDataBase;
+
+        /// <summary>
+        /// Konstruktor okna dodawania nowej firmy.
+        /// </summary>
         public NewFirmWindow()
         {
             FirmLocalDataBase = FirmLocalDataBase.Initialize();
