@@ -76,10 +76,10 @@
             </Viewbox>
         </ScrollViewer>
 
-        <Button x:Name="PDFbutton" Content="Export do PDF" Margin="0,75,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="PDFbutton_Click" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="42" VerticalAlignment="Top" Style="{DynamicResource AP-ButtonStyle}"/>
+        <Button x:Name="Button_Save" Content="Zapisz" Margin="0,75,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Button_Save_Click" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="42" VerticalAlignment="Top" Style="{DynamicResource AP-ButtonStyle}"/>
         <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="18,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="72" Width="184" Foreground="Red" FontSize="16" FlowDirection="LeftToRight" Text=" " Grid.Column="1"/>
         <Button x:Name="Button_Back" Content="Cofnij" Margin="0,19,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Button_Back_Click" Foreground="White"  Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="38" VerticalAlignment="Top" />
-        <Button x:Name="SendToDB" Content="Wyślij" Margin="0,137,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="SendToDataBase" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="42" VerticalAlignment="Top" Style="{DynamicResource AP-ButtonStyle}"/>
+        <!--<Button x:Name="SendToDB" Content="Wyślij" Margin="0,137,10,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="SendToDataBase" Foreground="White" Grid.Column="1" HorizontalAlignment="Right" Width="184" Height="42" VerticalAlignment="Top" Style="{DynamicResource AP-ButtonStyle}"/>-->
 
 
 

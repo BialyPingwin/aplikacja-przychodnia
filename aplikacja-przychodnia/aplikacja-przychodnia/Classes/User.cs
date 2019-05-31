@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia
 {
+
+    /// <summary>
+    /// Klasa User przechowująca użytkownika aplikacji
+    /// </summary>
     [Serializable]
     public class User
     {
+
+
         private string _name;
         public string name
         {
@@ -65,6 +71,13 @@ namespace aplikacja_przychodnia
             }
         }
 
+        /// <summary>
+        /// Prosty konstruktor aplikacji
+        /// </summary>
+        /// <param name="name">imie</param>
+        /// <param name="surname">nazwisko</param>
+        /// <param name="login">login</param>
+        /// <param name="password">hasło</param>
         public User(string name, string surname, string login, string password)
         {
             this.name = name;
@@ -74,16 +87,27 @@ namespace aplikacja_przychodnia
             this.pendingPasswordChage = false;
         }
 
+        /// <summary>
+        /// Metoda ustawiająca zmianę hasła przy najbliższym zalogowaniu do aplikacji
+        /// </summary>
         public void ResetPassword()
         {
             this.pendingPasswordChage = true;
         }
 
+        /// <summary>
+        /// Metoda sprawdzająca czy należy zmienić hasło po zalogowaniu
+        /// </summary>
+        /// <returns>Zwraca informację w postacji prawda fałsz</returns>
         public bool IsPendingPasswordChange()
         {
             return this.pendingPasswordChage;
         }
 
+        /// <summary>
+        /// Metoda zwracjąca imię i nazwisko użytkownika
+        /// </summary>
+        /// <returns>Zwraca ciąg znaków złożony z imienia i nazwiska oddzielonych spacją</returns>
         public string ReturnName()
         {
             return this.name + " " + this.surname;

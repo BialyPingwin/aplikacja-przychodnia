@@ -47,6 +47,21 @@
 
                 </Grid>
             </TabItem>
+            <TabItem Header="Raporty" Margin="40,0,-40,0" Background="#FF5D5D5D" FontSize="20">
+                <Grid Background="#00E5E5E5">
+                    <DataGrid x:Name="ReportView" Margin="182,10,92,26" Background="#FF747474" BorderBrush="White" FontSize="16" RowHeight="30"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" ColumnWidth="*" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Lekarz" Binding="{Binding Doctor}" Foreground="Black" FontSize="16" />
+                            <DataGridTextColumn Header="Akcja" Binding="{Binding Action}" Foreground="Black" FontSize="16" />
+                            <DataGridTextColumn Header="Status" Binding="{Binding isSent}" Foreground="Black" FontSize="16"/>
+                            <DataGridTextColumn Header="Data i Godzina" Binding="{Binding Date}" Foreground="Black" FontSize="16"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+            </TabItem>
+
         </TabControl>
         <Button x:Name="Button_Logout" Content="Wyloguj" HorizontalAlignment="Left" Width="166" Margin="10,0,0,10" FontSize="16" Click="Button_Logout_Click" Height="38" VerticalAlignment="Bottom" />
         <TextBlock x:Name="Output_Error" HorizontalAlignment="Left" Margin="194,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="498" Foreground="Red" FontSize="16" FlowDirection="RightToLeft"/>

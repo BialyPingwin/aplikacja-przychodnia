@@ -1,0 +1,17 @@
+﻿<Page x:Class="aplikacja_przychodnia.Pages.SickLeaveSendingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:aplikacja_przychodnia.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SickLeaveSendingPage">
+
+    <Grid>
+        <Button x:Name="Button_Pdf" Content="Export do PDF" Margin="59,85,0,0" FontSize="22" Background="#FF404040" BorderBrush="White" BorderThickness="3" Click="Button_Pdf_Click" Foreground="White" Height="42" VerticalAlignment="Top" Style="{DynamicResource AP-ButtonStyle}" HorizontalAlignment="Left" Width="184"/>
+        <Button x:Name="Button_DoctorMenu" Content="Powrót do menu" HorizontalAlignment="Left" Margin="59,148,0,0" VerticalAlignment="Top" Width="184" Height="44" FontSize="20" Background="#FF404040" Foreground="White" BorderBrush="White" BorderThickness="3" Click="Button_DoctorMenu_Click"/>
+        <Button x:Name="Button_Logout" Content="Wyloguj" HorizontalAlignment="Left" Margin="59,211,0,0" VerticalAlignment="Top" Width="184" Height="44" FontSize="20" Background="#FF404040" Foreground="White" BorderBrush="White" BorderThickness="3" Click="Button_Logout_Click"/>
+
+    </Grid>
+</Page>

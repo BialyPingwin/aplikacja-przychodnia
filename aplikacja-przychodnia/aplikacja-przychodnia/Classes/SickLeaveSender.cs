@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace aplikacja_przychodnia.Classes
 {
@@ -36,6 +37,12 @@ namespace aplikacja_przychodnia.Classes
                     SqlCommand command = new SqlCommand(queryString, connection);
                     connection.Open();
                     countOfAffectedRows = command.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Wystąpił błąd");
+                    return false;
+                    
                 }
                 finally
                 {

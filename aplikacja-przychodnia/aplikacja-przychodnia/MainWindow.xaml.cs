@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using aplikacja_przychodnia.Classes;
+using System.Threading;
 
 namespace aplikacja_przychodnia
 {
@@ -21,31 +23,51 @@ namespace aplikacja_przychodnia
     public partial class MainWindow : Window
     { 
         User currentUser = null;
+        SickLeaveResender sickLeaveResender;
 
         public MainWindow()
         {    
             InitializeComponent();
             Main.Content = new LoginPage();
+
+            Reporter.RaportAppStart();
+           
+            var timer = new System.Threading.Timer((e) => StartResnding(), null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
+
             this.Closed += CloseApp;
         }            
+
+        private void StartResnding()
+        {
+            new Thread(new ThreadStart(tryResend)).Start();
+        }
+
+        private void tryResend()
+        {           
+            sickLeaveResender = SickLeaveResender.Load();
+            sickLeaveResender.TrySending();
+        }
 
         static public void Logout()
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
-
+            Reporter.RaportLogout(mainWindow.currentUser);
             mainWindow.currentUser = null;
             mainWindow.Main.Content = new LoginPage();
         }
         
         private void CloseApp(Object Sender, EventArgs E)
         {
-            
+            Reporter.RaportLogout(currentUser);
+            Reporter.RaportAppClose();
             Application.Current.Shutdown();
             this.Close();
         }
 
         public static void LogAsUser(User user)
         {
+
+            Reporter.RaportLogin(user);
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             mainWindow.currentUser = user;
         }
@@ -54,6 +76,7 @@ namespace aplikacja_przychodnia
         {
             MainWindow mainWindow = Application.Current.MainWindow as MainWindow;
             return mainWindow.currentUser;
+
         }
 
     }

@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace aplikacja_przychodnia.Classes
 {
-
+    /// <summary>
+    /// Klasa sprawdzająca poprawność wpisywania znaków
+    /// </summary>
     public class RegClass
     {
+
         public static bool CheckFirstName(string item)
         {
             string reg = @"^[A-ZĘĄŃŁÓŚĆŻŹ][a-zęąńłóśźżź]{2,16}$";

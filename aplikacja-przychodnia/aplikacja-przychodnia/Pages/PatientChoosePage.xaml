@@ -14,9 +14,9 @@
             <ColumnDefinition Width="167*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="PESELText" HorizontalAlignment="Left" Margin="96,76,0,0" TextWrapping="Wrap" Text="PESEL" VerticalAlignment="Top" Height="40" Width="148" Foreground="White" FontSize="20"/>
-        <TextBlock x:Name="NipText" HorizontalAlignment="Left" Margin="98,121,0,0" TextWrapping="Wrap" Text="NIP" VerticalAlignment="Top" Height="40" Width="146" Foreground="White" FontSize="20"/>
-        <TextBox x:Name="Input_PESELBox" Height="40" Margin="199,76,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
-        <TextBox x:Name="Input_NIPBox" Height="40" Margin="199,121,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
+        <TextBlock x:Name="NipText" HorizontalAlignment="Left" Margin="98,121,0,0" TextWrapping="Wrap" Text="NIP/Nazwa" VerticalAlignment="Top" Height="40" Width="146" Foreground="White" FontSize="20"/>
+        <TextBox x:Name="Input_PESELBox" Height="40" Margin="222,76,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
+        <TextBox x:Name="Input_NIPBox" Height="40" Margin="222,121,10,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}"/>
         <DataGrid x:Name="Patients_Data" Margin="96,184,85,112" Background="#FF767676" FontSize="20" RowHeight="30" ColumnWidth="*" CanUserResizeColumns="False"  CanUserReorderColumns="False" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionChanged="Patients_Data_SelectionChanged" Grid.ColumnSpan="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Pesel" Binding="{Binding _PESEL}" Foreground="Black" FontSize="16" />
