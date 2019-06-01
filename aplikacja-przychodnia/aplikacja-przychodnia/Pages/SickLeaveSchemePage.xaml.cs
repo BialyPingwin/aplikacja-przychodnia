@@ -139,7 +139,7 @@ namespace aplikacja_przychodnia.Pages
         private bool CheckDataCorrectness()
         {
             if (Input_PatientFirstNameBox.Text == "" || Input_PatientLastNameBox.Text == "" ||
-            Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || Input_PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "")
+            Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || Input_PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "" || Input_SymptomsBox.Text == "")
             {
                 Output_Error.Text = "Pola nie mogą być puste";
                 return false;
@@ -149,12 +149,15 @@ namespace aplikacja_przychodnia.Pages
                 Output_Error.Text = "";
             }
 
-            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text)) >= 0
-                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text)) > 0)
+            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text)) > 0
+                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text)) < -3
+                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text)) > 4 )
             {
                 Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
                 return false;
             }
+
+
             return true;
         }
 

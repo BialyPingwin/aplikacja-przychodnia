@@ -46,9 +46,18 @@ namespace aplikacja_przychodnia.Pages
                     connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(nip);
                 }
                 else
-                { 
-                    connectionString = FirmLocalDataBase.FindFirmConnectionByName(nip);
+                {
+                    if (nip != "")
+                    {
+                        connectionString = FirmLocalDataBase.FindFirmConnectionByName(nip);
+                    }
+                    else
+                    {
+                        connectionString = null;
+                    }
                 }
+
+
                 if (connectionString != null)
                 {
                     long pesel = 0;

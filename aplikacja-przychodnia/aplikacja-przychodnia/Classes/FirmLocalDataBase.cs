@@ -108,5 +108,43 @@ namespace aplikacja_przychodnia.Classes
 
             return null;
         }
+
+
+        /// <summary>
+        /// Metoda sprawdzająca czy nie ma już zarejestrowanej firmy o podanym numerze nip
+        /// </summary>
+        /// <param name="nip">nip który chcemy sprawdzić</param>
+        /// <returns>informację w postaci true lub false</returns>
+        public bool IsNipAvailable(string nip)
+        {
+            foreach( Firm f in listOfFirms)
+            {
+                if (f.NIP == nip)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Metoda sprawdzająca czy nie ma już zarejestrowanej firmy o podanej nazwie
+        /// </summary>
+        /// <param name="nip">nazwa którą chcemy sprawdzić</param>
+        /// <returns>informację w postaci true lub false</returns>
+        public bool IsNameAvailable(string name)
+        {
+            if (name != "")
+            {
+                foreach (Firm f in listOfFirms)
+                {
+                    if (f.FirmName == name)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

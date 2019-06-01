@@ -117,11 +117,19 @@ namespace aplikacja_przychodnia.Pages
         }
 
         private void ButtonFirm_Delete_Click(object sender, RoutedEventArgs e)
-        {
-            Firm firm = FirmView.SelectedItem as Firm;
-            FirmLocalDataBase.Remove(firm);
-            FirmLocalDataBase.Save();
-            RefreshFirmsView();
+        { 
+            
+            if (MessageBox.Show("Usunąć dane firmy?", "Potwierdzenie usuwania firmy", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                //do no stuff
+            }
+            else
+            {
+                Firm firm = FirmView.SelectedItem as Firm;
+                FirmLocalDataBase.Remove(firm);
+                FirmLocalDataBase.Save();
+                RefreshFirmsView();
+            }
         }
     }
 }
