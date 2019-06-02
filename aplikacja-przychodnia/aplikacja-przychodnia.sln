@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aplikacja-przychodnia", "ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegClassTest", "RegClassTest\RegClassTest.csproj", "{2B4C29C4-B267-4184-9BFF-9D25B8B31D12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirmLocalDataBaseTest", "FirmLocalDataBaseTest\FirmLocalDataBaseTest.csproj", "{E644F25B-7386-45F9-A68B-2AC826525A7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{2B4C29C4-B267-4184-9BFF-9D25B8B31D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B4C29C4-B267-4184-9BFF-9D25B8B31D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B4C29C4-B267-4184-9BFF-9D25B8B31D12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E644F25B-7386-45F9-A68B-2AC826525A7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E644F25B-7386-45F9-A68B-2AC826525A7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E644F25B-7386-45F9-A68B-2AC826525A7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E644F25B-7386-45F9-A68B-2AC826525A7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
