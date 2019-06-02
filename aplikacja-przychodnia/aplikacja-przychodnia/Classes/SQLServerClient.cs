@@ -58,7 +58,7 @@ namespace aplikacja_przychodnia
             }
             catch
             {
-                MessageBox.Show("Wystąpił błąd");
+                //MessageBox.Show("Wystąpił błąd");
                 return null;
             }
         }

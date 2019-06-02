@@ -129,5 +129,12 @@ namespace aplikacja_przychodnia.Pages
                 Button_Continue.IsEnabled = false;
             }
         }
+
+        private void Button_Skip_Click(object sender, RoutedEventArgs e)
+        {
+            Patient p = new Patient();
+            NavigationService.Navigate(new SickLeaveSchemePage(p));
+
+        }
     }
 }
