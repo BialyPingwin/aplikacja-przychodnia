@@ -52,14 +52,7 @@
                     </ComboBox>
 
                     <TextBox x:Name="Input_AddressBox" Height="88" Margin="18,232,29,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Style="{DynamicResource AP-TextBoxStyle}" Grid.Column="1">
-                        <TextBox.Text>
-                            <MultiBinding StringFormat="{}{0} {1} {2} {3}">
-                                <Binding Path="PostCode" />
-                                <Binding Path="City" />
-                                <Binding Path="Street"/>
-                                <Binding Path="HouseNumber"/>
-                            </MultiBinding>
-                        </TextBox.Text>
+                        
                     </TextBox>
 
                     <ComboBox x:Name="Input_SickLeaveTypeList" Margin="18,325,29,0" VerticalAlignment="Top" Height="40" FontSize="20" Foreground="#FF383838" Grid.Column="1">

@@ -134,13 +134,6 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
 
             row = table.AddRow();
             cell = row.Cells[0];
-            cell.AddParagraph("Data urodzenia");
-            cell = row.Cells[1];
-            cell.AddParagraph(sickLeaveClass.Patient.DateOfBirth);
-
-
-            row = table.AddRow();
-            cell = row.Cells[0];
             cell.AddParagraph("Pesel");
             cell = row.Cells[1];
             cell.AddParagraph(sickLeaveClass.Patient._PESEL.ToString());
@@ -161,7 +154,12 @@ namespace aplikacja_przychodnia.Classes.MigraDocF
             cell = row.Cells[0];
             cell.AddParagraph("Miejsce zameldowania");
             cell = row.Cells[1];
-            cell.AddParagraph($"{sickLeaveClass.Patient.Street} {sickLeaveClass.Patient.HouseNumber} \n{sickLeaveClass.Patient.PostCode} {sickLeaveClass.Patient.City}");
+            string hauseNumberToAdd = "";
+            if (sickLeaveClass.Patient.HouseNumber != 0)
+            {
+                hauseNumberToAdd = sickLeaveClass.Patient.HouseNumber.ToString();
+            }
+            cell.AddParagraph($"{sickLeaveClass.Patient.Street} {hauseNumberToAdd} \n{sickLeaveClass.Patient.PostCode} {sickLeaveClass.Patient.City}");
 
             row = table.AddRow();
             cell = row.Cells[0];

@@ -40,7 +40,7 @@ namespace aplikacja_przychodnia.Classes
                 }
                 catch
                 {
-                    MessageBox.Show("Wystąpił błąd");
+                    //MessageBox.Show("Wystąpił błąd");
                     return false;
                     
                 }

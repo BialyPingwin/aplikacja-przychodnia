@@ -121,7 +121,7 @@ namespace aplikacja_przychodnia.Pages
             
             if (MessageBox.Show("Usunąć dane firmy?", "Potwierdzenie usuwania firmy", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                //do no stuff
+                //
             }
             else
             {

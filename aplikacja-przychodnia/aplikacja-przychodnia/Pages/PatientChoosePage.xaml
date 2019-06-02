@@ -27,6 +27,6 @@
         <Button x:Name="Button_PatientSearch" Content="Szukaj pacjenta" Margin="15,76,85,0" VerticalAlignment="Top" Height="85" Click="Button_PatientSearch_Click" Style="{DynamicResource AP-ButtonStyle}" FontSize="24" Grid.Column="1"/>
         <Button x:Name="Button_Back" Content="Cofnij" HorizontalAlignment="Left" Margin="10,0,0,10" Width="130" Style="{DynamicResource AP-ButtonStyle}" FontSize="20" Click="Button_Back_Click" Height="36" VerticalAlignment="Bottom"/>
         <Button x:Name="Button_Continue" Content="Kontynuuj" Margin="0,0,10,10" Style="{DynamicResource AP-ButtonStyle}" FontSize="24" Click="Button_Continue_Click" HorizontalAlignment="Right" Width="180" Height="58" VerticalAlignment="Bottom" IsEnabled="False" Grid.Column="1"/>
-
+        <Button x:Name="Button_Skip" Content="Pomiń" Margin="0,0,195,10" Style="{DynamicResource AP-ButtonStyle}" FontSize="24" Click="Button_Skip_Click" HorizontalAlignment="Right" Width="124" Height="58" VerticalAlignment="Bottom" IsEnabled="True" Grid.Column="1"/>
     </Grid>
 </Page>
