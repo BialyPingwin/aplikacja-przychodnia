@@ -160,14 +160,23 @@ namespace aplikacja_przychodnia.Pages
                     patient.Name = Input_PatientFirstNameBox.Text;
                     patient.Surname = Input_PatientLastNameBox.Text;
                     patient.Gender = Input_PatientGenderList.Text;
-                }
+                    if (sickLeaveClass == null)
+                    {
+                        sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+                    }
 
-                if (sickLeaveClass == null)
+                    NavigationService.Navigate(new SickLeaveSendingPage(sickLeaveClass, false));
+
+                }
+                else
                 {
-                    sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
-                }
+                    if (sickLeaveClass == null)
+                    {
+                        sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
+                    }
 
-                NavigationService.Navigate(new SickLeaveSendingPage(sickLeaveClass, false));
+                    NavigationService.Navigate(new SickLeaveSendingPage(sickLeaveClass, true));
+                }
 
             }
         }

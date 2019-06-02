@@ -41,6 +41,7 @@ namespace aplikacja_przychodnia.Pages
             else
             {
                 Reporter.AddRaport(user.ReturnName(), "Wystawienie zwolnienia bez wysyłania", null);
+                createPDF();
             }
 
         }
@@ -48,6 +49,11 @@ namespace aplikacja_przychodnia.Pages
         private void Button_Pdf_Click(object sender, RoutedEventArgs e)
         {
 
+            createPDF();
+        }
+
+        private void createPDF()
+        {
             //Tworzenie dokumentu PDF
 
             // Create a MigraDoc document
