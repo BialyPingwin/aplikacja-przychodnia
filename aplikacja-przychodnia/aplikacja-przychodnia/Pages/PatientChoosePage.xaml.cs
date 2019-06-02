@@ -46,9 +46,18 @@ namespace aplikacja_przychodnia.Pages
                     connectionString = FirmLocalDataBase.FindFirmConnectionByNIP(nip);
                 }
                 else
-                { 
-                    connectionString = FirmLocalDataBase.FindFirmConnectionByName(nip);
+                {
+                    if (nip != "")
+                    {
+                        connectionString = FirmLocalDataBase.FindFirmConnectionByName(nip);
+                    }
+                    else
+                    {
+                        connectionString = null;
+                    }
                 }
+
+
                 if (connectionString != null)
                 {
                     long pesel = 0;
@@ -119,6 +128,13 @@ namespace aplikacja_przychodnia.Pages
             {
                 Button_Continue.IsEnabled = false;
             }
+        }
+
+        private void Button_Skip_Click(object sender, RoutedEventArgs e)
+        {
+            Patient p = new Patient();
+            NavigationService.Navigate(new SickLeaveSchemePage(p));
+
         }
     }
 }

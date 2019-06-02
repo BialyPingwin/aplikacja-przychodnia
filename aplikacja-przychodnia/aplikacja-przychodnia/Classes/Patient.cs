@@ -45,7 +45,7 @@ namespace aplikacja_przychodnia
             surname = datarow["Nazwisko"].ToString();
             PESEL = (long)datarow["Numer_PESEL"];
             string PESELAsString = PESEL.ToString();
-            dateOfBirth = $"{PESELAsString[4]}{PESELAsString[5]}-{PESELAsString[2]}{PESELAsString[3]}-19{PESELAsString[0]}{PESELAsString[1]}";
+            dateOfBirth = $"{PESELAsString[4]}{PESELAsString[5]}-{PESELAsString[2]}{PESELAsString[3]}-{PESELAsString[0]}{PESELAsString[1]}";
             gender = datarow["Plec"].ToString();
             NIP = (long)datarow["NIP"];
             city = datarow["Miejsce_Zamieszkania"].ToString();
@@ -53,6 +53,10 @@ namespace aplikacja_przychodnia
             houseNumber = (int)datarow["Numer_Domu"];
         }
 
+        public Patient()
+        {
+
+        }
         
     }
 }

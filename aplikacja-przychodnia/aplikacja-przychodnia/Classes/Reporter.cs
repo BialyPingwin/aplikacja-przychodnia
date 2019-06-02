@@ -70,7 +70,7 @@ namespace aplikacja_przychodnia.Classes
             AddRaport("Aplikacja","Ponowne wysyłanie Zwolnienia", isSent);
         }
 
-        private static void AddRaport(string doctor, string action, bool? isSent)
+        public static void AddRaport(string doctor, string action, bool? isSent)
         {
             Reporter tmpRepo = Reporter.Load();
             tmpRepo.lisOfReports.Add(Report.NewReport(doctor, action, isSent));
@@ -87,6 +87,12 @@ namespace aplikacja_przychodnia.Classes
             Reporter tmp = (Reporter)BinarySerializerWithCipher.Deserialize<Reporter>("AppData1.dat");
             if (tmp!= null)
             {
+                if (tmp.lisOfReports.Count > 1000)
+                {
+                    tmp.lisOfReports.RemoveAt(0);
+                }
+
+
                 return tmp;
             }
             else

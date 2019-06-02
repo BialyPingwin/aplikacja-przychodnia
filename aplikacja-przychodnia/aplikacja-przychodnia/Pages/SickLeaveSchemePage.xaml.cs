@@ -38,7 +38,15 @@ namespace aplikacja_przychodnia.Pages
         {
             InitializeComponent();
             this.patient = patient;
-            DataContext = patient;
+            if (patient._PESEL != 0 && patient._NIP != 0)
+            {
+                DataContext = patient;
+
+                Input_AddressBox.Text = patient.PostCode + " " + patient.City + " " + patient.Street + " " + patient.HouseNumber.ToString();
+            }
+            
+
+
             if (patient.Gender == "Mężczyzna")
             {
                 this.Input_PatientGenderList.Text = "Mężczyzna";
@@ -48,86 +56,39 @@ namespace aplikacja_przychodnia.Pages
                 this.Input_PatientGenderList.Text = "Kobieta";
             }
 
-            if (Input_PESELBox != null)
+            if (Input_PESELBox.Text != "")
             {
                 Input_PESELBox.IsEnabled = false;
             }
-            if (Input_NIPBox != null)
+            if (Input_NIPBox.Text != "")
             {
                 Input_NIPBox.IsEnabled = false;
             }
-            if (Input_PatientFirstNameBox != null)
+            if (Input_PatientFirstNameBox.Text != "")
             {
                 Input_PatientFirstNameBox.IsEnabled = false;
             }
-            if (Input_PatientLastNameBox != null)
+            if (Input_PatientLastNameBox.Text != "")
             {
                 Input_PatientLastNameBox.IsEnabled = false;
             }
-            if (Input_PatientGenderList != null)
+            if (Input_PatientGenderList.Text != "")
             {
                 Input_PatientGenderList.IsEnabled = false;
             }
-            if (Input_AddressBox != null)
+            if (Input_AddressBox.Text != "")
             {
                 Input_AddressBox.IsEnabled = false;
             }
         }
 
-        //private void PDFbutton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    if (CheckDataCorrectness())
-        //    {
-        //        if (sickLeaveClass == null)
-        //            sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
-
-        //        //Tworzenie dokumentu PDF
-
-        //        // Create a MigraDoc document
-        //        Document document = Classes.MigraDocF.MigraDoc.CreateDocument(sickLeaveClass);
-
-        //        //string ddl = MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToString(document);
-        //        MigraDoc.DocumentObjectModel.IO.DdlWriter.WriteToFile(document, "MigraDoc.mdddl");
-
-        //        PdfDocumentRenderer renderer = new PdfDocumentRenderer(true);
-        //        renderer.Document = document;
-
-        //        renderer.RenderDocument();
-
-        //        // Save the document...
-        //        string filename = "HelloMigraDoc.pdf";
-        //        renderer.PdfDocument.Save(filename);
-        //        // ...and start a viewer.
-        //        Process.Start(filename);
-        //    }
-        //}
-
+        
         private void Button_Back_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DoctorMenu());
         }
 
-        //private void SendToDataBase(object sender, RoutedEventArgs e)
-        //{
-        //    if (CheckDataCorrectness())
-        //    {
-        //        if (!sickLeaveWasSent)
-        //        {
-        //            if (sickLeaveClass == null)
-        //                sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
-
-        //            string connectionString = FirmLocalDataBase.Initialize().FindFirmConnectionByNIP(patient._NIP.ToString());
-        //            if (SickLeaveSender.SendToSQLServer(sickLeaveClass, connectionString))
-        //                MessageBox.Show("Zwolnienie zostało poprawnie wysłane");
-        //            sickLeaveWasSent = true;
-        //        }
-        //        else
-        //        {
-        //            Output_Error.Text = "Zwolnienie już zostało wysłane";
-        //        }
-        //    }
-        //}
-
+       
         /// <summary>
         /// Metoda sprawdząjaca poprawność wprowadzonych przez użytkownika danych
         /// </summary>
@@ -139,7 +100,7 @@ namespace aplikacja_przychodnia.Pages
         private bool CheckDataCorrectness()
         {
             if (Input_PatientFirstNameBox.Text == "" || Input_PatientLastNameBox.Text == "" ||
-            Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || Input_PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "")
+            Input_SickLeaveTypeList.Text == "" || Input_PatientGenderList.Text == "" || Input_PESELBox.Text == "" || Input_DateFromPicker.Text == "" || Input_DateToPicker.Text == "" || Input_SymptomsBox.Text == "")
             {
                 Output_Error.Text = "Pola nie mogą być puste";
                 return false;
@@ -149,25 +110,64 @@ namespace aplikacja_przychodnia.Pages
                 Output_Error.Text = "";
             }
 
-            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text)) >= 0
-                || DateTime.Compare(DateTime.Now.Date, Convert.ToDateTime(Input_DateFromPicker.Text)) > 0)
+            if (!RegClass.CheckPESEL(Input_PESELBox.Text) && !RegClass.CheckNIP(Input_NIPBox.Text))
+            {
+                Output_Error.Text = "Błędnie wpisany numer NIP lub Pesel";
+                return false;
+            }
+            else
+            {
+                Output_Error.Text = "";
+            }
+
+            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), Convert.ToDateTime(Input_DateToPicker.Text)) > 0 )
             {
                 Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
                 return false;
             }
+
+
+            
+            if ((Convert.ToDateTime(Input_DateFromPicker.Text).Date - DateTime.Now.Date).TotalDays < -3 || (Convert.ToDateTime(Input_DateFromPicker.Text).Date - DateTime.Now.Date).TotalDays > 4)
+            {
+                Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
+                return false;
+            }
+
+            if (DateTime.Compare(Convert.ToDateTime(Input_DateFromPicker.Text), DateTime.Now) < 0)
+            {
+                if ((Convert.ToDateTime(Input_DateToPicker.Text).Date - DateTime.Now.Date).TotalDays < 0)
+                {
+                    Output_Error.Text = "Podano nieprawidłowy\nzakres czasu";
+                    return false;
+                }
+            }
+
             return true;
         }
 
         private void Button_Save_Click(object sender, RoutedEventArgs e)
         {
+
+            
             if (CheckDataCorrectness())
             {
+                if (patient._PESEL == 0)
+                {
+                    patient._PESEL = Convert.ToInt64(Input_PESELBox.Text);
+                    patient._NIP = Convert.ToInt64(Input_NIPBox.Text);
+                    patient.Street = Input_AddressBox.Text;
+                    patient.Name = Input_PatientFirstNameBox.Text;
+                    patient.Surname = Input_PatientLastNameBox.Text;
+                    patient.Gender = Input_PatientGenderList.Text;
+                }
+
                 if (sickLeaveClass == null)
                 {
                     sickLeaveClass = new Classes.SickLeave(patient, this.Input_SickLeaveTypeList.Text, this.Input_SymptomsBox.Text, Convert.ToDateTime(this.Input_DateFromPicker.Text), Convert.ToDateTime(this.Input_DateToPicker.Text));
                 }
 
-                NavigationService.Navigate(new SickLeaveSendingPage(sickLeaveClass));
+                NavigationService.Navigate(new SickLeaveSendingPage(sickLeaveClass, false));
 
             }
         }

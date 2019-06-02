@@ -42,6 +42,14 @@ namespace aplikacja_przychodnia.Windows
                 {
                     Output_Error.Text = "Wypełnij wszystkie pola!";
                 }
+                else if (!FirmLocalDataBase.IsNipAvailable(Input_NIP.Text))
+                {
+                    Output_Error.Text = "Firma o tym numerze NIP jest już zapisana w bazie!";
+                }
+                else if (!FirmLocalDataBase.IsNameAvailable(Input_FirmName.Text))
+                {
+                    Output_Error.Text = "Firma o tej nazwie jest już zapisana w bazie!";
+                }
                 else
                 {
                     Firm firm = new Firm();
@@ -73,7 +81,7 @@ namespace aplikacja_przychodnia.Windows
             }
             else
             {
-                MessageBox.Show("Nie można połączyć się z bazą");
+                Output_Error.Text = "Błędnie wpisany numer NIP!";
             }
         }
     }

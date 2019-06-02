@@ -27,13 +27,21 @@ namespace aplikacja_przychodnia.Pages
     {
         SickLeave sickLeave;
 
-        public SickLeaveSendingPage(SickLeave sickLeave)
+        public SickLeaveSendingPage(SickLeave sickLeave, bool send = true)
         {
             InitializeComponent();
             this.sickLeave = sickLeave;
 
+
             User user = MainWindow.ReturnCurrentUser();
-            new Thread(() => Send(user)).Start();
+            if (send)
+            {
+                new Thread(() => Send(user)).Start();
+            }
+            else
+            {
+                Reporter.AddRaport(user.ReturnName(), "Wystawienie zwolnienia bez wysyłania", null);
+            }
 
         }
 
@@ -54,12 +62,25 @@ namespace aplikacja_przychodnia.Pages
             renderer.RenderDocument();
 
             // Save the document...
-            string filename = "HelloMigraDoc.pdf";
+            string filename = RandomPdfName() + ".pdf";
             renderer.PdfDocument.Save(filename);
             // ...and start a viewer.
             Process.Start(filename);
         }
 
+        public string RandomPdfName()
+        {
+            StringBuilder builder = new StringBuilder();
+            Random random = new Random();
+            char ch;
+            for (int i = 0; i < 9; i++)
+            {
+                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                builder.Append(ch);
+            }
+            return "PDF_" + builder.ToString().ToLower();
+            
+        }
         private void Button_DoctorMenu_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DoctorMenu());
@@ -80,11 +101,11 @@ namespace aplikacja_przychodnia.Pages
             if (!outcome)
             {
                 SickLeaveResender.AddToResend(sickLeave);
-                MessageBox.Show("Błąd połączenia z bazą");
+                //MessageBox.Show("Błąd połączenia z bazą");
             }
             else
             {
-                MessageBox.Show("Wysłano Poprawnie");
+                //MessageBox.Show("Wysłano Poprawnie");
             }
         }
 
