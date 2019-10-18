@@ -12,8 +12,16 @@ using System.Collections;
 
 namespace aplikacja_przychodnia 
 {
+    /// <summary>
+    /// Klasa serializująca i deserializująca dane.
+    /// </summary>
     class BinarySerializerWithCipher 
     {
+        /// <summary>
+        /// Metoda serializująca dane.
+        /// </summary>
+        /// <param name="filePath">Ścieżka nowo utworzonego pliku.</param>
+        /// <param name="obj">Obiekt do serializacji.</param>
         public static void Serialize<T>(string filePath, T obj)
         {
             if (obj != null)
@@ -33,7 +41,11 @@ namespace aplikacja_przychodnia
                 }
             }
         }
-
+        /// <summary>
+        /// Metoda deserializująca dane.
+        /// </summary>
+        /// <param name="filePath">Scieżka pliku do deserializacji.</param>
+        /// <returns>Zdeserializowany obiekt.</returns>
         public static T Deserialize<T>(string filePath) 
         {
             T temp = default(T);

@@ -20,6 +20,9 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class MenuPage : Page
     {
+        /// <summary>
+        /// Konstruktor strony menu.
+        /// </summary>
         public MenuPage()
         {
             InitializeComponent();

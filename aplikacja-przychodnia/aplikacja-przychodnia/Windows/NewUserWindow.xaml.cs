@@ -21,7 +21,14 @@ namespace aplikacja_przychodnia.Windows
     /// </summary>
     public partial class NewUserWindow : Window
     {
+        /// <summary>
+        /// Lokalna baza danych użytkowników.
+        /// </summary>
         public UserLocalDataBase UserLocalDataBase;
+        
+        /// <summary>
+        /// Kontruktor okna dodawania nowego użytkownika.
+        /// </summary>
         public NewUserWindow()
         {
             InitializeComponent();
@@ -54,6 +61,9 @@ namespace aplikacja_przychodnia.Windows
             Input_Login.Text = login1 + login2 + login3;
         }
 
+        /// <summary>
+        /// Metoda sprawdzająca poprawność wpisanych danych, oraz czy wprowadzony login jest unikatowy.
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (RegClass.CheckFirstName(Input_Name.Text) && RegClass.CheckLastName(Input_Surname.Text))

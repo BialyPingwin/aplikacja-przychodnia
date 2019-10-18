@@ -21,6 +21,10 @@ namespace aplikacja_przychodnia.Pages
     public partial class DoctorMenu : Page
     {
         User user = null;
+
+        /// <summary>
+        /// Konstruktor strony lekarza.
+        /// </summary>
         public DoctorMenu()
         {
             

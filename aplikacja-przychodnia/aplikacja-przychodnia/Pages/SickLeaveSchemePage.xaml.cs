@@ -34,6 +34,10 @@ namespace aplikacja_przychodnia.Pages
         SickLeave sickLeaveClass = null;
         //bool sickLeaveWasSent = false;
 
+        /// <summary>
+        /// Konstruktor strony wypełnienia zwolnienia lekarskiego.
+        /// </summary>
+        /// <param name="patient">Pacjent dla którego ma zostać wypisane zwolnienie.</param>
         public SickLeaveSchemePage(Patient patient)
         {
             InitializeComponent();

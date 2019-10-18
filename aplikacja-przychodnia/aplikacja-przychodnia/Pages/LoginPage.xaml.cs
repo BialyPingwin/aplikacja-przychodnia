@@ -21,10 +21,15 @@ namespace aplikacja_przychodnia
     /// </summary>
     public partial class LoginPage : Page
     {
-        // lokalna baza danych lekarzy, zawiera imie, nazwisko, id, Login, hasło
+        /// <summary>
+        /// Lokalna baza danych lekarzy, zawiera imie, nazwisko, id, login, hasło.
+        /// </summary>
         public UserLocalDataBase UserLocalDataBase;
         private bool firstStart = false;
-        //Strona do logowania
+        
+        /// <summary>
+        /// Konstruktor strony logowania.
+        /// </summary>
         public LoginPage()
         {
 
@@ -65,7 +70,10 @@ namespace aplikacja_przychodnia
                 Output_Error.Text = "Błędny Login lub hasło";
             }
         }
-        // kiedy textbox pusty ustawia wartosc domyslna
+
+        /// <summary>
+        /// Metoda ustawiająca domyślny tekst pola, kiedy textbox jest pusty.
+        /// </summary>
         private void RestoreValue(object sender, RoutedEventArgs e)
         {
             if (sender is TextBox)
@@ -85,7 +93,10 @@ namespace aplikacja_przychodnia
                 }
             }
         }
-        //zaznacza tekst kiedy textbox klikniety
+        
+        /// <summary>
+        /// Metoda zaznaczająca tekst po naciśnięciu na textbox.
+        /// </summary>
         private void SelectAddress(object sender, RoutedEventArgs e)
         {
 
@@ -108,7 +119,12 @@ namespace aplikacja_przychodnia
                 }
             }
         }
-        //sprawia że SelectAddress nie dziala zawsze
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectivelyIgnoreMouseButton(object sender,
             MouseButtonEventArgs e)
         {
