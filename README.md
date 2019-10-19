@@ -10,15 +10,15 @@ Aplikacja jest prostą adaptacją systemu wystawiania zwolnień online. Umożliw
 
 # Specyfikacja
 1. Moduł administratora
-    -dodawanie i usuwanie konta użytkowników(lekarzy)
-    -resetowanie haseł użytkowników
-    -dostęp do raportów z obsługi lekarzy
-    -przegląd i edycja baz danych do których aplikacja ma dostęp
+    * dodawanie i usuwanie konta użytkowników(lekarzy)
+    * resetowanie haseł użytkowników
+    * dostęp do raportów z obsługi lekarzy
+    * przegląd i edycja baz danych do których aplikacja ma dostęp
 2. Moduł Lekarza
-    -Wyszukiwanie pacjenta po numerze PESEL i numerze NIP firmy w której pracuje
-    -Wystawianie zwolnienia
-    -Eksport zwolnienia do pliku PDF
-    -Automatyczne wysłanie zwolnienia do bazy danych
+    * Wyszukiwanie pacjenta po numerze PESEL i numerze NIP firmy w której pracuje
+    * Wystawianie zwolnienia
+    * Eksport zwolnienia do pliku PDF
+    * Automatyczne wysłanie zwolnienia do bazy danych
 
 # Wersja demonstracyjna
 W pełni działająca aplikacja podpięta do bazy danych - [Pobierz teraz](https://github.com/BialyPingwin/aplikacja-przychodnia/releases/tag/v1.0)
