@@ -24,18 +24,19 @@ Aplikacja jest prostą adaptacją systemu wystawiania zwolnień online. Umożliw
 W pełni działająca aplikacja podpięta do bazy danych - [Pobierz teraz](https://github.com/BialyPingwin/aplikacja-przychodnia/releases/tag/v1.0)
 
 # Przydatne pliki
-[Instrukcja obsługi](https://github.com/BialyPingwin/aplikacja-przychodnia/files/3590580/Instrukcja-obslugi.docx)
-[Sprawozdanie z testów](https://github.com/BialyPingwin/aplikacja-przychodnia/files/3590592/Sprawozdanie.z.testow.pdf)
+* [Instrukcja obsługi](https://github.com/BialyPingwin/aplikacja-przychodnia/files/3590580/Instrukcja-obslugi.docx)
+* [Sprawozdanie z testów](https://github.com/BialyPingwin/aplikacja-przychodnia/files/3590592/Sprawozdanie.z.testow.pdf)
 
 # Współtwórcy
 CODE/UXUI:
-@BialyPingwin - kierownik projektu
-@Abaddon27
-@mariapsz
-@elstanicki
+* [BialyPingwin](https://github.com/BialyPingwin/) - kierownik projektu
+* [Abaddon27](https://github.com/Abaddon27)
+* [mariapsz](https://github.com/mariapsz)
+* [elstanicki](https://github.com/elstanicki)
 
 Dokumentacja/Test:
-@JulaHula
-@zuzzbi
-@eugeniuszG
-@mavlevich
+* [JulaHula](https://github.com/JulaHula)
+* [zuzzbi](https://github.com/zuzzbi)
+* [eugeniuszG](https://github.com/eugeniuszG)
+* [mavlevich](https://github.com/mavlevich)
+
