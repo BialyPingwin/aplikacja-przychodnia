@@ -4,6 +4,8 @@ Projekt studencki na przedmiot Inżynieria Oprogramowania.
 **Platforma docelowa**: Windows
 **Wykorzystane technologie**: WPF, MSSQL, MigraDoc
 
+![Zwolnienie](https://github.com/BialyPingwin/aplikacja-przychodnia/blob/master/extras/Aplikacja%20przychodnia%20zwolnienie.png?raw=true)
+
 Aplikacja jest prostą adaptacją systemu wystawiania zwolnień online. Umożliwia stworzenie dwóch typów kont: administratora i lekarza. Administrator zarządza kontami lekarzy, dodaje, usuwa i resetuje hasła. Lekarz wybiera pacjenta po numerze PESEL i numerze NIM z bazy danych, a następnie wystawia mu zwolnienie L4 lub L10, które można eksportować do PDF, a także przesłać do bazy danych.  
 
 # Specyfikacja
