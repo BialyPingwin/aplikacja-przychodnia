@@ -1,7 +1,0 @@
-NIP: jakiœ tam do wpisania 
-Nazwa: jakaœ
-IP:io-2019.database.windows.net
-PORT:1433
-Katalog pocz¹tkowy: IO_patientsList
-U¿ytkownik: przychodnia
-Has³o: zwolnienie_123
