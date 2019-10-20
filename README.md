@@ -1,7 +1,7 @@
 # Obsługa wystawiania zwolnień lekarskich
 Projekt studencki na przedmiot Inżynieria Oprogramowania.
 
-**Platforma docelowa**: Windows
+**Platforma docelowa**: Windows  
 **Wykorzystane technologie**: WPF, MSSQL, MigraDoc
 
 ![Zwolnienie](https://github.com/BialyPingwin/aplikacja-przychodnia/blob/master/extras/Aplikacja%20przychodnia%20zwolnienie.png?raw=true)
